@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Abundancia Consciente - Módulo 1 Professional Green</title>
+  <title>Abundancia Consciente - Módulo 1</title>
   <style>
     :root {
       --white: #ffffff;
@@ -119,11 +119,206 @@
       border-radius: 999px;
     }
 
+    .slide.layout-split {
+      background:
+        linear-gradient(90deg, rgba(6,78,59,0.08) 0 32%, transparent 32%),
+        radial-gradient(circle at 82% 18%, rgba(212,175,55,0.15), transparent 24%),
+        #ffffff;
+    }
+
+    .slide.layout-split::after {
+      left: 4.8%;
+      right: auto;
+      top: 18%;
+      bottom: auto;
+      width: 19%;
+      background: linear-gradient(135deg, var(--deep), var(--emerald));
+      opacity: 1;
+      border-radius: 8px;
+    }
+
+    .slide.layout-statement {
+      place-items: center;
+      text-align: center;
+      background:
+        radial-gradient(circle at 50% 50%, rgba(236,253,245,0.95), transparent 42%),
+        linear-gradient(135deg, #ffffff, #f7fff9 50%, #fff8dc);
+    }
+
+    .slide.layout-statement::before {
+      inset: 5.2%;
+      border-color: rgba(212, 175, 55, 0.36);
+    }
+
+    .slide.layout-workbook {
+      background:
+        linear-gradient(90deg, var(--deep) 0 25%, #ffffff 25% 100%);
+    }
+
+    .slide.layout-workbook::after {
+      right: 5%;
+      top: 9%;
+      bottom: auto;
+      width: 17%;
+      background: repeating-linear-gradient(135deg, rgba(15,118,110,0.13) 0 12px, rgba(212,175,55,0.12) 12px 24px);
+      border-radius: 8px;
+    }
+
+    .slide.layout-quote {
+      background:
+        linear-gradient(135deg, rgba(6,78,59,0.96), rgba(15,118,110,0.9)),
+        #064e3b;
+      color: var(--white);
+    }
+
+    .slide.layout-quote::before {
+      border-color: rgba(255,255,255,0.22);
+    }
+
+    .slide.layout-quote::after {
+      content: "“";
+      right: 7%;
+      top: -9%;
+      bottom: auto;
+      width: auto;
+      background: none;
+      color: rgba(212,175,55,0.28);
+      font-family: Georgia, serif;
+      font-size: clamp(180px, 28vw, 360px);
+      line-height: 1;
+      border-radius: 0;
+    }
+
+    .slide.layout-cards {
+      background:
+        linear-gradient(180deg, #ffffff 0 54%, #ecfdf5 54% 100%);
+    }
+
+    .slide.layout-cards::after {
+      right: 7%;
+      bottom: 7%;
+      width: 18%;
+      background: linear-gradient(135deg, rgba(212,175,55,0.28), rgba(15,118,110,0.18));
+      border-radius: 8px;
+    }
+
+    .slide.layout-path {
+      background:
+        linear-gradient(135deg, #ffffff 0 42%, #f0fdf4 42% 68%, #fff8dc 68%);
+    }
+
+    .slide.layout-path::after {
+      right: 8%;
+      top: 14%;
+      bottom: auto;
+      width: 24%;
+      background: conic-gradient(from 140deg, rgba(6,78,59,0.95), rgba(15,118,110,0.65), rgba(212,175,55,0.7), rgba(6,78,59,0.95));
+      opacity: 0.18;
+    }
+
+    .slide.layout-cover {
+      place-items: center;
+      background:
+        radial-gradient(circle at 82% 18%, rgba(212,175,55,0.22), transparent 22%),
+        radial-gradient(circle at 18% 72%, rgba(15,118,110,0.16), transparent 28%),
+        linear-gradient(135deg, #ffffff 0%, #f7fff9 56%, #fff8dc 100%);
+      text-align: left;
+    }
+
+    .slide.layout-cover::after {
+      right: 7%;
+      bottom: 9%;
+      width: 24%;
+      background: linear-gradient(135deg, var(--deep), var(--emerald));
+      opacity: 0.14;
+      border-radius: 8px;
+    }
+
     .content {
       position: relative;
       z-index: 1;
       display: grid;
       gap: clamp(12px, 2vw, 26px);
+    }
+
+    .visual-mark {
+      position: absolute;
+      z-index: 0;
+      right: 5.4%;
+      top: 6%;
+      color: rgba(6, 78, 59, 0.08);
+      font-size: clamp(78px, 13vw, 180px);
+      font-weight: 1000;
+      line-height: 1;
+    }
+
+    .layout-quote .visual-mark,
+    .layout-workbook .visual-mark {
+      color: rgba(255,255,255,0.12);
+      left: 6%;
+      right: auto;
+    }
+
+    .layout-split .content {
+      grid-template-columns: 28% minmax(0, 1fr);
+      align-items: center;
+      gap: 5%;
+    }
+
+    .layout-split .content::before {
+      content: attr(data-section);
+      position: relative;
+      z-index: 1;
+      display: grid;
+      place-items: center;
+      min-height: 56%;
+      padding: 18px;
+      color: var(--white);
+      background: linear-gradient(135deg, var(--deep), var(--emerald));
+      border: 1px solid rgba(255,255,255,0.25);
+      border-radius: 8px;
+      box-shadow: 0 24px 52px rgba(6, 78, 59, 0.24);
+      text-align: center;
+      text-transform: uppercase;
+      font-size: clamp(18px, 2.5vw, 36px);
+      line-height: 0.95;
+      font-weight: 1000;
+    }
+
+    .layout-statement .content {
+      width: min(92%, 1020px);
+      justify-items: center;
+      text-align: center;
+      gap: clamp(8px, 1.35vw, 18px);
+    }
+
+    .layout-workbook .content {
+      grid-template-columns: 22% minmax(0, 1fr);
+      align-items: center;
+      gap: 5%;
+    }
+
+    .layout-workbook .content::before {
+      content: "✍️";
+      display: grid;
+      place-items: center;
+      color: var(--gold);
+      font-size: clamp(54px, 8vw, 118px);
+    }
+
+    .layout-quote .content {
+      width: min(92%, 1040px);
+      gap: clamp(9px, 1.4vw, 18px);
+    }
+
+    .layout-cards .content,
+    .layout-path .content {
+      width: min(94%, 1060px);
+    }
+
+    .layout-cover .content {
+      width: min(86%, 980px);
+      gap: clamp(14px, 2.2vw, 30px);
     }
 
     .meta {
@@ -137,6 +332,11 @@
       text-transform: uppercase;
       letter-spacing: 0.06em;
       font-size: clamp(9px, 1.1vw, 14px);
+    }
+
+    .layout-workbook .meta,
+    .layout-quote .meta {
+      color: rgba(255,255,255,0.82);
     }
 
     .badge {
@@ -155,6 +355,18 @@
       border-radius: 999px;
     }
 
+    .layout-quote .badge {
+      background: rgba(255,255,255,0.10);
+      color: var(--white);
+      border-color: rgba(255,255,255,0.24);
+      box-shadow: none;
+    }
+
+    .layout-workbook .badge {
+      background: var(--white);
+      color: var(--deep);
+    }
+
     .slide-title {
       max-width: 92%;
       margin: 0;
@@ -166,6 +378,55 @@
       text-transform: uppercase;
       text-wrap: balance;
       text-shadow: none;
+    }
+
+    .layout-quote .slide-title {
+      color: var(--white);
+      max-width: 86%;
+      font-size: clamp(34px, 5.45vw, 72px);
+    }
+
+    .layout-statement .slide-title {
+      max-width: 980px;
+      font-size: clamp(38px, 6.1vw, 78px);
+    }
+
+    .layout-workbook .slide-title {
+      max-width: 96%;
+      font-size: clamp(34px, 5.4vw, 72px);
+    }
+
+    .layout-split .slide-title {
+      max-width: 91%;
+      font-size: clamp(34px, 5.1vw, 66px);
+    }
+
+    .layout-cards .slide-title {
+      max-width: 86%;
+      font-size: clamp(34px, 5.35vw, 70px);
+    }
+
+    .layout-cover .slide-title {
+      max-width: 900px;
+      font-size: clamp(48px, 8.4vw, 112px);
+      line-height: 0.9;
+    }
+
+    .cover-subtitle {
+      width: min(780px, 86%);
+      margin: 0;
+      color: var(--ink);
+      font-size: clamp(20px, 3vw, 38px);
+      line-height: 1.05;
+      font-weight: 850;
+      text-wrap: balance;
+    }
+
+    .gold-rule {
+      width: min(240px, 38%);
+      height: 8px;
+      background: linear-gradient(90deg, var(--gold), var(--emerald));
+      border-radius: 999px;
     }
 
     .title-small .slide-title {
@@ -186,6 +447,24 @@
       list-style: none;
     }
 
+    .layout-statement .bullets {
+      width: min(100%, 980px);
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
+    .layout-cards .bullets {
+      width: 100%;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      align-items: stretch;
+      margin-top: 8px;
+    }
+
+    .layout-path .bullets {
+      width: min(88%, 920px);
+      gap: clamp(12px, 1.8vw, 22px);
+      counter-reset: path;
+    }
+
     .bullet {
       display: grid;
       grid-template-columns: auto auto 1fr;
@@ -201,6 +480,53 @@
       line-height: 1.05;
       font-weight: 820;
     }
+
+    .layout-quote .bullet {
+      background: rgba(255,255,255,0.10);
+      color: var(--white);
+      border-color: rgba(255,255,255,0.18);
+      box-shadow: none;
+      min-height: clamp(42px, 5.8vw, 62px);
+      font-size: clamp(15px, 2vw, 25px);
+    }
+
+    .layout-statement .bullet,
+    .layout-cards .bullet {
+      grid-template-columns: 1fr;
+      justify-items: center;
+      text-align: center;
+      min-height: clamp(82px, 9.8vw, 128px);
+      padding: clamp(14px, 2vw, 26px);
+      align-content: center;
+    }
+
+    .layout-statement .bullet {
+      font-size: clamp(15px, 2vw, 25px);
+    }
+
+    .layout-split .bullet {
+      min-height: clamp(42px, 5.9vw, 64px);
+      font-size: clamp(15px, 2vw, 25px);
+    }
+
+    .layout-cards .bullet {
+      font-size: clamp(15px, 1.95vw, 25px);
+    }
+
+    .layout-workbook .bullet {
+      background: #ffffff;
+      border-left: 7px solid var(--gold);
+      box-shadow: 0 12px 26px rgba(6, 78, 59, 0.10);
+    }
+
+    .layout-path .bullet {
+      grid-template-columns: auto 1fr;
+      width: min(86%, 760px);
+      box-shadow: 0 14px 34px rgba(6, 78, 59, 0.09);
+    }
+
+    .layout-path .bullet:nth-child(2) { margin-left: 8%; }
+    .layout-path .bullet:nth-child(3) { margin-left: 16%; }
 
     .bullet-number {
       display: grid;
@@ -226,6 +552,17 @@
       font-size: clamp(16px, 2.1vw, 25px);
     }
 
+    .layout-path .bullet-icon { display: none; }
+    .layout-statement .bullet-number,
+    .layout-cards .bullet-number {
+      width: clamp(44px, 5.2vw, 64px);
+    }
+
+    .layout-quote .bullet-number {
+      background: var(--gold);
+      color: var(--deep);
+    }
+
     .single {
       width: min(88%, 980px);
       padding: clamp(18px, 3vw, 36px);
@@ -239,13 +576,13 @@
 
     .kimberly {
       display: grid;
-      grid-template-columns: minmax(0, 1fr) minmax(220px, 34%);
-      gap: 4%;
+      grid-template-columns: minmax(0, 1fr) minmax(210px, 31%);
+      gap: 3.2%;
       align-items: center;
     }
 
     .story-card {
-      padding: 9%;
+      padding: 7.5%;
       background: linear-gradient(135deg, var(--deep), var(--emerald));
       color: var(--white);
       border: 1px solid rgba(255,255,255,0.22);
@@ -256,17 +593,23 @@
     .story-card strong {
       display: block;
       color: var(--gold);
-      font-size: clamp(18px, 2.7vw, 34px);
+      font-size: clamp(17px, 2.35vw, 30px);
       line-height: 1.02;
-      margin-bottom: 8%;
+      margin-bottom: 7%;
       text-transform: uppercase;
     }
 
     .story-card span {
       display: block;
-      font-size: clamp(14px, 2vw, 24px);
+      font-size: clamp(13px, 1.75vw, 22px);
       line-height: 1.15;
       font-weight: 760;
+    }
+
+    .layout-quote .story-card {
+      background: rgba(255,255,255,0.10);
+      border-color: rgba(255,255,255,0.22);
+      box-shadow: none;
     }
 
     .sticker-row {
@@ -462,10 +805,58 @@
     @media (max-width: 760px) {
       body { overflow: auto; }
       .stage-wrap { min-height: auto; padding: 8px; }
-      .deck { width: calc(100vw - 16px); max-width: 100%; }
+      .deck {
+        width: calc(100vw - 16px);
+        max-width: 100%;
+        height: min(72vh, 650px);
+        min-height: 560px;
+        aspect-ratio: auto;
+      }
       .slide { padding: 5.4%; }
-      .slide-title { font-size: clamp(23px, 8vw, 38px); }
+      .slide.layout-workbook {
+        background: linear-gradient(135deg, #ffffff, #f7fff9 65%, #fff8dc);
+      }
+      .slide-title,
+      .layout-split .slide-title,
+      .layout-quote .slide-title,
+      .layout-statement .slide-title,
+      .layout-workbook .slide-title,
+      .layout-cards .slide-title,
+      .layout-cover .slide-title {
+        font-size: clamp(25px, 8vw, 40px);
+        line-height: 0.96;
+      }
+      .cover-subtitle {
+        width: 96%;
+        font-size: clamp(16px, 4.7vw, 24px);
+      }
       .hero .slide-title { max-width: 94%; }
+      .layout-split .content,
+      .layout-workbook .content {
+        grid-template-columns: 1fr;
+      }
+      .layout-split .content::before,
+      .layout-workbook .content::before,
+      .visual-mark {
+        display: none;
+      }
+      .layout-statement .bullets,
+      .layout-cards .bullets {
+        grid-template-columns: 1fr;
+      }
+      .layout-statement .bullet,
+      .layout-cards .bullet {
+        min-height: 38px;
+        grid-template-columns: auto auto 1fr;
+        justify-items: stretch;
+        text-align: left;
+      }
+      .layout-path .bullet,
+      .layout-path .bullet:nth-child(2),
+      .layout-path .bullet:nth-child(3) {
+        width: 96%;
+        margin-left: 0;
+      }
       .bullets { width: 96%; gap: 8px; }
       .bullet { min-height: 38px; font-size: clamp(12px, 4vw, 17px); box-shadow: 0 10px 24px rgba(6, 78, 59, 0.10); gap: 8px; }
       .bullet-number { width: 32px; }
@@ -537,15 +928,24 @@
   <script>
     const colors = ["#064e3b", "#0f766e", "#16a34a", "#d4af37", "#047857", "#65a30d"];
     const bulletIcons = ["💸", "🧠", "✨", "💎", "🌿", "🔑", "📌", "🚀"];
+    const layouts = ["split", "quote", "cards", "path", "statement", "workbook"];
+    const sectionLayouts = {
+      "Ejercicio": "workbook",
+      "Ejercicio final": "workbook",
+      "Fórmula": "statement",
+      "Meditación": "quote",
+      "Próximo paso": "path"
+    };
 
     const slidesData = [
       {
-        type: "hero",
+        layout: "cover",
         section: "Módulo 1",
         title: "Abundancia Consciente",
-        badge: "✨ Masterclass visual",
-        bullets: ["1 idea por slide", "energía profesional", "voz real de Kimberly"],
-        notes: "Abre con energía premium: estilo carrusel profesional, cercano y visual."
+        badge: "Clase 1",
+        subtitle: "Observa la historia interna que ha sostenido tu relación con el dinero.",
+        bullets: [],
+        notes: "Da la bienvenida al módulo y presenta el enfoque: observar la historia interna que ha sostenido la relación con el dinero."
       },
       {
         section: "La promesa",
@@ -835,12 +1235,14 @@
     function renderSlides() {
       deck.innerHTML = "";
       slidesData.forEach((item, index) => {
+        const pickedLayout = item.layout || sectionLayouts[item.section] || layouts[index % layouts.length];
+        const layout = item.story && pickedLayout === "split" ? "cards" : pickedLayout;
         const article = document.createElement("article");
-        article.className = `slide ${item.type === "hero" ? "hero" : ""} ${item.title.length > 42 ? "title-small" : ""}`;
+        article.className = `slide layout-${layout} ${item.story ? "has-story" : ""} ${item.title.length > 42 ? "title-small" : ""}`;
         article.dataset.title = item.title;
         article.dataset.notes = item.notes || "";
 
-        const bullets = item.bullets.map((text, i) => `
+        const bullets = (item.bullets || []).map((text, i) => `
           <li class="bullet" style="--color:${colors[(i + index) % colors.length]}">
             <span class="bullet-number">${i + 1}</span>
             <span class="bullet-icon">${bulletIcons[(i + index) % bulletIcons.length]}</span>
@@ -848,17 +1250,19 @@
           </li>
         `).join("");
 
-        const stickers = ["#dinero", "#mente", "#patrones", "#abundancia"].map((tag) => `<span class="sticker">${tag}</span>`).join("");
         const story = item.story ? `<aside class="story-card"><strong>Kimberly cuenta</strong><span>${item.story}</span></aside>` : "";
+        const mainContent = item.subtitle
+          ? `<p class="cover-subtitle">${item.subtitle}</p><div class="gold-rule"></div>`
+          : `<ol class="bullets">${bullets}</ol>`;
 
         article.innerHTML = `
-          <div class="content ${item.story ? "kimberly" : ""}">
+          <span class="visual-mark">${String(index + 1).padStart(2, "0")}</span>
+          <div class="content ${item.story ? "kimberly" : ""}" data-section="${item.section}">
             <div>
               <div class="meta"><span>${item.section}</span><span>${String(index + 1).padStart(2, "0")}/${String(slidesData.length).padStart(2, "0")}</span></div>
               <div class="badge">${item.badge}</div>
               <h1 class="slide-title">${item.title}</h1>
-              ${item.type === "hero" ? `<div class="sticker-row">${stickers}</div>` : ""}
-              <ol class="bullets">${bullets}</ol>
+              ${mainContent}
             </div>
             ${story}
           </div>
