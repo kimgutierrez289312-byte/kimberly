@@ -61,7 +61,7 @@
     }
 
     .deck {
-      width: min(94vw, calc((100vh - 168px) * 16 / 9));
+      width: min(94vw, calc((100vh - 152px) * 16 / 9));
       aspect-ratio: 16 / 9;
       position: relative;
       overflow: hidden;
@@ -716,12 +716,12 @@
     }
 
     .controls {
-      min-height: 78px;
+      min-height: 64px;
       display: grid;
-      grid-template-columns: minmax(145px, 0.8fr) auto minmax(260px, 1.1fr) minmax(145px, 0.8fr);
-      gap: 12px;
+      grid-template-columns: minmax(130px, 0.75fr) auto minmax(260px, 1.35fr);
+      gap: 10px;
       align-items: center;
-      padding: 12px clamp(12px, 2vw, 28px);
+      padding: 9px clamp(12px, 2vw, 28px);
       background: rgba(255,255,255,0.93);
       border-top: 1px solid rgba(6, 78, 59, 0.14);
       backdrop-filter: blur(14px);
@@ -734,8 +734,6 @@
       font-size: 13px;
       font-weight: 760;
     }
-
-    .status.right { justify-items: end; text-align: right; }
 
     .progress {
       width: min(280px, 31vw);
@@ -959,7 +957,7 @@
       }
       .controls { grid-template-columns: 1fr; height: auto; gap: 10px; }
       .btn-row { flex-wrap: wrap; }
-      .status, .status.right { justify-items: center; text-align: center; }
+      .status { justify-items: center; text-align: center; }
       .notes { width: calc(100vw - 28px); left: 14px; right: 14px; }
     }
 
@@ -983,10 +981,6 @@
   <main class="app">
     <div class="stage-wrap">
       <section class="deck" id="deck" aria-live="polite"></section>
-      <aside class="notes" id="notesPanel" aria-live="polite">
-        <h3>Notas de Kimberly</h3>
-        <p id="notesText"></p>
-      </aside>
     </div>
 
     <nav class="controls" aria-label="Controles de presentación">
@@ -998,16 +992,8 @@
         <button class="nav-btn" id="prevBtn" title="Anterior" aria-label="Anterior">←</button>
         <button class="nav-btn primary" id="nextBtn" title="Siguiente" aria-label="Siguiente">Siguiente</button>
         <button class="tool-btn" id="overviewBtn" title="Vista de índice" aria-label="Vista de índice">☷</button>
-        <button class="tool-btn" id="notesBtn" title="Notas" aria-label="Notas">✎</button>
-        <button class="tool-btn" id="timerBtn" title="Temporizador" aria-label="Temporizador">◷</button>
-        <button class="tool-btn" id="fullBtn" title="Pantalla completa" aria-label="Pantalla completa">⛶</button>
-        <button class="tool-btn" id="printBtn" title="Imprimir o guardar como PDF" aria-label="Imprimir o guardar como PDF">⇩</button>
       </div>
       <div class="nav-ctas" id="navCtas" aria-label="Acciones de esta diapositiva" hidden></div>
-      <div class="status right">
-        <span id="timerText">00:00</span>
-        <span>Teclado: ← →, Inicio, Fin, O, N, F</span>
-      </div>
     </nav>
   </main>
 
@@ -1353,21 +1339,12 @@
     const prevBtn = document.getElementById("prevBtn");
     const nextBtn = document.getElementById("nextBtn");
     const overviewBtn = document.getElementById("overviewBtn");
-    const notesBtn = document.getElementById("notesBtn");
-    const timerBtn = document.getElementById("timerBtn");
-    const fullBtn = document.getElementById("fullBtn");
-    const printBtn = document.getElementById("printBtn");
     const drawer = document.getElementById("drawer");
     const closeOverview = document.getElementById("closeOverview");
     const thumbs = document.getElementById("thumbs");
-    const notesPanel = document.getElementById("notesPanel");
-    const notesText = document.getElementById("notesText");
-    const timerText = document.getElementById("timerText");
     const navCtas = document.getElementById("navCtas");
 
     let current = 0;
-    let timer = null;
-    let seconds = 0;
 
     function renderCtas(item) {
       const directCtas = item.cta || [];
@@ -1375,7 +1352,7 @@
         ...socialLinks[key],
         kind: "social"
       })).filter((cta) => cta.href);
-      return [...directCtas, ...socialCtas].map((cta) => {
+      return [...directCtas, ...socialCtas].slice(0, 2).map((cta) => {
         const href = cta.slide ? `#slide-${cta.slide}` : cta.href;
         const target = href?.startsWith("http") ? ' target="_blank" rel="noopener noreferrer"' : "";
         const goTo = cta.slide ? ` data-go-to="${cta.slide - 1}"` : "";
@@ -1446,7 +1423,6 @@
       progressBar.style.width = `${((current + 1) / slides.length) * 100}%`;
       prevBtn.disabled = current === 0;
       nextBtn.textContent = current === slides.length - 1 ? "Final" : "Siguiente";
-      notesText.textContent = slides[current].dataset.notes;
       const navActions = renderCtas(slidesData[current]);
       navCtas.innerHTML = navActions;
       navCtas.hidden = !navActions;
@@ -1462,44 +1438,10 @@
       overviewBtn.classList.toggle("active", open);
     }
 
-    function toggleNotes() {
-      const open = !notesPanel.classList.contains("open");
-      notesPanel.classList.toggle("open", open);
-      notesBtn.classList.toggle("active", open);
-    }
-
-    function toggleTimer() {
-      if (timer) {
-        clearInterval(timer);
-        timer = null;
-        timerBtn.classList.remove("active");
-        return;
-      }
-      timerBtn.classList.add("active");
-      timer = setInterval(() => {
-        seconds += 1;
-        const mm = String(Math.floor(seconds / 60)).padStart(2, "0");
-        const ss = String(seconds % 60).padStart(2, "0");
-        timerText.textContent = `${mm}:${ss}`;
-      }, 1000);
-    }
-
-    function toggleFullscreen() {
-      if (!document.fullscreenElement) {
-        document.documentElement.requestFullscreen?.();
-      } else {
-        document.exitFullscreen?.();
-      }
-    }
-
     prevBtn.addEventListener("click", prevSlide);
     nextBtn.addEventListener("click", nextSlide);
     overviewBtn.addEventListener("click", () => toggleOverview());
     closeOverview.addEventListener("click", () => toggleOverview(false));
-    notesBtn.addEventListener("click", toggleNotes);
-    timerBtn.addEventListener("click", toggleTimer);
-    fullBtn.addEventListener("click", toggleFullscreen);
-    printBtn.addEventListener("click", () => window.print());
     document.addEventListener("click", (event) => {
       const link = event.target.closest("[data-go-to]");
       if (!link) return;
@@ -1513,8 +1455,6 @@
       if (event.key === "Home") showSlide(0);
       if (event.key === "End") showSlide(slidesData.length - 1);
       if (event.key.toLowerCase() === "o") toggleOverview();
-      if (event.key.toLowerCase() === "n") toggleNotes();
-      if (event.key.toLowerCase() === "f") toggleFullscreen();
       if (event.key === "Escape") toggleOverview(false);
     });
 
