@@ -634,6 +634,62 @@
     .sticker:nth-child(2n) { background: var(--champagne); }
     .sticker:nth-child(3n) { background: var(--sage); }
 
+    .cta-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      align-items: center;
+      margin-top: clamp(4px, 1vw, 10px);
+    }
+
+    .cta-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+      min-height: 42px;
+      padding: 10px 14px;
+      color: var(--deep);
+      background: rgba(255,255,255,0.92);
+      border: 1px solid rgba(6, 78, 59, 0.22);
+      box-shadow: 0 14px 30px rgba(6, 78, 59, 0.12);
+      border-radius: 999px;
+      font-size: clamp(12px, 1.45vw, 17px);
+      line-height: 1;
+      font-weight: 1000;
+      text-decoration: none;
+      white-space: nowrap;
+    }
+
+    .cta-link.primary {
+      color: var(--white);
+      background: linear-gradient(135deg, var(--deep), var(--emerald));
+      border-color: rgba(255,255,255,0.18);
+    }
+
+    .cta-link.gold {
+      color: var(--deep);
+      background: linear-gradient(135deg, #f8d75c, var(--gold));
+      border-color: rgba(182, 141, 64, 0.38);
+    }
+
+    .cta-link.social {
+      background: var(--mint);
+    }
+
+    .layout-quote .cta-link,
+    .layout-workbook .cta-link {
+      background: rgba(255,255,255,0.12);
+      color: var(--white);
+      border-color: rgba(255,255,255,0.24);
+      box-shadow: none;
+    }
+
+    .layout-quote .cta-link.gold,
+    .layout-workbook .cta-link.gold {
+      background: linear-gradient(135deg, #f8d75c, var(--gold));
+      color: var(--deep);
+    }
+
     .controls {
       min-height: 78px;
       display: grid;
@@ -864,6 +920,13 @@
       .kimberly { grid-template-columns: 1fr; }
       .story-card { display: none; }
       .sticker-row { display: none; }
+      .cta-row { gap: 7px; }
+      .cta-link {
+        min-height: 34px;
+        padding: 8px 10px;
+        font-size: clamp(11px, 3.4vw, 14px);
+        white-space: normal;
+      }
       .controls { grid-template-columns: 1fr; height: auto; gap: 10px; }
       .btn-row { flex-wrap: wrap; }
       .status, .status.right { justify-items: center; text-align: center; }
@@ -929,6 +992,11 @@
     const colors = ["#064e3b", "#0f766e", "#16a34a", "#d4af37", "#047857", "#65a30d"];
     const bulletIcons = ["💸", "🧠", "✨", "💎", "🌿", "🔑", "📌", "🚀"];
     const layouts = ["split", "quote", "cards", "path", "statement", "workbook"];
+    const socialLinks = {
+      instagram: { label: "Instagram", icon: "📷", href: "https://www.instagram.com/kimberlyali/" },
+      tiktok: { label: "TikTok", icon: "🎥", href: "https://www.tiktok.com/@kimberlyali" },
+      website: { label: "Website", icon: "🌐", href: "https://kimberlyali.es/" }
+    };
     const sectionLayouts = {
       "Ejercicio": "workbook",
       "Ejercicio final": "workbook",
@@ -940,17 +1008,25 @@
     const slidesData = [
       {
         layout: "cover",
-        section: "Módulo 1",
-        title: "Abundancia Consciente",
-        badge: "Clase 1",
-        subtitle: "Observa la historia interna que ha sostenido tu relación con el dinero.",
+        section: "Sitio oficial",
+        title: "Kimberly Ali",
+        badge: "✨ Bienvenida",
+        subtitle: "Un espacio para sanar tu historia con el dinero, sostener más abundancia y crecer desde conciencia.",
+        cta: [
+          { label: "Entrar a Abundancia Consciente", icon: "💎", kind: "primary", slide: 2 },
+          { label: "Conocer a Kimberly", icon: "🌿", kind: "gold", slide: 3 }
+        ],
+        socials: ["instagram", "tiktok", "website"],
         bullets: [],
-        notes: "Da la bienvenida al módulo y presenta el enfoque: observar la historia interna que ha sostenido la relación con el dinero."
+        notes: "Abrir como hero del website de Kimberly: bienvenida, transformación y una invitación clara a entrar a la experiencia."
       },
       {
         section: "La promesa",
         title: "No se trata solo de atraer dinero.",
         badge: "💎 La esencia",
+        cta: [
+          { label: "Quiero sostener más", icon: "✨", kind: "primary", href: "https://abundancia.kimberlyali.es/" }
+        ],
         bullets: ["1️⃣ Convertirte en la mujer capaz de sostenerlo.", "2️⃣ Reconocer qué te frena por dentro.", "3️⃣ Cambiar el patrón, no solo la frase bonita."],
         notes: "Basado en la esencia de marca encontrada en Drive: no solo atraer abundancia, sino sostenerla."
       },
@@ -959,6 +1035,7 @@
         title: "Kimberly no enseña teoría.",
         badge: "🔥 Historia real",
         story: "Ella vivió miedo, escasez, inseguridad, creencias limitantes y autosabotaje antes de crear su metodología.",
+        socials: ["instagram"],
         bullets: ["1️⃣ Primero lo vivió.", "2️⃣ Después lo observó.", "3️⃣ Luego lo convirtió en método."],
         notes: "Referencia directa a la historia de Kimberly: enseña un proceso que primero transformó su propia vida."
       },
@@ -974,6 +1051,9 @@
         section: "Kimberly",
         title: "Una parte quería avanzar.",
         badge: "🧠 Conflicto interno",
+        cta: [
+          { label: "Sigue la historia de Kimberly", icon: "📷", kind: "social", href: "https://www.instagram.com/kimberlyali/" }
+        ],
         bullets: ["1️⃣ Hacía afirmaciones positivas.", "2️⃣ Pero al recibir o decidir, algo se activaba.", "3️⃣ Su sistema entraba en alerta."],
         notes: "Esta es una de las frases más humanas de su historia: una parte quería avanzar y otra entraba en alerta."
       },
@@ -1016,6 +1096,9 @@
         section: "Ejercicio",
         title: "¿Qué escuchaste sobre dinero?",
         badge: "✍️ Responde sin filtro",
+        cta: [
+          { label: "Guarda tu respuesta", icon: "📝", kind: "gold", slide: 12 }
+        ],
         bullets: ["1️⃣ ¿El dinero era discusión en casa?", "2️⃣ ¿Había que trabajar durísimo?", "3️⃣ ¿Qué historia necesitas cuestionar?"],
         notes: "Ejercicio breve, con tono de journaling."
       },
@@ -1051,6 +1134,9 @@
         section: "Ejercicio",
         title: "Completa tu verdad automática.",
         badge: "📝 Mini workbook",
+        cta: [
+          { label: "Comparte tu insight", icon: "📷", kind: "social", href: "https://www.instagram.com/kimberlyali/" }
+        ],
         bullets: ["1️⃣ Yo creo que el dinero...", "2️⃣ Cuando quiero crecer, siento...", "3️⃣ Cuando cobro, mi mente dice..."],
         notes: "Convertido a formato más social y accionable."
       },
@@ -1079,6 +1165,7 @@
         section: "Ejercicio",
         title: "¿Qué te dices cuando tienes miedo?",
         badge: "🔎 Observa",
+        socials: ["tiktok"],
         bullets: ["1️⃣ Escribe la frase exacta.", "2️⃣ Mira la imagen que aparece.", "3️⃣ Nombra la emoción que se activa."],
         notes: "Ejercicio de autoobservación."
       },
@@ -1114,6 +1201,9 @@
         section: "Ejercicio",
         title: "Completa tus asociaciones.",
         badge: "🎯 Tu mapa",
+        cta: [
+          { label: "Quiero hacerlo con Kimberly", icon: "💎", kind: "primary", href: "https://kimberlyali.es/" }
+        ],
         bullets: ["1️⃣ Para mí, recibir significa...", "2️⃣ Para mí, vender significa...", "3️⃣ Para mí, crecer significa..."],
         notes: "Ejercicio de asociaciones actuales."
       },
@@ -1156,6 +1246,9 @@
         section: "Fórmula",
         title: "Aprende. Repite. Imagina. Asocia.",
         badge: "🔥 Fórmula simple",
+        cta: [
+          { label: "Guarda esta fórmula", icon: "🔖", kind: "gold", href: "https://abundancia.kimberlyali.es/" }
+        ],
         bullets: ["1️⃣ La mente aprende una idea.", "2️⃣ Luego la repite.", "3️⃣ Al final la asocia con emoción."],
         notes: "La fórmula del módulo en versión social."
       },
@@ -1164,6 +1257,7 @@
         title: "Kimberly lo vio como sistema.",
         badge: "✨ Su realización",
         story: "No era una sola cosa. Era cómo se hablaba, lo que imaginaba y lo que asociaba con dinero.",
+        socials: ["instagram", "website"],
         bullets: ["1️⃣ No era solo miedo.", "2️⃣ No era solo conducta.", "3️⃣ Era programación interna completa."],
         notes: "Integra la historia sugerida del módulo y el documento de historia."
       },
@@ -1185,6 +1279,9 @@
         section: "Cierre",
         title: "Tú no eres el problema.",
         badge: "❤️ Reencuadre",
+        cta: [
+          { label: "Volver al inicio", icon: "↩", kind: "gold", slide: 1 }
+        ],
         bullets: ["1️⃣ Hay una historia.", "2️⃣ Hay una programación.", "3️⃣ Hay un patrón que puedes observar."],
         notes: "Cierre emocional: la alumna deja de verse como el problema."
       },
@@ -1199,6 +1296,9 @@
         section: "Meditación",
         title: "Observo lo que aprendí.",
         badge: "🧘‍♀️ Intención",
+        cta: [
+          { label: "Respira y continúa", icon: "🌿", kind: "primary", slide: 38 }
+        ],
         bullets: ["1️⃣ Abro espacio interno.", "2️⃣ Suelto historias viejas.", "3️⃣ Me abro a nuevas posibilidades."],
         notes: "Introducir la meditación del módulo."
       },
@@ -1206,6 +1306,11 @@
         section: "Próximo paso",
         title: "Ahora empieza la reprogramación.",
         badge: "🚀 Vamos al siguiente nivel",
+        cta: [
+          { label: "Quiero el siguiente paso", icon: "💎", kind: "primary", href: "https://kimberlyali.es/" },
+          { label: "Seguir a Kimberly", icon: "📷", kind: "social", href: "https://www.instagram.com/kimberlyali/" }
+        ],
+        socials: ["tiktok", "website"],
         bullets: ["1️⃣ Primero observas.", "2️⃣ Luego cuestionas.", "3️⃣ Después instalas una nueva forma de sostener abundancia."],
         notes: "Cierre con energía y continuidad."
       }
@@ -1232,6 +1337,20 @@
     let timer = null;
     let seconds = 0;
 
+    function renderCtas(item) {
+      const directCtas = item.cta || [];
+      const socialCtas = (item.socials || []).map((key) => ({
+        ...socialLinks[key],
+        kind: "social"
+      })).filter((cta) => cta.href);
+      return [...directCtas, ...socialCtas].map((cta) => {
+        const href = cta.slide ? `#slide-${cta.slide}` : cta.href;
+        const target = href?.startsWith("http") ? ' target="_blank" rel="noopener noreferrer"' : "";
+        const goTo = cta.slide ? ` data-go-to="${cta.slide - 1}"` : "";
+        return `<a class="cta-link ${cta.kind || ""}" href="${href}"${target}${goTo}><span>${cta.icon || "✨"}</span><span>${cta.label}</span></a>`;
+      }).join("");
+    }
+
     function renderSlides() {
       deck.innerHTML = "";
       slidesData.forEach((item, index) => {
@@ -1239,6 +1358,7 @@
         const layout = item.story && pickedLayout === "split" ? "cards" : pickedLayout;
         const article = document.createElement("article");
         article.className = `slide layout-${layout} ${item.story ? "has-story" : ""} ${item.title.length > 42 ? "title-small" : ""}`;
+        article.id = `slide-${index + 1}`;
         article.dataset.title = item.title;
         article.dataset.notes = item.notes || "";
 
@@ -1251,9 +1371,11 @@
         `).join("");
 
         const story = item.story ? `<aside class="story-card"><strong>Kimberly cuenta</strong><span>${item.story}</span></aside>` : "";
+        const ctas = renderCtas(item);
+        const ctaRow = ctas ? `<div class="cta-row">${ctas}</div>` : "";
         const mainContent = item.subtitle
-          ? `<p class="cover-subtitle">${item.subtitle}</p><div class="gold-rule"></div>`
-          : `<ol class="bullets">${bullets}</ol>`;
+          ? `<p class="cover-subtitle">${item.subtitle}</p><div class="gold-rule"></div>${ctaRow}`
+          : `<ol class="bullets">${bullets}</ol>${ctaRow}`;
 
         article.innerHTML = `
           <span class="visual-mark">${String(index + 1).padStart(2, "0")}</span>
@@ -1345,6 +1467,12 @@
     timerBtn.addEventListener("click", toggleTimer);
     fullBtn.addEventListener("click", toggleFullscreen);
     printBtn.addEventListener("click", () => window.print());
+    deck.addEventListener("click", (event) => {
+      const link = event.target.closest("[data-go-to]");
+      if (!link) return;
+      event.preventDefault();
+      showSlide(Number(link.dataset.goTo));
+    });
 
     window.addEventListener("keydown", (event) => {
       if (event.key === "ArrowRight" || event.key === "PageDown" || event.key === " ") nextSlide();
