@@ -61,7 +61,7 @@
     }
 
     .deck {
-      width: min(94vw, calc((100vh - 118px) * 16 / 9));
+      width: min(94vw, calc((100vh - 168px) * 16 / 9));
       aspect-ratio: 16 / 9;
       position: relative;
       overflow: hidden;
@@ -88,6 +88,10 @@
       grid-template-columns: 1fr;
       align-content: center;
       animation: popIn 180ms ease-out;
+    }
+
+    .slide.has-story {
+      padding: 4.3% 4.6%;
     }
 
     @keyframes popIn {
@@ -406,6 +410,12 @@
       font-size: clamp(34px, 5.35vw, 70px);
     }
 
+    .has-story.layout-cards .slide-title {
+      max-width: 76%;
+      font-size: clamp(30px, 4.75vw, 62px);
+      line-height: 0.92;
+    }
+
     .layout-cover .slide-title {
       max-width: 900px;
       font-size: clamp(48px, 8.4vw, 112px);
@@ -513,6 +523,17 @@
       font-size: clamp(15px, 1.95vw, 25px);
     }
 
+    .has-story.layout-cards .bullets {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: clamp(8px, 1.1vw, 13px);
+    }
+
+    .has-story.layout-cards .bullet {
+      min-height: clamp(72px, 8.2vw, 108px);
+      padding: clamp(10px, 1.6vw, 18px);
+      font-size: clamp(14px, 1.75vw, 22px);
+    }
+
     .layout-workbook .bullet {
       background: #ffffff;
       border-left: 7px solid var(--gold);
@@ -582,7 +603,7 @@
     }
 
     .story-card {
-      padding: 7.5%;
+      padding: 6.4%;
       background: linear-gradient(135deg, var(--deep), var(--emerald));
       color: var(--white);
       border: 1px solid rgba(255,255,255,0.22);
@@ -593,15 +614,15 @@
     .story-card strong {
       display: block;
       color: var(--gold);
-      font-size: clamp(17px, 2.35vw, 30px);
+      font-size: clamp(16px, 2.05vw, 27px);
       line-height: 1.02;
-      margin-bottom: 7%;
+      margin-bottom: 6%;
       text-transform: uppercase;
     }
 
     .story-card span {
       display: block;
-      font-size: clamp(13px, 1.75vw, 22px);
+      font-size: clamp(12px, 1.55vw, 20px);
       line-height: 1.15;
       font-weight: 760;
     }
@@ -642,18 +663,36 @@
       margin-top: clamp(4px, 1vw, 10px);
     }
 
+    .nav-ctas {
+      min-width: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      overflow-x: auto;
+      scrollbar-width: none;
+      padding: 2px 0;
+    }
+
+    .nav-ctas::-webkit-scrollbar { display: none; }
+
+    .nav-ctas[hidden] {
+      display: none;
+    }
+
     .cta-link {
       display: inline-flex;
       align-items: center;
       gap: 9px;
-      min-height: 42px;
-      padding: 10px 14px;
+      flex: 0 0 auto;
+      min-height: 38px;
+      padding: 9px 13px;
       color: var(--deep);
       background: rgba(255,255,255,0.92);
       border: 1px solid rgba(6, 78, 59, 0.22);
-      box-shadow: 0 14px 30px rgba(6, 78, 59, 0.12);
+      box-shadow: 0 9px 22px rgba(6, 78, 59, 0.10);
       border-radius: 999px;
-      font-size: clamp(12px, 1.45vw, 17px);
+      font-size: clamp(12px, 1.1vw, 15px);
       line-height: 1;
       font-weight: 1000;
       text-decoration: none;
@@ -676,25 +715,11 @@
       background: var(--mint);
     }
 
-    .layout-quote .cta-link,
-    .layout-workbook .cta-link {
-      background: rgba(255,255,255,0.12);
-      color: var(--white);
-      border-color: rgba(255,255,255,0.24);
-      box-shadow: none;
-    }
-
-    .layout-quote .cta-link.gold,
-    .layout-workbook .cta-link.gold {
-      background: linear-gradient(135deg, #f8d75c, var(--gold));
-      color: var(--deep);
-    }
-
     .controls {
       min-height: 78px;
       display: grid;
-      grid-template-columns: minmax(160px, 1fr) auto minmax(160px, 1fr);
-      gap: 16px;
+      grid-template-columns: minmax(145px, 0.8fr) auto minmax(260px, 1.1fr) minmax(145px, 0.8fr);
+      gap: 12px;
       align-items: center;
       padding: 12px clamp(12px, 2vw, 28px);
       background: rgba(255,255,255,0.93);
@@ -920,12 +945,17 @@
       .kimberly { grid-template-columns: 1fr; }
       .story-card { display: none; }
       .sticker-row { display: none; }
-      .cta-row { gap: 7px; }
+      .nav-ctas {
+        order: 4;
+        justify-content: flex-start;
+        width: 100%;
+        padding-bottom: 4px;
+      }
       .cta-link {
         min-height: 34px;
         padding: 8px 10px;
         font-size: clamp(11px, 3.4vw, 14px);
-        white-space: normal;
+        white-space: nowrap;
       }
       .controls { grid-template-columns: 1fr; height: auto; gap: 10px; }
       .btn-row { flex-wrap: wrap; }
@@ -973,6 +1003,7 @@
         <button class="tool-btn" id="fullBtn" title="Pantalla completa" aria-label="Pantalla completa">⛶</button>
         <button class="tool-btn" id="printBtn" title="Imprimir o guardar como PDF" aria-label="Imprimir o guardar como PDF">⇩</button>
       </div>
+      <div class="nav-ctas" id="navCtas" aria-label="Acciones de esta diapositiva" hidden></div>
       <div class="status right">
         <span id="timerText">00:00</span>
         <span>Teclado: ← →, Inicio, Fin, O, N, F</span>
@@ -1010,7 +1041,7 @@
         layout: "cover",
         section: "Sitio oficial",
         title: "Kimberly Ali",
-        badge: "✨ Bienvenida",
+        badge: "✨ Inicio",
         subtitle: "Un espacio para sanar tu historia con el dinero, sostener más abundancia y crecer desde conciencia.",
         cta: [
           { label: "Entrar a Abundancia Consciente", icon: "💎", kind: "primary", slide: 2 },
@@ -1018,7 +1049,7 @@
         ],
         socials: ["instagram", "tiktok", "website"],
         bullets: [],
-        notes: "Abrir como hero del website de Kimberly: bienvenida, transformación y una invitación clara a entrar a la experiencia."
+        notes: "Abrir como hero del website de Kimberly: inicio, transformación y una invitación clara a entrar a la experiencia."
       },
       {
         section: "La promesa",
@@ -1027,7 +1058,7 @@
         cta: [
           { label: "Quiero sostener más", icon: "✨", kind: "primary", href: "https://abundancia.kimberlyali.es/" }
         ],
-        bullets: ["1️⃣ Convertirte en la mujer capaz de sostenerlo.", "2️⃣ Reconocer qué te frena por dentro.", "3️⃣ Cambiar el patrón, no solo la frase bonita."],
+        bullets: ["1️⃣ Convertirte en la persona capaz de sostenerlo.", "2️⃣ Reconocer qué te frena por dentro.", "3️⃣ Cambiar el patrón, no solo la frase bonita."],
         notes: "Basado en la esencia de marca encontrada en Drive: no solo atraer abundancia, sino sostenerla."
       },
       {
@@ -1187,7 +1218,7 @@
         section: "Clase 4",
         title: "Cobrar = culpa.",
         badge: "💰 Ejemplo",
-        bullets: ["1️⃣ Dudas del precio.", "2️⃣ Te justificas demasiado.", "3️⃣ Bajas tu valor para sentirte segura."],
+        bullets: ["1️⃣ Dudas del precio.", "2️⃣ Te justificas demasiado.", "3️⃣ Bajas tu valor para sentir seguridad."],
         notes: "Conecta con ideal client: culpa al cobrar o vender."
       },
       {
@@ -1283,7 +1314,7 @@
           { label: "Volver al inicio", icon: "↩", kind: "gold", slide: 1 }
         ],
         bullets: ["1️⃣ Hay una historia.", "2️⃣ Hay una programación.", "3️⃣ Hay un patrón que puedes observar."],
-        notes: "Cierre emocional: la alumna deja de verse como el problema."
+        notes: "Cierre emocional: la persona deja de verse como el problema."
       },
       {
         section: "Cierre",
@@ -1332,6 +1363,7 @@
     const notesPanel = document.getElementById("notesPanel");
     const notesText = document.getElementById("notesText");
     const timerText = document.getElementById("timerText");
+    const navCtas = document.getElementById("navCtas");
 
     let current = 0;
     let timer = null;
@@ -1371,11 +1403,9 @@
         `).join("");
 
         const story = item.story ? `<aside class="story-card"><strong>Kimberly cuenta</strong><span>${item.story}</span></aside>` : "";
-        const ctas = renderCtas(item);
-        const ctaRow = ctas ? `<div class="cta-row">${ctas}</div>` : "";
         const mainContent = item.subtitle
-          ? `<p class="cover-subtitle">${item.subtitle}</p><div class="gold-rule"></div>${ctaRow}`
-          : `<ol class="bullets">${bullets}</ol>${ctaRow}`;
+          ? `<p class="cover-subtitle">${item.subtitle}</p><div class="gold-rule"></div>`
+          : `<ol class="bullets">${bullets}</ol>`;
 
         article.innerHTML = `
           <span class="visual-mark">${String(index + 1).padStart(2, "0")}</span>
@@ -1417,6 +1447,9 @@
       prevBtn.disabled = current === 0;
       nextBtn.textContent = current === slides.length - 1 ? "Final" : "Siguiente";
       notesText.textContent = slides[current].dataset.notes;
+      const navActions = renderCtas(slidesData[current]);
+      navCtas.innerHTML = navActions;
+      navCtas.hidden = !navActions;
       Array.from(thumbs.children).forEach((thumb, i) => thumb.classList.toggle("active", i === current));
     }
 
@@ -1467,7 +1500,7 @@
     timerBtn.addEventListener("click", toggleTimer);
     fullBtn.addEventListener("click", toggleFullscreen);
     printBtn.addEventListener("click", () => window.print());
-    deck.addEventListener("click", (event) => {
+    document.addEventListener("click", (event) => {
       const link = event.target.closest("[data-go-to]");
       if (!link) return;
       event.preventDefault();
