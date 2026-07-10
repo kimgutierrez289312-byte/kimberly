@@ -45,11 +45,42 @@
     .app {
       min-height: 100vh;
       display: grid;
-      grid-template-rows: 1fr auto;
+      grid-template-rows: auto 1fr auto;
+    }
+
+    .top-cta-bar {
+      min-height: 42px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 16px;
+      padding: 8px clamp(12px, 2vw, 28px);
+      background: #b91c1c;
+      color: var(--white);
+      font-size: clamp(12px, 1.2vw, 15px);
+      line-height: 1.2;
+      font-weight: 850;
+      text-align: center;
+    }
+
+    .top-cta-bar span {
+      color: #fff7ed;
+    }
+
+    .top-cta-bar a {
+      color: var(--white);
+      text-decoration: none;
+      font-weight: 1000;
+      border-bottom: 1px solid rgba(255,255,255,0.72);
+    }
+
+    .top-cta-bar a:hover {
+      color: #fde68a;
+      border-bottom-color: #fde68a;
     }
 
     .stage-wrap {
-      min-height: calc(100vh - 78px);
+      min-height: calc(100vh - 106px);
       display: grid;
       place-items: center;
       padding: clamp(12px, 2.2vw, 30px);
@@ -61,7 +92,7 @@
     }
 
     .deck {
-      width: min(94vw, calc((100vh - 152px) * 16 / 9));
+      width: min(94vw, calc((100vh - 188px) * 16 / 9));
       aspect-ratio: 16 / 9;
       position: relative;
       overflow: hidden;
@@ -323,6 +354,64 @@
     .layout-cover .content {
       width: min(86%, 980px);
       gap: clamp(14px, 2.2vw, 30px);
+    }
+
+    .content.with-image {
+      grid-template-columns: minmax(0, 1fr) minmax(240px, 34%);
+      align-items: center;
+      gap: 4%;
+    }
+
+    .layout-cover .content.with-image {
+      width: min(90%, 1060px);
+      grid-template-columns: minmax(0, 0.95fr) minmax(260px, 0.52fr);
+    }
+
+    .slide-photo {
+      position: relative;
+      z-index: 1;
+      margin: 0;
+      align-self: stretch;
+      min-height: clamp(250px, 31vw, 430px);
+      overflow: hidden;
+      border: 1px solid rgba(6, 78, 59, 0.20);
+      box-shadow: 0 24px 54px rgba(6, 78, 59, 0.18);
+      border-radius: var(--radius);
+      background: var(--mint);
+    }
+
+    .slide-photo::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, transparent 58%, rgba(6,78,59,0.72));
+      pointer-events: none;
+    }
+
+    .slide-photo img {
+      width: 100%;
+      height: 100%;
+      min-height: inherit;
+      display: block;
+      object-fit: cover;
+      object-position: center top;
+    }
+
+    .slide-photo figcaption {
+      position: absolute;
+      left: 16px;
+      right: 16px;
+      bottom: 14px;
+      z-index: 2;
+      color: var(--white);
+      font-size: clamp(12px, 1.3vw, 16px);
+      line-height: 1.15;
+      font-weight: 950;
+      text-transform: uppercase;
+    }
+
+    .product-photo img {
+      object-position: center center;
     }
 
     .meta {
@@ -611,6 +700,17 @@
       border-radius: var(--radius);
     }
 
+    .story-photo {
+      width: 100%;
+      aspect-ratio: 4 / 3;
+      display: block;
+      object-fit: cover;
+      object-position: center top;
+      margin-bottom: 6%;
+      border: 1px solid rgba(255,255,255,0.20);
+      border-radius: 6px;
+    }
+
     .story-card strong {
       display: block;
       color: var(--gold);
@@ -655,70 +755,10 @@
     .sticker:nth-child(2n) { background: var(--champagne); }
     .sticker:nth-child(3n) { background: var(--sage); }
 
-    .cta-row {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-      align-items: center;
-      margin-top: clamp(4px, 1vw, 10px);
-    }
-
-    .nav-ctas {
-      min-width: 0;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 8px;
-      overflow-x: auto;
-      scrollbar-width: none;
-      padding: 2px 0;
-    }
-
-    .nav-ctas::-webkit-scrollbar { display: none; }
-
-    .nav-ctas[hidden] {
-      display: none;
-    }
-
-    .cta-link {
-      display: inline-flex;
-      align-items: center;
-      gap: 9px;
-      flex: 0 0 auto;
-      min-height: 38px;
-      padding: 9px 13px;
-      color: var(--deep);
-      background: rgba(255,255,255,0.92);
-      border: 1px solid rgba(6, 78, 59, 0.22);
-      box-shadow: 0 9px 22px rgba(6, 78, 59, 0.10);
-      border-radius: 999px;
-      font-size: clamp(12px, 1.1vw, 15px);
-      line-height: 1;
-      font-weight: 1000;
-      text-decoration: none;
-      white-space: nowrap;
-    }
-
-    .cta-link.primary {
-      color: var(--white);
-      background: linear-gradient(135deg, var(--deep), var(--emerald));
-      border-color: rgba(255,255,255,0.18);
-    }
-
-    .cta-link.gold {
-      color: var(--deep);
-      background: linear-gradient(135deg, #f8d75c, var(--gold));
-      border-color: rgba(182, 141, 64, 0.38);
-    }
-
-    .cta-link.social {
-      background: var(--mint);
-    }
-
     .controls {
       min-height: 64px;
       display: grid;
-      grid-template-columns: minmax(130px, 0.75fr) auto minmax(260px, 1.35fr);
+      grid-template-columns: minmax(130px, 1fr) auto;
       gap: 10px;
       align-items: center;
       padding: 9px clamp(12px, 2vw, 28px);
@@ -911,8 +951,17 @@
       }
       .hero .slide-title { max-width: 94%; }
       .layout-split .content,
-      .layout-workbook .content {
+      .layout-workbook .content,
+      .content.with-image,
+      .layout-cover .content.with-image {
         grid-template-columns: 1fr;
+      }
+      .slide-photo {
+        min-height: 170px;
+        max-height: 210px;
+      }
+      .slide-photo img {
+        min-height: 170px;
       }
       .layout-split .content::before,
       .layout-workbook .content::before,
@@ -943,18 +992,7 @@
       .kimberly { grid-template-columns: 1fr; }
       .story-card { display: none; }
       .sticker-row { display: none; }
-      .nav-ctas {
-        order: 4;
-        justify-content: flex-start;
-        width: 100%;
-        padding-bottom: 4px;
-      }
-      .cta-link {
-        min-height: 34px;
-        padding: 8px 10px;
-        font-size: clamp(11px, 3.4vw, 14px);
-        white-space: nowrap;
-      }
+      .top-cta-bar { flex-wrap: wrap; gap: 8px 12px; }
       .controls { grid-template-columns: 1fr; height: auto; gap: 10px; }
       .btn-row { flex-wrap: wrap; }
       .status { justify-items: center; text-align: center; }
@@ -979,6 +1017,12 @@
 </head>
 <body>
   <main class="app">
+    <div class="top-cta-bar" aria-label="Links sociales de Kimberly Ali">
+      <span>Conecta con Kimberly Ali:</span>
+      <a href="https://www.instagram.com/kimberlyali/" target="_blank" rel="noopener noreferrer">Instagram</a>
+      <a href="https://www.tiktok.com/@kimberlyali" target="_blank" rel="noopener noreferrer">TikTok</a>
+      <a href="https://kimberlyali.es/" target="_blank" rel="noopener noreferrer">Website</a>
+    </div>
     <div class="stage-wrap">
       <section class="deck" id="deck" aria-live="polite"></section>
     </div>
@@ -993,7 +1037,6 @@
         <button class="nav-btn primary" id="nextBtn" title="Siguiente" aria-label="Siguiente">Siguiente</button>
         <button class="tool-btn" id="overviewBtn" title="Vista de índice" aria-label="Vista de índice">☷</button>
       </div>
-      <div class="nav-ctas" id="navCtas" aria-label="Acciones de esta diapositiva" hidden></div>
     </nav>
   </main>
 
@@ -1009,11 +1052,6 @@
     const colors = ["#064e3b", "#0f766e", "#16a34a", "#d4af37", "#047857", "#65a30d"];
     const bulletIcons = ["💸", "🧠", "✨", "💎", "🌿", "🔑", "📌", "🚀"];
     const layouts = ["split", "quote", "cards", "path", "statement", "workbook"];
-    const socialLinks = {
-      instagram: { label: "Instagram", icon: "📷", href: "https://www.instagram.com/kimberlyali/" },
-      tiktok: { label: "TikTok", icon: "🎥", href: "https://www.tiktok.com/@kimberlyali" },
-      website: { label: "Website", icon: "🌐", href: "https://kimberlyali.es/" }
-    };
     const sectionLayouts = {
       "Ejercicio": "workbook",
       "Ejercicio final": "workbook",
@@ -1029,6 +1067,9 @@
         title: "Kimberly Ali",
         badge: "✨ Inicio",
         subtitle: "Un espacio para sanar tu historia con el dinero, sostener más abundancia y crecer desde conciencia.",
+        image: "assets/01-kimberly-ali-con-cheque-de-65-000.jpg",
+        imageAlt: "Kimberly Ali sosteniendo una prueba de abundancia",
+        imageCaption: "Kimberly Ali · Abundancia real",
         cta: [
           { label: "Entrar a Abundancia Consciente", icon: "💎", kind: "primary", slide: 2 },
           { label: "Conocer a Kimberly", icon: "🌿", kind: "gold", slide: 3 }
@@ -1052,6 +1093,8 @@
         title: "Kimberly no enseña teoría.",
         badge: "🔥 Historia real",
         story: "Ella vivió miedo, escasez, inseguridad, creencias limitantes y autosabotaje antes de crear su metodología.",
+        image: "assets/01-kimberly-ali-con-cheque-de-65-000.jpg",
+        imageAlt: "Kimberly Ali con cheque",
         socials: ["instagram"],
         bullets: ["1️⃣ Primero lo vivió.", "2️⃣ Después lo observó.", "3️⃣ Luego lo convirtió en método."],
         notes: "Referencia directa a la historia de Kimberly: enseña un proceso que primero transformó su propia vida."
@@ -1274,6 +1317,8 @@
         title: "Kimberly lo vio como sistema.",
         badge: "✨ Su realización",
         story: "No era una sola cosa. Era cómo se hablaba, lo que imaginaba y lo que asociaba con dinero.",
+        image: "assets/03-kimberly-ali-con-su-familia.jpg",
+        imageAlt: "Kimberly Ali",
         socials: ["instagram", "website"],
         bullets: ["1️⃣ No era solo miedo.", "2️⃣ No era solo conducta.", "3️⃣ Era programación interna completa."],
         notes: "Integra la historia sugerida del módulo y el documento de historia."
@@ -1323,6 +1368,10 @@
         section: "Próximo paso",
         title: "Ahora empieza la reprogramación.",
         badge: "🚀 Vamos al siguiente nivel",
+        image: "assets/08-el-c-digo-interior-rompe-el-programa-de-es.png",
+        imageAlt: "El Código Interior de Kimberly Ali",
+        imageCaption: "Más herramientas de reprogramación",
+        imageClass: "product-photo",
         cta: [
           { label: "Quiero el siguiente paso", icon: "💎", kind: "primary", href: "https://kimberlyali.es/" },
           { label: "Seguir a Kimberly", icon: "📷", kind: "social", href: "https://www.instagram.com/kimberlyali/" }
@@ -1342,23 +1391,8 @@
     const drawer = document.getElementById("drawer");
     const closeOverview = document.getElementById("closeOverview");
     const thumbs = document.getElementById("thumbs");
-    const navCtas = document.getElementById("navCtas");
 
     let current = 0;
-
-    function renderCtas(item) {
-      const directCtas = item.cta || [];
-      const socialCtas = (item.socials || []).map((key) => ({
-        ...socialLinks[key],
-        kind: "social"
-      })).filter((cta) => cta.href);
-      return [...directCtas, ...socialCtas].slice(0, 2).map((cta) => {
-        const href = cta.slide ? `#slide-${cta.slide}` : cta.href;
-        const target = href?.startsWith("http") ? ' target="_blank" rel="noopener noreferrer"' : "";
-        const goTo = cta.slide ? ` data-go-to="${cta.slide - 1}"` : "";
-        return `<a class="cta-link ${cta.kind || ""}" href="${href}"${target}${goTo}><span>${cta.icon || "✨"}</span><span>${cta.label}</span></a>`;
-      }).join("");
-    }
 
     function renderSlides() {
       deck.innerHTML = "";
@@ -1379,21 +1413,28 @@
           </li>
         `).join("");
 
-        const story = item.story ? `<aside class="story-card"><strong>Kimberly cuenta</strong><span>${item.story}</span></aside>` : "";
+        const storyPhoto = item.story && item.image ? `<img class="story-photo" src="${item.image}" alt="${item.imageAlt || ""}">` : "";
+        const story = item.story ? `<aside class="story-card">${storyPhoto}<strong>Kimberly cuenta</strong><span>${item.story}</span></aside>` : "";
+        const slidePhoto = item.image && !item.story ? `
+          <figure class="slide-photo ${item.imageClass || ""}">
+            <img src="${item.image}" alt="${item.imageAlt || ""}">
+            ${item.imageCaption ? `<figcaption>${item.imageCaption}</figcaption>` : ""}
+          </figure>
+        ` : "";
         const mainContent = item.subtitle
           ? `<p class="cover-subtitle">${item.subtitle}</p><div class="gold-rule"></div>`
           : `<ol class="bullets">${bullets}</ol>`;
 
         article.innerHTML = `
           <span class="visual-mark">${String(index + 1).padStart(2, "0")}</span>
-          <div class="content ${item.story ? "kimberly" : ""}" data-section="${item.section}">
+          <div class="content ${item.story ? "kimberly" : ""} ${item.image ? "with-image" : ""}" data-section="${item.section}">
             <div>
               <div class="meta"><span>${item.section}</span><span>${String(index + 1).padStart(2, "0")}/${String(slidesData.length).padStart(2, "0")}</span></div>
               <div class="badge">${item.badge}</div>
               <h1 class="slide-title">${item.title}</h1>
               ${mainContent}
             </div>
-            ${story}
+            ${story || slidePhoto}
           </div>
         `;
         deck.appendChild(article);
@@ -1423,9 +1464,6 @@
       progressBar.style.width = `${((current + 1) / slides.length) * 100}%`;
       prevBtn.disabled = current === 0;
       nextBtn.textContent = current === slides.length - 1 ? "Final" : "Siguiente";
-      const navActions = renderCtas(slidesData[current]);
-      navCtas.innerHTML = navActions;
-      navCtas.hidden = !navActions;
       Array.from(thumbs.children).forEach((thumb, i) => thumb.classList.toggle("active", i === current));
     }
 
