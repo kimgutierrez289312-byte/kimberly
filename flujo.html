@@ -1,0 +1,913 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+<title>Kimberly Ali · Flujo de Dinero | Reprogramación Cuántica</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700;900&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Raleway:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --gold: #C9A96E;
+    --gold-light: #E8D5B0;
+    --gold-dark: #8B6A3E;
+    --magenta: #D4006A;
+    --violet: #5B0EA6;
+    --deep: #0A0612;
+    --mid: #140A26;
+    --surface: rgba(255,255,255,0.04);
+    --border: rgba(201,169,110,0.2);
+    --white: #FFFFFF;
+    --cream: #F5F0E8;
+    --text-muted: #B8A99A;
+    --green-check: #2ECC71;
+    --red-cross: #E74C3C;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Raleway', sans-serif;
+    background: var(--deep);
+    color: #ffffff;
+    min-height: 100vh;
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* ANIMATED BACKGROUND */
+  .bg-canvas {
+    position: fixed;
+    inset: 0;
+    z-index: 0;
+    background:
+      radial-gradient(ellipse 80% 60% at 50% -10%, rgba(91,14,166,0.45) 0%, transparent 60%),
+      radial-gradient(ellipse 50% 40% at 90% 80%, rgba(212,0,106,0.2) 0%, transparent 55%),
+      radial-gradient(ellipse 60% 50% at 10% 70%, rgba(91,14,166,0.15) 0%, transparent 50%),
+      #0A0612;
+  }
+  .orb {
+    position: fixed;
+    border-radius: 50%;
+    filter: blur(80px);
+    pointer-events: none;
+    animation: drift linear infinite;
+    z-index: 0;
+  }
+  .orb-1 { width: 500px; height: 500px; background: rgba(91,14,166,0.25); top: -150px; left: -100px; animation-duration: 25s; }
+  .orb-2 { width: 350px; height: 350px; background: rgba(212,0,106,0.18); bottom: 10%; right: -80px; animation-duration: 20s; }
+  .orb-3 { width: 250px; height: 250px; background: rgba(201,169,110,0.12); top: 40%; left: 50%; animation-duration: 30s; }
+  @keyframes drift {
+    0%   { transform: translate(0, 0) scale(1); }
+    33%  { transform: translate(30px, -40px) scale(1.05); }
+    66%  { transform: translate(-20px, 30px) scale(0.95); }
+    100% { transform: translate(0, 0) scale(1); }
+  }
+  .stars { position: fixed; inset: 0; z-index: 0; pointer-events: none; overflow: hidden; }
+  .star {
+    position: absolute;
+    background: white;
+    border-radius: 50%;
+    animation: twinkle ease-in-out infinite;
+  }
+  @keyframes twinkle { 0%,100% { opacity: 0.1; transform: scale(1); } 50% { opacity: 0.7; transform: scale(1.3); } }
+
+  .page {
+    position: relative;
+    z-index: 2;
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 40px 20px 80px;
+  }
+
+  /* KIMBERLY HERO */
+  .kimberly-hero {
+    text-align: center;
+    margin-bottom: 50px;
+    animation: fadeUp 0.8s ease both;
+  }
+  .avatar-wrap {
+    position: relative;
+    width: 130px;
+    height: 130px;
+    margin: 0 auto 20px;
+  }
+  .avatar-ring {
+    position: absolute;
+    inset: -5px;
+    border-radius: 50%;
+    background: conic-gradient(var(--gold) 0deg, var(--magenta) 120deg, var(--violet) 240deg, var(--gold) 360deg);
+    animation: spin 8s linear infinite;
+  }
+  @keyframes spin { to { transform: rotate(360deg); } }
+  .avatar-inner {
+    position: absolute;
+    inset: 3px;
+    border-radius: 50%;
+    background: var(--deep);
+    overflow: hidden;
+  }
+  .avatar-inner img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center top;
+  }
+  .kimberly-name {
+    font-family: 'Cinzel Decorative', serif;
+    font-size: 32px;
+    background: linear-gradient(135deg, var(--gold-light) 0%, var(--gold) 70%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-bottom: 8px;
+  }
+  .kimberly-sub {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 22px;
+    font-style: italic;
+    color: rgba(255,255,255,0.9);
+  }
+
+  /* ABOUT SECTION */
+  .about-kimberly {
+    background: linear-gradient(135deg, rgba(20,10,38,0.9), rgba(10,6,18,0.96));
+    border: 1px solid rgba(201,169,110,0.4);
+    border-radius: 48px;
+    padding: 48px 36px;
+    margin: 30px auto 70px;
+    max-width: 780px;
+    backdrop-filter: blur(12px);
+    box-shadow: 0 25px 45px rgba(0,0,0,0.5);
+    text-align: center;
+  }
+  .about-inner {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 30px;
+  }
+  .about-evidence {
+    max-width: 320px;
+    margin: 0 auto;
+  }
+  .about-evidence img {
+    width: 100%;
+    border-radius: 24px;
+    border: 1px solid var(--gold);
+    box-shadow: 0 16px 32px rgba(0,0,0,0.3);
+  }
+  .about-text {
+    max-width: 620px;
+  }
+  .about-text h2 {
+    font-family: 'Cinzel Decorative', serif;
+    font-size: 42px;
+    background: linear-gradient(135deg, #fff, var(--gold-light));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-bottom: 12px;
+  }
+  .story-badge {
+    display: inline-block;
+    background: rgba(212,0,106,0.2);
+    border-radius: 100px;
+    padding: 6px 20px;
+    font-size: 14px;
+    letter-spacing: 1px;
+    border: 1px solid var(--gold);
+    margin-bottom: 24px;
+    color: var(--gold-light);
+  }
+  .about-text p {
+    font-size: 18px;
+    line-height: 1.5;
+    color: var(--cream);
+    margin-bottom: 24px;
+  }
+  .proof-number {
+    font-size: 48px;
+    font-weight: 800;
+    color: var(--gold-light);
+    font-family: 'Cinzel Decorative', serif;
+    display: inline-block;
+    margin-right: 12px;
+  }
+  .method-tags {
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin: 30px 0 20px;
+  }
+  .method-tag {
+    background: rgba(255,255,255,0.05);
+    border-radius: 60px;
+    padding: 8px 20px;
+    font-size: 14px;
+    font-weight: 600;
+    border-left: 2px solid var(--gold);
+  }
+
+  /* OFFER HEADER */
+  .offer-header {
+    text-align: center;
+    margin-bottom: 40px;
+  }
+  .main-title {
+    font-family: 'Cinzel Decorative', serif;
+    font-size: clamp(48px, 12vw, 90px);
+    font-weight: 900;
+    line-height: 1;
+    background: linear-gradient(135deg, var(--gold-light) 0%, var(--gold) 40%, #FFF2D7 80%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    letter-spacing: 0.02em;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+  }
+  .sub-headline {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(26px, 5vw, 38px);
+    font-weight: 600;
+    color: var(--gold-light);
+    margin-bottom: 25px;
+  }
+  
+  .story-icons {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    max-width: 700px;
+    margin: 35px auto 30px;
+  }
+  .story-item {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    background: rgba(255,255,255,0.02);
+    backdrop-filter: blur(8px);
+    padding: 16px 24px;
+    border-radius: 60px;
+    border: 1px solid rgba(201,169,110,0.2);
+    text-align: left;
+  }
+  .story-icon {
+    font-size: 38px;
+    min-width: 60px;
+    text-align: center;
+  }
+  .story-text {
+    font-size: 18px;
+    font-weight: 500;
+    color: var(--cream);
+  }
+  .story-text strong {
+    color: var(--gold-light);
+  }
+  .impact-line {
+    font-size: 28px;
+    font-weight: 800;
+    background: linear-gradient(135deg, #fff, var(--gold-light));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin: 35px 0 15px;
+  }
+  .inner-text {
+    color: var(--text-muted);
+    font-size: 18px;
+    max-width: 700px;
+    margin: 0 auto;
+  }
+
+  /* BEFORE & AFTER TABLE */
+  .real-world-section {
+    background: linear-gradient(135deg, rgba(91,14,166,0.15), rgba(212,0,106,0.08));
+    border-radius: 48px;
+    padding: 48px 32px;
+    margin: 48px 0 60px;
+    border: 1px solid rgba(201,169,110,0.3);
+  }
+  .real-title {
+    font-family: 'Cinzel Decorative', serif;
+    font-size: 36px;
+    text-align: center;
+    margin-bottom: 16px;
+  }
+  .real-sub {
+    text-align: center;
+    color: var(--gold-light);
+    margin-bottom: 40px;
+    font-size: 18px;
+  }
+  .before-after-table {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+  .ba-row {
+    display: grid;
+    grid-template-columns: 1fr 60px 1fr;
+    gap: 16px;
+    background: rgba(0,0,0,0.4);
+    border-radius: 28px;
+    padding: 20px 24px;
+    transition: all 0.2s;
+    border: 1px solid rgba(255,255,255,0.05);
+  }
+  .ba-row:hover {
+    border-color: rgba(201,169,110,0.4);
+    transform: translateX(4px);
+  }
+  .ba-before, .ba-after {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+  .ba-before {
+    text-align: right;
+    border-right: 1px dashed rgba(255,255,255,0.2);
+    padding-right: 20px;
+  }
+  .ba-after {
+    text-align: left;
+    padding-left: 20px;
+  }
+  .ba-icon {
+    font-size: 32px;
+  }
+  .ba-title {
+    font-weight: 700;
+    font-size: 18px;
+  }
+  .ba-before .ba-title { color: #ff8888; }
+  .ba-after .ba-title { color: var(--green-check); }
+  .ba-desc {
+    font-size: 14px;
+    color: var(--text-muted);
+    line-height: 1.4;
+  }
+  .ba-arrow {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 28px;
+    color: var(--gold-light);
+    font-weight: 800;
+  }
+  @media (max-width: 780px) {
+    .ba-row {
+      grid-template-columns: 1fr 40px 1fr;
+      gap: 8px;
+      padding: 16px;
+    }
+    .ba-title { font-size: 15px; }
+    .ba-icon { font-size: 24px; }
+    .ba-arrow { font-size: 20px; }
+    .ba-before { padding-right: 10px; }
+    .ba-after { padding-left: 10px; }
+  }
+
+  /* CTA BOX */
+  .cta-card {
+    background: linear-gradient(135deg, rgba(20,10,38,0.95) 0%, rgba(10,6,18,0.98) 100%);
+    border: 2px solid rgba(201,169,110,0.5);
+    border-radius: 48px;
+    padding: 40px 32px;
+    max-width: 650px;
+    margin: 0 auto 50px;
+    box-shadow: 0 25px 50px rgba(0,0,0,0.6);
+    backdrop-filter: blur(12px);
+    text-align: center;
+  }
+  
+  .instant-access-headline {
+    font-family: 'Cinzel Decorative', serif;
+    font-size: 24px;
+    font-weight: 600;
+    color: var(--gold-light);
+    margin-bottom: 20px;
+    letter-spacing: 0.5px;
+    background: linear-gradient(135deg, #fff, var(--gold));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: pulseText 2s ease infinite;
+  }
+  @keyframes pulseText {
+    0%, 100% { opacity: 0.9; transform: scale(1);}
+    50% { opacity: 1; transform: scale(1.02); text-shadow: 0 0 5px rgba(201,169,110,0.5);}
+  }
+  
+  /* Imagen del producto - más grande y responsiva */
+  .product-img-large {
+    max-width: 280px;
+    margin: 0 auto 25px;
+    border-radius: 24px;
+    overflow: hidden;
+    box-shadow: 0 20px 35px rgba(0,0,0,0.5);
+    transition: transform 0.3s ease;
+  }
+  .product-img-large img {
+    width: 100%;
+    display: block;
+  }
+  .product-img-large:hover {
+    transform: scale(1.02);
+  }
+  
+  /* Checklist con valores en dólares */
+  .checklist-big {
+    text-align: left;
+    background: rgba(0,0,0,0.4);
+    border-radius: 32px;
+    padding: 28px 32px;
+    margin: 28px 0 20px;
+    border: 1px solid rgba(46,204,113,0.3);
+  }
+  .checklist-item {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    font-size: 17px;
+    font-weight: 500;
+    padding: 14px 0;
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+    color: var(--cream);
+  }
+  .checklist-item:last-child {
+    border-bottom: none;
+  }
+  .check-icon {
+    font-size: 28px;
+    color: var(--green-check);
+    filter: drop-shadow(0 0 4px #2ECC71);
+    min-width: 36px;
+    text-align: center;
+  }
+  .checklist-item strong {
+    color: var(--gold-light);
+  }
+  .item-price {
+    margin-left: auto;
+    font-weight: 700;
+    color: var(--gold);
+    font-size: 18px;
+    background: rgba(0,0,0,0.4);
+    padding: 4px 12px;
+    border-radius: 40px;
+    white-space: nowrap;
+  }
+  
+  .total-value-box {
+    background: linear-gradient(135deg, rgba(46,204,113,0.15), rgba(201,169,110,0.1));
+    border-radius: 60px;
+    padding: 16px 24px;
+    margin: 20px 0 16px;
+    text-align: center;
+    border: 1px solid rgba(201,169,110,0.4);
+  }
+  .total-label {
+    font-size: 18px;
+    font-weight: 600;
+    color: var(--text-muted);
+    letter-spacing: 1px;
+  }
+  .total-amount {
+    font-size: 48px;
+    font-weight: 900;
+    color: #ff8888;
+    text-decoration: line-through;
+    font-family: 'Cinzel Decorative', serif;
+    margin: 8px 0;
+  }
+  .today-price-small {
+    font-size: 32px;
+    font-weight: 800;
+    color: var(--green-check);
+    background: rgba(46,204,113,0.2);
+    display: inline-block;
+    padding: 6px 24px;
+    border-radius: 60px;
+    margin-top: 8px;
+  }
+  .price-note {
+    font-size: 13px;
+    color: var(--text-muted);
+    margin-top: 12px;
+  }
+
+  .btn-primary {
+    display: inline-block;
+    width: 100%;
+    background: linear-gradient(135deg, #F5D742, #C9A96E, #A17F46);
+    color: #0A0612;
+    text-align: center;
+    padding: 20px 24px;
+    border-radius: 60px;
+    font-weight: 800;
+    font-size: 1.4rem;
+    text-decoration: none;
+    letter-spacing: 0.05em;
+    transition: all 0.3s ease;
+    box-shadow: 0 0 0 0 rgba(201,169,110,0.7), 0 8px 20px rgba(0,0,0,0.3);
+    margin: 20px 0 20px;
+    animation: pulseGlow 1.8s infinite, shakeSubtle 3s infinite;
+    border: none;
+    cursor: pointer;
+  }
+  
+  @keyframes pulseGlow {
+    0% { box-shadow: 0 0 0 0 rgba(201,169,110,0.4), 0 8px 20px rgba(0,0,0,0.3); transform: scale(1); }
+    50% { box-shadow: 0 0 0 8px rgba(201,169,110,0.2), 0 0 0 16px rgba(212,0,106,0.1), 0 12px 28px rgba(0,0,0,0.4); transform: scale(1.02); }
+    100% { box-shadow: 0 0 0 0 rgba(201,169,110,0), 0 8px 20px rgba(0,0,0,0.3); transform: scale(1); }
+  }
+  
+  @keyframes shakeSubtle {
+    0%, 100% { transform: translateX(0); }
+    95% { transform: translateX(0); }
+    97% { transform: translateX(-2px) rotate(-0.5deg); }
+    99% { transform: translateX(2px) rotate(0.5deg); }
+  }
+  
+  .btn-primary:hover {
+    animation: none;
+    transform: translateY(-4px) scale(1.03);
+    background: linear-gradient(135deg, #FFE173, #DBAF5A, #C4954A);
+    box-shadow: 0 12px 30px rgba(201,169,110,0.7);
+  }
+  
+  .security-badges {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 18px;
+    margin-top: 12px;
+    margin-bottom: 8px;
+  }
+  .badge-item {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: rgba(0,0,0,0.5);
+    backdrop-filter: blur(4px);
+    padding: 6px 14px;
+    border-radius: 40px;
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--gold-light);
+    border: 0.5px solid rgba(201,169,110,0.4);
+  }
+  
+  .benefits-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+    gap: 18px;
+    margin: 48px 0 60px;
+  }
+  .benefit-item {
+    background: rgba(255,255,255,0.02);
+    border: 1px solid rgba(201,169,110,0.2);
+    border-radius: 24px;
+    padding: 24px 16px;
+    text-align: center;
+    backdrop-filter: blur(8px);
+    transition: all 0.3s;
+  }
+  .benefit-item:hover { border-color: rgba(201,169,110,0.5); transform: translateY(-6px); }
+  .benefit-item .emoji { font-size: 44px; margin-bottom: 12px; display: block; }
+  .benefit-item h4 { font-size: 20px; font-weight: 700; color: var(--gold-light); margin-bottom: 8px; }
+  .benefit-item p { font-size: 14px; color: var(--text-muted); }
+
+  .testimonial-video {
+    max-width: 700px;
+    margin: 40px auto 50px;
+    text-align: center;
+  }
+  .testimonial-title {
+    font-family: 'Cinzel Decorative', serif;
+    font-size: 28px;
+    margin-bottom: 20px;
+    color: var(--gold-light);
+  }
+  .video-container {
+    position: relative;
+    padding-bottom: 56.25%;
+    height: 0;
+    overflow: hidden;
+    border-radius: 32px;
+    border: 2px solid rgba(201,169,110,0.4);
+    box-shadow: 0 20px 35px rgba(0,0,0,0.5);
+    background: #000;
+  }
+  .video-container iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 30px;
+    border: none;
+  }
+
+  .faq-section {
+    margin-top: 60px;
+    border-top: 1px solid rgba(201,169,110,0.2);
+    padding-top: 60px;
+  }
+  .faq-title {
+    font-family: 'Cinzel Decorative', serif;
+    font-size: 36px;
+    text-align: center;
+    margin-bottom: 40px;
+  }
+  .faq-item {
+    background: rgba(255,255,255,0.02);
+    border-bottom: 1px solid rgba(255,255,255,0.05);
+    padding: 24px 0;
+  }
+  .faq-question { font-size: 20px; font-weight: 700; color: var(--gold-light); margin-bottom: 10px; }
+  .faq-answer { font-size: 16px; color: var(--text-muted); line-height: 1.5; }
+
+  .footer-note {
+    text-align: center;
+    margin-top: 70px;
+    color: rgba(255,255,255,0.3);
+    font-size: 14px;
+  }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  @media (max-width: 680px) {
+    .page { padding: 20px 16px 60px; }
+    .cta-card { padding: 28px 20px; }
+    .product-img-large { max-width: 220px; }
+    .checklist-item { font-size: 14px; gap: 10px; flex-wrap: wrap; }
+    .check-icon { font-size: 22px; min-width: 28px; }
+    .item-price { font-size: 14px; margin-left: 0; margin-top: 6px; width: 100%; text-align: left; padding-left: 36px; }
+    .checklist-item { flex-wrap: wrap; }
+    .btn-primary { font-size: 1.1rem; padding: 16px 20px; }
+    .real-title { font-size: 28px; }
+    .instant-access-headline { font-size: 18px; }
+    .total-amount { font-size: 36px; }
+    .today-price-small { font-size: 26px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="bg-canvas"></div>
+<div class="orb orb-1"></div>
+<div class="orb orb-2"></div>
+<div class="orb orb-3"></div>
+<div class="stars" id="stars"></div>
+
+<div class="page">
+
+  <div class="kimberly-hero">
+    <div class="avatar-wrap">
+      <div class="avatar-ring"></div>
+      <div class="avatar-inner">
+        <img src="https://i.postimg.cc/pdpWFcz1/descarga.jpg" alt="Kimberly Ali">
+      </div>
+    </div>
+    <div class="kimberly-name">Kimberly Ali</div>
+    <div class="kimberly-sub">Meditaciones Cuánticas & Reprogramación Subconsciente</div>
+  </div>
+
+  <div class="offer-header">
+    <div class="main-title">FLUJO DE DINERO</div>
+    <div class="sub-headline">No estás bloqueada… <br>estás programada para NO recibir.</div>
+    <div class="story-icons">
+      <div class="story-item"><div class="story-icon">🧠</div><div class="story-text"><strong>Tu subconsciente escupe el dinero</strong> — aunque lo necesites, lo rechazas sin darte cuenta.</div></div>
+      <div class="story-item"><div class="story-icon">🔒</div><div class="story-text"><strong>La resistencia invisible</strong> que hace que no cobres lo que vales, no publiques, no cierres.</div></div>
+      <div class="story-item"><div class="story-icon">⚡</div><div class="story-text"><strong>Este audio ataca el problema real:</strong> no es motivación, es programación errónea.</div></div>
+      <div class="story-item"><div class="story-icon">🔄</div><div class="story-text"><strong>Reconfigura tu reacción al dinero</strong> y actívate en estado de flujo inmediato.</div></div>
+    </div>
+    <div class="impact-line">No es tu esfuerzo. Es tu configuración interna.</div>
+    <div class="inner-text">20–25 minutos que pueden cambiar cómo el dinero responde a ti.</div>
+  </div>
+
+  <!-- CTA PRINCIPAL con imagen más grande y valores por ítem -->
+  <div class="cta-card" id="acceso">
+    <div class="instant-access-headline">⚡ ¡Estás a segundos de obtener acceso instantáneo a: ⚡</div>
+    <div class="product-img-large">
+      <img src="https://i.postimg.cc/1RKH8vHT/8c00c93e-89d7-4cb8-ac67-1315b332f50d.png" alt="Sesión Flujo de Dinero">
+    </div>
+    
+    <div class="checklist-big">
+      <div class="checklist-item">
+        <div class="check-icon">✅</div>
+        <span><strong>Sesión de Audio Guiada</strong> (20-25 min) · Reprogramación subconsciente profunda</span>
+        <span class="item-price">$97</span>
+      </div>
+      <div class="checklist-item">
+        <div class="check-icon">✅</div>
+        <span><strong>Blueprint de Bloqueos Invisibles</strong> · Identifica tu patrón exacto de escasez</span>
+        <span class="item-price">$47</span>
+      </div>
+      <div class="checklist-item">
+        <div class="check-icon">✅</div>
+        <span><strong>Guía de Acción Inmediata</strong> · Resultados visibles en 24-48 horas</span>
+        <span class="item-price">$37</span>
+      </div>
+      <div class="checklist-item">
+        <div class="check-icon">✅</div>
+        <span><strong>Acceso de por vida + actualizaciones gratuitas</strong> · Paga una vez, tuyo para siempre</span>
+        <span class="item-price">$97</span>
+      </div>
+      <div class="checklist-item">
+        <div class="check-icon">✅</div>
+        <span><strong>Garantía de 7 días</strong> · Sin riesgo, devolución total si no sientes el cambio</span>
+        <span class="item-price">$27</span>
+      </div>
+    </div>
+    
+    <div class="total-value-box">
+      <div class="total-label">VALOR TOTAL DEL PAQUETE</div>
+      <div class="total-amount">$305</div>
+      <div class="today-price-small">🔥 HOY SOLO $27 🔥</div>
+      <div class="price-note">Pago único · Acceso inmediato · 7 días de garantía</div>
+    </div>
+    
+    <a class="btn-primary" href="https://pay.hotmart.com/N105653151G">🔥 ABRIR MI FLUJO DE DINERO 🔥</a>
+    <div class="security-badges">
+      <div class="badge-item">🔒 Pago 100% Seguro</div>
+      <div class="badge-item">🛡️ SSL Encriptación</div>
+      <div class="badge-item">⭐ Garantía 7 Días</div>
+      <div class="badge-item">⚡ Entrega Inmediata</div>
+    </div>
+  </div>
+
+  <!-- NUEVA SECCIÓN CTA (antes de beneficios) -->
+  <div class="cta-card" style="margin: 20px auto 40px;">
+    <div class="instant-access-headline">⚡ ¡No dejes pasar esta oportunidad! ⚡</div>
+    <div class="product-img-large">
+      <img src="https://i.postimg.cc/1RKH8vHT/8c00c93e-89d7-4cb8-ac67-1315b332f50d.png" alt="Sesión Flujo de Dinero">
+    </div>
+    <div class="checklist-big">
+      <div class="checklist-item">
+        <div class="check-icon">✅</div>
+        <span><strong>Reconfigura tu mente para atraer dinero</strong> · Sin esfuerzo, desde el subconsciente</span>
+        <span class="item-price">Incluido</span>
+      </div>
+      <div class="checklist-item">
+        <div class="check-icon">✅</div>
+        <span><strong>Elimina la culpa al recibir</strong> · Abre el canal del dinero sin resistencia</span>
+        <span class="item-price">Incluido</span>
+      </div>
+      <div class="checklist-item">
+        <div class="check-icon">✅</div>
+        <span><strong>Rompe el techo invisible de ingresos</strong> · Resultados desde el día 1</span>
+        <span class="item-price">Incluido</span>
+      </div>
+    </div>
+    <div class="total-value-box">
+      <div class="total-label">VALOR TOTAL</div>
+      <div class="total-amount">$305</div>
+      <div class="today-price-small">⚡ HOY SOLO $27 ⚡</div>
+    </div>
+    <a class="btn-primary" href="https://pay.hotmart.com/N105653151G">🎯 QUIERO CAMBIAR MI REALIDAD AHORA 🎯</a>
+    <div class="security-badges">
+      <div class="badge-item">💳 Stripe + PayPal</div>
+      <div class="badge-item">🛡️ Compra Protegida</div>
+      <div class="badge-item">🔐 Sin Suscripción</div>
+    </div>
+  </div>
+
+  <!-- BENEFICIOS GRID -->
+  <div class="benefits-grid">
+    <div class="benefit-item"><span class="emoji">✂️</span><h4>Corta el patrón de escasez</h4><p>Rompe el ciclo hereditario de "no merecer"</p></div>
+    <div class="benefit-item"><span class="emoji">💎</span><h4>Te abre a recibir sin culpa</h4><p>Elimina el rechazo automático al dinero</p></div>
+    <div class="benefit-item"><span class="emoji">⚡</span><h4>Cambia cómo reaccionas al dinero</h4><p>De la evitación a la acción inmediata</p></div>
+    <div class="benefit-item"><span class="emoji">🌊</span><h4>Activa estado de flujo inmediato</h4><p>Decides, ejecutas y cobras sin bloqueo</p></div>
+  </div>
+
+  <!-- REAL WORLD USE CASES -->
+  <div class="real-world-section">
+    <div class="real-title">✨ Cómo cambia tu realidad financiera ✨</div>
+    <div class="real-sub">Casos reales de personas que reprogramaron su relación con el dinero</div>
+    
+    <div class="before-after-table">
+      <div class="ba-row">
+        <div class="ba-before"><div class="ba-icon">😰</div><div class="ba-title">Antes: Miedo a cobrar lo que vales</div><div class="ba-desc">Trabajas el doble, pero cuando toca poner precio, te paralizas. Terminas regalando tu trabajo.</div></div>
+        <div class="ba-arrow">➡️</div>
+        <div class="ba-after"><div class="ba-icon">💰</div><div class="ba-title">Después: Precio justo sin culpa</div><div class="ba-desc">Sabes tu valor, lo comunicas sin disculparte. Tus clientes pagan lo que pides.</div></div>
+      </div>
+      <div class="ba-row">
+        <div class="ba-before"><div class="ba-icon">💸</div><div class="ba-title">Antes: El dinero siempre se va</div><div class="ba-desc">Cobra hoy, mañana no sabes dónde está. Hueco financiero invisible.</div></div>
+        <div class="ba-arrow">➡️</div>
+        <div class="ba-after"><div class="ba-icon">📊</div><div class="ba-title">Después: Control y retención</div><div class="ba-desc">El dinero llega y se queda. Tomas decisiones conscientes, no reactivas.</div></div>
+      </div>
+      <div class="ba-row">
+        <div class="ba-before"><div class="ba-icon">🔄</div><div class="ba-title">Antes: Patrón de escasez heredado</div><div class="ba-desc">"El dinero no alcanza", "eso es para ricos". Frases que operan en piloto automático.</div></div>
+        <div class="ba-arrow">➡️</div>
+        <div class="ba-after"><div class="ba-icon">🌊</div><div class="ba-title">Después: Mentalidad de flujo</div><div class="ba-desc">El dinero es energía que entra y sale. Confías en que siempre llega más.</div></div>
+      </div>
+      <div class="ba-row">
+        <div class="ba-before"><div class="ba-icon">😶</div><div class="ba-title">Antes: No puedes pedir aumento</div><div class="ba-desc">Llevas años en el mismo sueldo porque negociar te da pánico escénico.</div></div>
+        <div class="ba-arrow">➡️</div>
+        <div class="ba-after"><div class="ba-icon">📈</div><div class="ba-title">Después: Negocias desde la seguridad</div><div class="ba-desc">Pides, recibes y te lo mereces. Subiste tus ingresos sin cambiar de trabajo.</div></div>
+      </div>
+      <div class="ba-row">
+        <div class="ba-before"><div class="ba-icon">🚫</div><div class="ba-title">Antes: Te saboteas al emprender</div><div class="ba-desc">Creas contenido, pero no publicas. Armás la oferta, pero no la lanzas.</div></div>
+        <div class="ba-arrow">➡️</div>
+        <div class="ba-after"><div class="ba-icon">🚀</div><div class="ba-title">Después: Acción sin bloqueo</div><div class="ba-desc">Publicas, vendes, cobras. El miedo ya no te frena, actúas desde el flujo.</div></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="about-kimberly">
+    <div class="about-inner">
+      <div class="about-evidence">
+        <img src="https://iili.io/BL4KBiN.jpg" alt="Kimberly Ali cheque $65,000" onerror="this.src='https://placehold.co/400x250/2A1536/C9A96E?text=Cheque+%2465k'">
+      </div>
+      <div class="about-text">
+        <div class="story-badge">🏠💫 La prueba real detrás del método</div>
+        <h2>Kimberly Ali</h2>
+        <p><span class="proof-number">$65,000</span> en una sola transacción real.</p>
+        <p>Crecí en Colón, Panamá, escuchando "el dinero no alcanza" todos los días. Sin darme cuenta, esas frases se convirtieron en mis creencias — y mis creencias en mis resultados. Hasta que lo cambié todo. Visualicé la venta de la casa de mi mamá: el comprador ideal, la oferta exacta, el número preciso. Tres meses después, ocurrió exactamente así — $65,000.</p>
+        <div class="method-tags">
+          <span class="method-tag">✨ Método simple — directo al subconsciente</span>
+          <span class="method-tag">🧠 Profundamente transformador</span>
+          <span class="method-tag">⚡ Diseñado para alinear tu mente</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SEGUNDO CTA con misma estructura -->
+  <div class="cta-card" style="margin: 40px auto;">
+    <div class="instant-access-headline">⚡ ¡Estás a segundos de obtener acceso instantáneo a: ⚡</div>
+    <div class="product-img-large">
+      <img src="https://i.postimg.cc/1RKH8vHT/8c00c93e-89d7-4cb8-ac67-1315b332f50d.png" alt="Sesión Flujo de Dinero">
+    </div>
+    <div class="checklist-big">
+      <div class="checklist-item"><div class="check-icon">✅</div><span><strong>Audio Flujo de Dinero</strong> · Reprogramación cuántica de 25 min</span><span class="item-price">$97</span></div>
+      <div class="checklist-item"><div class="check-icon">✅</div><span><strong>Identifica tu bloqueo exacto</strong> · El patrón que te está costando miles</span><span class="item-price">$47</span></div>
+      <div class="checklist-item"><div class="check-icon">✅</div><span><strong>Qué hacer después de la sesión</strong> · Acciones que activan el cambio en 48h</span><span class="item-price">$37</span></div>
+      <div class="checklist-item"><div class="check-icon">✅</div><span><strong>Acceso de por vida</strong> · Escúchalo cada vez que necesites un reset</span><span class="item-price">$97</span></div>
+      <div class="checklist-item"><div class="check-icon">✅</div><span><strong>Garantía "Sin Riesgo" de 7 días</strong> · Si no hay cambio, te devolvemos todo</span><span class="item-price">$27</span></div>
+    </div>
+    <div class="total-value-box">
+      <div class="total-label">VALOR TOTAL DEL PAQUETE</div>
+      <div class="total-amount">$305</div>
+      <div class="today-price-small">⚡ HOY SOLO $27 ⚡</div>
+    </div>
+    <a class="btn-primary" href="https://pay.hotmart.com/N105653151G">⚡ ACTIVAR MI FLUJO DE DINERO ⚡</a>
+    <div class="security-badges">
+      <div class="badge-item">💳 Stripe + PayPal</div>
+      <div class="badge-item">🛡️ Compra Protegida</div>
+      <div class="badge-item">🔐 Sin Suscripción</div>
+    </div>
+  </div>
+
+  <div class="testimonial-video">
+    <div class="testimonial-title">🎥 Mira lo que dicen quienes ya lo aplicaron</div>
+    <div class="video-container">
+      <iframe src="https://www.youtube.com/embed/-lOrt4ffTnk" title="Testimonio Kimberly Ali Flujo de Dinero" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+    </div>
+  </div>
+
+  <div class="faq-section">
+    <div class="faq-title">❓ PREGUNTAS REALES</div>
+    <div class="faq-item"><div class="faq-question">¿Necesito experiencia en meditación?</div><div class="faq-answer">No. Solo pon el audio, cierra los ojos y escucha. La reprogramación ocurre automáticamente.</div></div>
+    <div class="faq-item"><div class="faq-question">¿Cuánto dura el efecto?</div><div class="faq-answer">El cambio es acumulativo. La mayoría nota una diferencia inmediata en la forma en que toman decisiones financieras. Escúchalo diario durante 7 días para resultados profundos.</div></div>
+    <div class="faq-item"><div class="faq-question">¿Es realmente $27 sin costo extra?</div><div class="faq-answer">Sí. Pago único, acceso de por vida. Sin letras chicas, sin membresía oculta.</div></div>
+    <div class="faq-item"><div class="faq-question">¿Funciona si estoy en crisis económica?</div><div class="faq-answer">Es precisamente para eso. El audio reprograma la relación con el dinero en el nivel subconsciente, donde está el bloqueo real.</div></div>
+    <div class="faq-item"><div class="faq-question">Garantía de 7 días: ¿cómo funciona?</div><div class="faq-answer">Úsalo una semana. Si no sientes un cambio real en tu relación con el dinero, te devolvemos cada peso. Sin preguntas.</div></div>
+  </div>
+
+  <div style="text-align: center; margin: 70px 0 20px; border-top: 1px solid rgba(201,169,110,0.2); padding-top: 50px;">
+    <p style="font-size: 24px; font-weight: 700; color: var(--gold-light);">Si no lo usas tú, alguien más sí…</p>
+    <p style="font-size: 28px; font-weight: 800;">y va a cobrar lo que tú no estás recibiendo.</p>
+    <div style="max-width: 380px; margin: 32px auto 0;">
+      <a class="btn-primary" href="https://pay.hotmart.com/N105653151G">💰 ACTIVAR MI FLUJO DE DINERO 💰</a>
+      <div class="security-badges" style="margin-top: 16px;">
+        <div class="badge-item">🔒 Compra Segura</div>
+        <div class="badge-item">📥 Acceso Inmediato</div>
+        <div class="badge-item">🔄 Garantía 7 Días</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer-note">
+    © 2025 Kimberly Ali — Meditaciones Cuánticas · Resultados individuales varían. Este producto no garantiza ingresos específicos.
+  </div>
+</div>
+
+<script>
+  const starsEl = document.getElementById('stars');
+  for (let i = 0; i < 100; i++) {
+    const s = document.createElement('div');
+    s.className = 'star';
+    const size = Math.random() * 2 + 0.5;
+    s.style.cssText = `width:${size}px;height:${size}px;top:${Math.random()*100}%;left:${Math.random()*100}%;animation-duration:${2+Math.random()*4}s;animation-delay:${Math.random()*5}s`;
+    starsEl.appendChild(s);
+  }
+</script>
+</body>
+</html>
