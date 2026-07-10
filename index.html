@@ -3,1497 +3,271 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Abundancia Consciente - Módulo 1</title>
+  <meta name="description" content="Kimberly Ali: recursos y programas para transformar tu relación con el dinero y sostener una abundancia consciente.">
+  <meta name="theme-color" content="#ffffff">
+  <title>Kimberly Ali | Abundancia Consciente</title>
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E%F0%9F%8C%88%3C/text%3E%3C/svg%3E">
   <style>
     :root {
-      --white: #ffffff;
       --ink: #151515;
-      --deep: #064e3b;
-      --emerald: #0f766e;
-      --green: #16a34a;
-      --sage: #dff5ea;
-      --mint: #ecfdf5;
-      --gold: #d4af37;
-      --champagne: #fff8dc;
-      --soft: #f8fafc;
-      --gray: #6b7280;
-      --line: #e5e7eb;
-      --shadow: 0 24px 70px rgba(6, 78, 59, 0.18);
-      --radius: 8px;
+      --muted: #696969;
+      --line: #e9e9e9;
+      --paper: #ffffff;
+      --soft: #f7f7f5;
+      --accent: #315c4b;
+      --accent-dark: #1e4335;
     }
 
     * { box-sizing: border-box; }
 
-    html, body {
+    html { background: var(--paper); }
+
+    body {
+      min-width: 320px;
       margin: 0;
-      min-height: 100%;
-      background: #f4fbf7;
       color: var(--ink);
+      background: var(--paper);
       font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      -webkit-font-smoothing: antialiased;
     }
 
-    body { overflow: hidden; }
+    a { color: inherit; }
 
-    button {
-      border: 0;
-      background: none;
-      color: inherit;
-      font: inherit;
-      cursor: pointer;
-    }
-
-    .app {
-      min-height: 100vh;
-      display: grid;
-      grid-template-rows: auto 1fr auto;
-    }
-
-    .top-cta-bar {
-      min-height: 42px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 16px;
-      padding: 8px clamp(12px, 2vw, 28px);
-      background: #b91c1c;
-      color: var(--white);
-      font-size: clamp(12px, 1.2vw, 15px);
-      line-height: 1.2;
-      font-weight: 850;
-      text-align: center;
-    }
-
-    .top-cta-bar span {
-      color: #fff7ed;
-    }
-
-    .top-cta-bar a {
-      color: var(--white);
-      text-decoration: none;
-      font-weight: 1000;
-      border-bottom: 1px solid rgba(255,255,255,0.72);
-    }
-
-    .top-cta-bar a:hover {
-      color: #fde68a;
-      border-bottom-color: #fde68a;
-    }
-
-    .stage-wrap {
-      min-height: calc(100vh - 106px);
-      display: grid;
-      place-items: center;
-      padding: clamp(12px, 2.2vw, 30px);
-      position: relative;
-      background:
-        radial-gradient(circle at 12% 12%, rgba(15, 118, 110, 0.15), transparent 28%),
-        radial-gradient(circle at 88% 20%, rgba(212, 175, 55, 0.12), transparent 25%),
-        linear-gradient(135deg, #f7fff9 0%, #eefaf4 48%, #fff9e8 100%);
-    }
-
-    .deck {
-      width: min(94vw, calc((100vh - 188px) * 16 / 9));
-      aspect-ratio: 16 / 9;
-      position: relative;
-      overflow: hidden;
-      background: var(--white);
-      border: 1px solid rgba(6, 78, 59, 0.18);
-      border-radius: 10px;
-      box-shadow: var(--shadow);
-    }
-
-    .slide {
-      position: absolute;
-      inset: 0;
-      display: none;
-      padding: 5.3% 5.4%;
-      background:
-        radial-gradient(circle at 92% 72%, rgba(15, 118, 110, 0.11), transparent 28%),
-        radial-gradient(circle at 76% 18%, rgba(212, 175, 55, 0.10), transparent 22%),
-        linear-gradient(90deg, rgba(255,255,255,0.98), rgba(247,255,250,0.94));
-      overflow: hidden;
-    }
-
-    .slide.active {
-      display: grid;
-      grid-template-columns: 1fr;
-      align-content: center;
-      animation: popIn 180ms ease-out;
-    }
-
-    .slide.has-story {
-      padding: 4.3% 4.6%;
-    }
-
-    @keyframes popIn {
-      from { opacity: 0; transform: scale(0.985); }
-      to { opacity: 1; transform: scale(1); }
-    }
-
-    .slide::before,
-    .slide::after {
-      content: "";
-      position: absolute;
-      pointer-events: none;
-      z-index: 0;
-    }
-
-    .slide::before {
-      inset: 3.2%;
-      border: 1px solid rgba(15, 118, 110, 0.12);
-      border-radius: 8px;
-    }
-
-    .slide::after {
-      right: -7%;
-      bottom: -12%;
-      width: 38%;
-      aspect-ratio: 1;
-      background: radial-gradient(circle, rgba(15, 118, 110, 0.22), rgba(212, 175, 55, 0.10) 45%, transparent 68%);
-      opacity: 1;
-      border-radius: 999px;
-    }
-
-    .slide.layout-split {
-      background:
-        linear-gradient(90deg, rgba(6,78,59,0.08) 0 32%, transparent 32%),
-        radial-gradient(circle at 82% 18%, rgba(212,175,55,0.15), transparent 24%),
-        #ffffff;
-    }
-
-    .slide.layout-split::after {
-      left: 4.8%;
-      right: auto;
-      top: 18%;
-      bottom: auto;
-      width: 19%;
-      background: linear-gradient(135deg, var(--deep), var(--emerald));
-      opacity: 1;
-      border-radius: 8px;
-    }
-
-    .slide.layout-statement {
-      place-items: center;
-      text-align: center;
-      background:
-        radial-gradient(circle at 50% 50%, rgba(236,253,245,0.95), transparent 42%),
-        linear-gradient(135deg, #ffffff, #f7fff9 50%, #fff8dc);
-    }
-
-    .slide.layout-statement::before {
-      inset: 5.2%;
-      border-color: rgba(212, 175, 55, 0.36);
-    }
-
-    .slide.layout-workbook {
-      background:
-        linear-gradient(90deg, var(--deep) 0 25%, #ffffff 25% 100%);
-    }
-
-    .slide.layout-workbook::after {
-      right: 5%;
-      top: 9%;
-      bottom: auto;
-      width: 17%;
-      background: repeating-linear-gradient(135deg, rgba(15,118,110,0.13) 0 12px, rgba(212,175,55,0.12) 12px 24px);
-      border-radius: 8px;
-    }
-
-    .slide.layout-quote {
-      background:
-        linear-gradient(135deg, rgba(6,78,59,0.96), rgba(15,118,110,0.9)),
-        #064e3b;
-      color: var(--white);
-    }
-
-    .slide.layout-quote::before {
-      border-color: rgba(255,255,255,0.22);
-    }
-
-    .slide.layout-quote::after {
-      content: "“";
-      right: 7%;
-      top: -9%;
-      bottom: auto;
-      width: auto;
-      background: none;
-      color: rgba(212,175,55,0.28);
-      font-family: Georgia, serif;
-      font-size: clamp(180px, 28vw, 360px);
-      line-height: 1;
-      border-radius: 0;
-    }
-
-    .slide.layout-cards {
-      background:
-        linear-gradient(180deg, #ffffff 0 54%, #ecfdf5 54% 100%);
-    }
-
-    .slide.layout-cards::after {
-      right: 7%;
-      bottom: 7%;
-      width: 18%;
-      background: linear-gradient(135deg, rgba(212,175,55,0.28), rgba(15,118,110,0.18));
-      border-radius: 8px;
-    }
-
-    .slide.layout-path {
-      background:
-        linear-gradient(135deg, #ffffff 0 42%, #f0fdf4 42% 68%, #fff8dc 68%);
-    }
-
-    .slide.layout-path::after {
-      right: 8%;
-      top: 14%;
-      bottom: auto;
-      width: 24%;
-      background: conic-gradient(from 140deg, rgba(6,78,59,0.95), rgba(15,118,110,0.65), rgba(212,175,55,0.7), rgba(6,78,59,0.95));
-      opacity: 0.18;
-    }
-
-    .slide.layout-cover {
-      place-items: center;
-      background:
-        radial-gradient(circle at 82% 18%, rgba(212,175,55,0.22), transparent 22%),
-        radial-gradient(circle at 18% 72%, rgba(15,118,110,0.16), transparent 28%),
-        linear-gradient(135deg, #ffffff 0%, #f7fff9 56%, #fff8dc 100%);
-      text-align: left;
-    }
-
-    .slide.layout-cover::after {
-      right: 7%;
-      bottom: 9%;
-      width: 24%;
-      background: linear-gradient(135deg, var(--deep), var(--emerald));
-      opacity: 0.14;
-      border-radius: 8px;
-    }
-
-    .content {
-      position: relative;
-      z-index: 1;
-      display: grid;
-      gap: clamp(12px, 2vw, 26px);
-    }
-
-    .visual-mark {
-      position: absolute;
-      z-index: 0;
-      right: 5.4%;
-      top: 6%;
-      color: rgba(6, 78, 59, 0.08);
-      font-size: clamp(78px, 13vw, 180px);
-      font-weight: 1000;
-      line-height: 1;
-    }
-
-    .layout-quote .visual-mark,
-    .layout-workbook .visual-mark {
-      color: rgba(255,255,255,0.12);
-      left: 6%;
-      right: auto;
-    }
-
-    .layout-split .content {
-      grid-template-columns: 28% minmax(0, 1fr);
-      align-items: center;
-      gap: 5%;
-    }
-
-    .layout-split .content::before {
-      content: attr(data-section);
-      position: relative;
-      z-index: 1;
-      display: grid;
-      place-items: center;
-      min-height: 56%;
-      padding: 18px;
-      color: var(--white);
-      background: linear-gradient(135deg, var(--deep), var(--emerald));
-      border: 1px solid rgba(255,255,255,0.25);
-      border-radius: 8px;
-      box-shadow: 0 24px 52px rgba(6, 78, 59, 0.24);
-      text-align: center;
-      text-transform: uppercase;
-      font-size: clamp(18px, 2.5vw, 36px);
-      line-height: 0.95;
-      font-weight: 1000;
-    }
-
-    .layout-statement .content {
-      width: min(92%, 1020px);
-      justify-items: center;
-      text-align: center;
-      gap: clamp(8px, 1.35vw, 18px);
-    }
-
-    .layout-workbook .content {
-      grid-template-columns: 22% minmax(0, 1fr);
-      align-items: center;
-      gap: 5%;
-    }
-
-    .layout-workbook .content::before {
-      content: "✍️";
-      display: grid;
-      place-items: center;
-      color: var(--gold);
-      font-size: clamp(54px, 8vw, 118px);
-    }
-
-    .layout-quote .content {
-      width: min(92%, 1040px);
-      gap: clamp(9px, 1.4vw, 18px);
-    }
-
-    .layout-cards .content,
-    .layout-path .content {
-      width: min(94%, 1060px);
-    }
-
-    .layout-cover .content {
-      width: min(86%, 980px);
-      gap: clamp(14px, 2.2vw, 30px);
-    }
-
-    .content.with-image {
-      grid-template-columns: minmax(0, 1fr) minmax(240px, 34%);
-      align-items: center;
-      gap: 4%;
-    }
-
-    .layout-cover .content.with-image {
-      width: min(90%, 1060px);
-      grid-template-columns: minmax(0, 0.95fr) minmax(260px, 0.52fr);
-    }
-
-    .slide-photo {
-      position: relative;
-      z-index: 1;
-      margin: 0;
-      align-self: stretch;
-      min-height: clamp(250px, 31vw, 430px);
-      overflow: hidden;
-      border: 1px solid rgba(6, 78, 59, 0.20);
-      box-shadow: 0 24px 54px rgba(6, 78, 59, 0.18);
-      border-radius: var(--radius);
-      background: var(--mint);
-    }
-
-    .slide-photo::after {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(180deg, transparent 58%, rgba(6,78,59,0.72));
-      pointer-events: none;
-    }
-
-    .slide-photo img {
-      width: 100%;
-      height: 100%;
-      min-height: inherit;
-      display: block;
-      object-fit: cover;
-      object-position: center top;
-    }
-
-    .slide-photo figcaption {
-      position: absolute;
-      left: 16px;
-      right: 16px;
-      bottom: 14px;
-      z-index: 2;
-      color: var(--white);
-      font-size: clamp(12px, 1.3vw, 16px);
-      line-height: 1.15;
-      font-weight: 950;
-      text-transform: uppercase;
-    }
-
-    .product-photo img {
-      object-position: center center;
-    }
-
-    .meta {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 16px;
-      margin-bottom: 0.5%;
-      color: var(--emerald);
-      font-weight: 950;
-      text-transform: uppercase;
-      letter-spacing: 0.06em;
-      font-size: clamp(9px, 1.1vw, 14px);
-    }
-
-    .layout-workbook .meta,
-    .layout-quote .meta {
-      color: rgba(255,255,255,0.82);
-    }
-
-    .badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      width: fit-content;
-      min-height: 34px;
-      padding: 7px 13px;
-      background: linear-gradient(135deg, var(--champagne), #f1fff6);
-      color: var(--ink);
-      border: 1px solid rgba(6, 78, 59, 0.22);
-      box-shadow: 0 12px 28px rgba(6, 78, 59, 0.10);
-      font-size: clamp(11px, 1.3vw, 16px);
-      font-weight: 950;
-      border-radius: 999px;
-    }
-
-    .layout-quote .badge {
-      background: rgba(255,255,255,0.10);
-      color: var(--white);
-      border-color: rgba(255,255,255,0.24);
-      box-shadow: none;
-    }
-
-    .layout-workbook .badge {
-      background: var(--white);
-      color: var(--deep);
-    }
-
-    .slide-title {
-      max-width: 92%;
-      margin: 0;
-      color: var(--deep);
-      font-size: clamp(36px, 6vw, 78px);
-      line-height: 0.92;
-      font-weight: 1000;
-      letter-spacing: 0;
-      text-transform: uppercase;
-      text-wrap: balance;
-      text-shadow: none;
-    }
-
-    .layout-quote .slide-title {
-      color: var(--white);
-      max-width: 86%;
-      font-size: clamp(34px, 5.45vw, 72px);
-    }
-
-    .layout-statement .slide-title {
-      max-width: 980px;
-      font-size: clamp(38px, 6.1vw, 78px);
-    }
-
-    .layout-workbook .slide-title {
-      max-width: 96%;
-      font-size: clamp(34px, 5.4vw, 72px);
-    }
-
-    .layout-split .slide-title {
-      max-width: 91%;
-      font-size: clamp(34px, 5.1vw, 66px);
-    }
-
-    .layout-cards .slide-title {
-      max-width: 86%;
-      font-size: clamp(34px, 5.35vw, 70px);
-    }
-
-    .has-story.layout-cards .slide-title {
-      max-width: 76%;
-      font-size: clamp(30px, 4.75vw, 62px);
-      line-height: 0.92;
-    }
-
-    .layout-cover .slide-title {
-      max-width: 900px;
-      font-size: clamp(48px, 8.4vw, 112px);
-      line-height: 0.9;
-    }
-
-    .cover-subtitle {
-      width: min(780px, 86%);
-      margin: 0;
-      color: var(--ink);
-      font-size: clamp(20px, 3vw, 38px);
-      line-height: 1.05;
-      font-weight: 850;
-      text-wrap: balance;
-    }
-
-    .gold-rule {
-      width: min(240px, 38%);
-      height: 8px;
-      background: linear-gradient(90deg, var(--gold), var(--emerald));
-      border-radius: 999px;
-    }
-
-    .title-small .slide-title {
-      font-size: clamp(31px, 5vw, 62px);
-    }
-
-    .hero .slide-title {
-      max-width: 78%;
-      font-size: clamp(42px, 7vw, 90px);
-    }
-
-    .bullets {
-      display: grid;
-      gap: clamp(9px, 1.4vw, 16px);
-      width: min(90%, 980px);
-      margin: 0;
-      padding: 0;
-      list-style: none;
-    }
-
-    .layout-statement .bullets {
-      width: min(100%, 980px);
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-    }
-
-    .layout-cards .bullets {
-      width: 100%;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      align-items: stretch;
-      margin-top: 8px;
-    }
-
-    .layout-path .bullets {
-      width: min(88%, 920px);
-      gap: clamp(12px, 1.8vw, 22px);
-      counter-reset: path;
-    }
-
-    .bullet {
-      display: grid;
-      grid-template-columns: auto auto 1fr;
-      align-items: center;
-      gap: 14px;
-      min-height: clamp(48px, 7vw, 74px);
-      padding: 10px 18px 10px 12px;
-      background: linear-gradient(135deg, rgba(255,255,255,0.97), rgba(236,253,245,0.92));
-      border: 1px solid rgba(6, 78, 59, 0.16);
-      border-radius: var(--radius);
-      box-shadow: 0 16px 34px rgba(6, 78, 59, 0.10);
-      font-size: clamp(16px, 2.3vw, 30px);
-      line-height: 1.05;
-      font-weight: 820;
-    }
-
-    .layout-quote .bullet {
-      background: rgba(255,255,255,0.10);
-      color: var(--white);
-      border-color: rgba(255,255,255,0.18);
-      box-shadow: none;
-      min-height: clamp(42px, 5.8vw, 62px);
-      font-size: clamp(15px, 2vw, 25px);
-    }
-
-    .layout-statement .bullet,
-    .layout-cards .bullet {
-      grid-template-columns: 1fr;
-      justify-items: center;
-      text-align: center;
-      min-height: clamp(82px, 9.8vw, 128px);
-      padding: clamp(14px, 2vw, 26px);
-      align-content: center;
-    }
-
-    .layout-statement .bullet {
-      font-size: clamp(15px, 2vw, 25px);
-    }
-
-    .layout-split .bullet {
-      min-height: clamp(42px, 5.9vw, 64px);
-      font-size: clamp(15px, 2vw, 25px);
-    }
-
-    .layout-cards .bullet {
-      font-size: clamp(15px, 1.95vw, 25px);
-    }
-
-    .has-story.layout-cards .bullets {
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: clamp(8px, 1.1vw, 13px);
-    }
-
-    .has-story.layout-cards .bullet {
-      min-height: clamp(72px, 8.2vw, 108px);
-      padding: clamp(10px, 1.6vw, 18px);
-      font-size: clamp(14px, 1.75vw, 22px);
-    }
-
-    .layout-workbook .bullet {
-      background: #ffffff;
-      border-left: 7px solid var(--gold);
-      box-shadow: 0 12px 26px rgba(6, 78, 59, 0.10);
-    }
-
-    .layout-path .bullet {
-      grid-template-columns: auto 1fr;
-      width: min(86%, 760px);
-      box-shadow: 0 14px 34px rgba(6, 78, 59, 0.09);
-    }
-
-    .layout-path .bullet:nth-child(2) { margin-left: 8%; }
-    .layout-path .bullet:nth-child(3) { margin-left: 16%; }
-
-    .bullet-number {
-      display: grid;
-      place-items: center;
-      width: clamp(38px, 5.3vw, 58px);
-      aspect-ratio: 1;
-      background: linear-gradient(135deg, var(--deep), var(--emerald));
-      color: var(--white);
-      font-size: clamp(15px, 2vw, 24px);
-      font-weight: 1000;
-      border-radius: 999px;
-      box-shadow: inset 0 0 0 1px rgba(255,255,255,0.25);
-    }
-
-    .bullet-icon {
-      display: grid;
-      place-items: center;
-      width: clamp(32px, 4.3vw, 48px);
-      aspect-ratio: 1;
-      background: var(--champagne);
-      border: 1px solid rgba(212, 175, 55, 0.55);
-      border-radius: 999px;
-      font-size: clamp(16px, 2.1vw, 25px);
-    }
-
-    .layout-path .bullet-icon { display: none; }
-    .layout-statement .bullet-number,
-    .layout-cards .bullet-number {
-      width: clamp(44px, 5.2vw, 64px);
-    }
-
-    .layout-quote .bullet-number {
-      background: var(--gold);
-      color: var(--deep);
-    }
-
-    .single {
-      width: min(88%, 980px);
-      padding: clamp(18px, 3vw, 36px);
-      background: var(--white);
-      border: 1px solid rgba(6, 78, 59, 0.16);
-      box-shadow: 0 20px 48px rgba(6, 78, 59, 0.14);
-      font-size: clamp(24px, 4vw, 54px);
-      line-height: 1.02;
-      font-weight: 1000;
-    }
-
-    .kimberly {
-      display: grid;
-      grid-template-columns: minmax(0, 1fr) minmax(210px, 31%);
-      gap: 3.2%;
-      align-items: center;
-    }
-
-    .story-card {
-      padding: 6.4%;
-      background: linear-gradient(135deg, var(--deep), var(--emerald));
-      color: var(--white);
-      border: 1px solid rgba(255,255,255,0.22);
-      box-shadow: 0 22px 50px rgba(6, 78, 59, 0.24);
-      border-radius: var(--radius);
-    }
-
-    .story-photo {
-      width: 100%;
-      aspect-ratio: 4 / 3;
-      display: block;
-      object-fit: cover;
-      object-position: center top;
-      margin-bottom: 6%;
-      border: 1px solid rgba(255,255,255,0.20);
-      border-radius: 6px;
-    }
-
-    .story-card strong {
-      display: block;
-      color: var(--gold);
-      font-size: clamp(16px, 2.05vw, 27px);
-      line-height: 1.02;
-      margin-bottom: 6%;
-      text-transform: uppercase;
-    }
-
-    .story-card span {
-      display: block;
-      font-size: clamp(12px, 1.55vw, 20px);
-      line-height: 1.15;
-      font-weight: 760;
-    }
-
-    .layout-quote .story-card {
-      background: rgba(255,255,255,0.10);
-      border-color: rgba(255,255,255,0.22);
-      box-shadow: none;
-    }
-
-    .sticker-row {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-      margin-top: 4px;
-    }
-
-    .sticker {
-      display: inline-flex;
-      align-items: center;
-      min-height: 34px;
-      padding: 7px 11px;
-      background: var(--mint);
-      border: 1px solid rgba(6, 78, 59, 0.18);
-      font-weight: 950;
-      font-size: clamp(12px, 1.5vw, 18px);
-      border-radius: 999px;
-    }
-
-    .sticker:nth-child(2n) { background: var(--champagne); }
-    .sticker:nth-child(3n) { background: var(--sage); }
-
-    .controls {
-      min-height: 64px;
-      display: grid;
-      grid-template-columns: minmax(130px, 1fr) auto;
-      gap: 10px;
-      align-items: center;
-      padding: 9px clamp(12px, 2vw, 28px);
-      background: rgba(255,255,255,0.93);
-      border-top: 1px solid rgba(6, 78, 59, 0.14);
-      backdrop-filter: blur(14px);
-    }
-
-    .status {
-      display: grid;
-      gap: 8px;
-      color: var(--gray);
-      font-size: 13px;
-      font-weight: 760;
-    }
-
-    .progress {
-      width: min(280px, 31vw);
-      height: 8px;
-      background: var(--line);
-      border: 1px solid rgba(6, 78, 59, 0.20);
-      border-radius: 999px;
-      overflow: hidden;
-    }
-
-    .progress span {
-      display: block;
-      height: 100%;
-      width: 0%;
-      background: linear-gradient(90deg, var(--deep), var(--emerald), var(--gold));
-    }
-
-    .btn-row {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 8px;
-    }
-
-    .nav-btn,
-    .tool-btn {
-      display: inline-grid;
-      place-items: center;
-      min-width: 42px;
-      height: 42px;
-      padding: 0 12px;
-      background: var(--white);
-      border: 1px solid rgba(6, 78, 59, 0.22);
-      color: var(--ink);
-      font-weight: 1000;
-      box-shadow: 0 9px 22px rgba(6, 78, 59, 0.10);
-      border-radius: var(--radius);
-    }
-
-    .nav-btn.primary {
-      min-width: 106px;
-      background: linear-gradient(135deg, var(--deep), var(--emerald));
-      color: var(--white);
-    }
-
-    .tool-btn.active {
-      background: var(--champagne);
-      color: var(--deep);
-    }
-
-    .drawer {
-      position: fixed;
-      inset: 0;
-      z-index: 20;
-      display: none;
-      overflow: auto;
-      padding: 28px;
-      background: rgba(244, 251, 247, 0.98);
-    }
-
-    .drawer.open { display: block; }
-
-    .drawer-head {
-      max-width: 1180px;
-      margin: 0 auto 22px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 16px;
-    }
-
-    .drawer h3 {
-      margin: 0;
-      color: var(--deep);
-      font-size: 34px;
-      text-transform: uppercase;
-    }
-
-    .thumbs {
-      max-width: 1180px;
+    .page {
+      width: min(100% - 32px, 620px);
       margin: 0 auto;
+      padding: 56px 0 34px;
+    }
+
+    .brand {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(210px, 1fr));
-      gap: 14px;
+      justify-items: center;
+      text-align: center;
     }
 
-    .thumb {
-      aspect-ratio: 16 / 9;
-      padding: 14px;
-      overflow: hidden;
-      background: var(--white);
-      border: 1px solid rgba(6, 78, 59, 0.16);
-      box-shadow: 0 14px 34px rgba(6, 78, 59, 0.12);
-      text-align: left;
-      border-radius: var(--radius);
+    .mark {
+      display: grid;
+      place-items: center;
+      width: 68px;
+      height: 68px;
+      margin-bottom: 22px;
+      color: var(--paper);
+      background: var(--ink);
+      border-radius: 50%;
+      font-family: Georgia, serif;
+      font-size: 28px;
+      font-weight: 700;
+      letter-spacing: -0.12em;
+      text-indent: -0.12em;
     }
 
-    .thumb.active { border-color: var(--gold); box-shadow: 0 16px 40px rgba(212, 175, 55, 0.20); }
-
-    .thumb b {
-      display: block;
-      color: var(--emerald);
-      font-size: 12px;
-      margin-bottom: 10px;
-    }
-
-    .thumb span {
-      color: var(--deep);
-      display: block;
-      font-weight: 1000;
-      line-height: 1.02;
-      text-transform: uppercase;
-    }
-
-    .notes {
-      position: absolute;
-      right: clamp(14px, 2vw, 28px);
-      top: clamp(14px, 2vw, 28px);
-      z-index: 5;
-      display: none;
-      width: min(380px, 34vw);
-      max-height: calc(100vh - 122px);
-      overflow: auto;
-      padding: 18px;
-      background: var(--white);
-      border: 1px solid rgba(6, 78, 59, 0.18);
-      box-shadow: 0 20px 50px rgba(6, 78, 59, 0.18);
-      border-radius: var(--radius);
-    }
-
-    .notes.open { display: block; }
-
-    .notes h3 {
-      margin: 0 0 10px;
-      color: var(--deep);
-      text-transform: uppercase;
-      font-size: 16px;
-    }
-
-    .notes p {
+    h1 {
       margin: 0;
-      color: var(--ink);
+      font-size: clamp(32px, 7vw, 46px);
+      line-height: 0.98;
+      letter-spacing: -0.06em;
+    }
+
+    .eyebrow {
+      margin: 12px 0 0;
+      color: var(--accent);
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: 0.13em;
+      text-transform: uppercase;
+    }
+
+    .intro {
+      max-width: 500px;
+      margin: 22px auto 0;
+      color: var(--muted);
+      font-size: 17px;
+      line-height: 1.5;
+    }
+
+    .links {
+      display: grid;
+      gap: 12px;
+      margin-top: 38px;
+    }
+
+    .link-card {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      min-height: 76px;
+      padding: 14px 18px;
+      text-decoration: none;
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      background: var(--paper);
+      transition: border-color 160ms ease, box-shadow 160ms ease, transform 160ms ease;
+    }
+
+    .link-card:hover,
+    .link-card:focus-visible {
+      border-color: #b9c8bf;
+      box-shadow: 0 12px 28px rgba(25, 46, 37, 0.09);
+      transform: translateY(-2px);
+      outline: none;
+    }
+
+    .link-card.primary {
+      color: var(--paper);
+      border-color: var(--accent-dark);
+      background: var(--accent-dark);
+    }
+
+    .icon {
+      display: grid;
+      place-items: center;
+      flex: 0 0 auto;
+      width: 42px;
+      height: 42px;
+      color: var(--accent-dark);
+      background: var(--soft);
+      border-radius: 10px;
+      font-size: 20px;
+    }
+
+    .primary .icon {
+      color: var(--paper);
+      background: rgba(255, 255, 255, 0.14);
+    }
+
+    .link-copy { min-width: 0; }
+
+    .link-copy strong,
+    .link-copy span { display: block; }
+
+    .link-copy strong {
+      font-size: 16px;
+      line-height: 1.15;
+      letter-spacing: -0.02em;
+    }
+
+    .link-copy span {
+      margin-top: 4px;
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.25;
+    }
+
+    .primary .link-copy span { color: rgba(255, 255, 255, 0.72); }
+
+    .arrow {
+      margin-left: auto;
+      font-size: 20px;
+      font-weight: 400;
+    }
+
+    .feature {
+      display: grid;
+      grid-template-columns: 116px 1fr;
+      gap: 22px;
+      align-items: center;
+      margin-top: 38px;
+      padding: 20px;
+      background: var(--soft);
+      border-radius: 16px;
+    }
+
+    .feature img {
+      width: 116px;
+      height: 144px;
+      object-fit: cover;
+      object-position: center top;
+      border-radius: 10px;
+      background: #ddd;
+    }
+
+    .feature h2 {
+      margin: 0;
+      font-size: 19px;
+      line-height: 1.08;
+      letter-spacing: -0.04em;
+    }
+
+    .feature p {
+      margin: 9px 0 15px;
+      color: var(--muted);
       font-size: 14px;
-      line-height: 1.35;
-      white-space: pre-line;
+      line-height: 1.42;
     }
 
-    @media (max-width: 760px) {
-      body { overflow: auto; }
-      .stage-wrap { min-height: auto; padding: 8px; }
-      .deck {
-        width: calc(100vw - 16px);
-        max-width: 100%;
-        height: min(72vh, 650px);
-        min-height: 560px;
-        aspect-ratio: auto;
-      }
-      .slide { padding: 5.4%; }
-      .slide.layout-workbook {
-        background: linear-gradient(135deg, #ffffff, #f7fff9 65%, #fff8dc);
-      }
-      .slide-title,
-      .layout-split .slide-title,
-      .layout-quote .slide-title,
-      .layout-statement .slide-title,
-      .layout-workbook .slide-title,
-      .layout-cards .slide-title,
-      .layout-cover .slide-title {
-        font-size: clamp(25px, 8vw, 40px);
-        line-height: 0.96;
-      }
-      .cover-subtitle {
-        width: 96%;
-        font-size: clamp(16px, 4.7vw, 24px);
-      }
-      .hero .slide-title { max-width: 94%; }
-      .layout-split .content,
-      .layout-workbook .content,
-      .content.with-image,
-      .layout-cover .content.with-image {
-        grid-template-columns: 1fr;
-      }
-      .slide-photo {
-        min-height: 170px;
-        max-height: 210px;
-      }
-      .slide-photo img {
-        min-height: 170px;
-      }
-      .layout-split .content::before,
-      .layout-workbook .content::before,
-      .visual-mark {
-        display: none;
-      }
-      .layout-statement .bullets,
-      .layout-cards .bullets {
-        grid-template-columns: 1fr;
-      }
-      .layout-statement .bullet,
-      .layout-cards .bullet {
-        min-height: 38px;
-        grid-template-columns: auto auto 1fr;
-        justify-items: stretch;
-        text-align: left;
-      }
-      .layout-path .bullet,
-      .layout-path .bullet:nth-child(2),
-      .layout-path .bullet:nth-child(3) {
-        width: 96%;
-        margin-left: 0;
-      }
-      .bullets { width: 96%; gap: 8px; }
-      .bullet { min-height: 38px; font-size: clamp(12px, 4vw, 17px); box-shadow: 0 10px 24px rgba(6, 78, 59, 0.10); gap: 8px; }
-      .bullet-number { width: 32px; }
-      .bullet-icon { width: 30px; }
-      .kimberly { grid-template-columns: 1fr; }
-      .story-card { display: none; }
-      .sticker-row { display: none; }
-      .top-cta-bar { flex-wrap: wrap; gap: 8px 12px; }
-      .controls { grid-template-columns: 1fr; height: auto; gap: 10px; }
-      .btn-row { flex-wrap: wrap; }
-      .status { justify-items: center; text-align: center; }
-      .notes { width: calc(100vw - 28px); left: 14px; right: 14px; }
+    .feature a {
+      color: var(--accent-dark);
+      font-size: 14px;
+      font-weight: 800;
+      text-decoration-thickness: 1px;
+      text-underline-offset: 3px;
     }
 
-    @media print {
-      body { overflow: visible; background: var(--white); }
-      .app { display: block; }
-      .controls, .drawer, .notes { display: none !important; }
-      .stage-wrap { display: block; padding: 0; min-height: 0; }
-      .deck { width: 100vw; height: auto; aspect-ratio: auto; box-shadow: none; border: 0; }
-      .slide {
-        position: relative;
-        display: grid !important;
-        width: 100vw;
-        height: 56.25vw;
-        page-break-after: always;
-      }
+    footer {
+      display: flex;
+      justify-content: center;
+      gap: 18px;
+      margin-top: 34px;
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    footer a { text-decoration: none; }
+    footer a:hover, footer a:focus-visible { color: var(--ink); text-decoration: underline; text-underline-offset: 3px; }
+
+    @media (max-width: 440px) {
+      .page { padding-top: 40px; }
+      .feature { grid-template-columns: 92px 1fr; gap: 16px; padding: 16px; }
+      .feature img { width: 92px; height: 118px; }
     }
   </style>
 </head>
 <body>
-  <main class="app">
-    <div class="top-cta-bar" aria-label="Links sociales de Kimberly Ali">
-      <span>Conecta con Kimberly Ali:</span>
+  <main class="page">
+    <header class="brand">
+      <div class="mark" aria-hidden="true">KA</div>
+      <h1>Kimberly Ali</h1>
+      <p class="eyebrow">Abundancia consciente</p>
+      <p class="intro">Un espacio para transformar tu relación con el dinero, recibir más y sostener tu próximo nivel con seguridad.</p>
+    </header>
+
+    <nav class="links" aria-label="Enlaces de Kimberly Ali">
+      <a class="link-card primary" href="https://kimberlyali.es/" target="_blank" rel="noopener noreferrer">
+        <span class="icon" aria-hidden="true">✦</span>
+        <span class="link-copy"><strong>Empieza aquí</strong><span>Conoce el mundo de Kimberly Ali</span></span>
+        <span class="arrow" aria-hidden="true">→</span>
+      </a>
+      <a class="link-card" href="https://abundancia.kimberlyali.es/" target="_blank" rel="noopener noreferrer">
+        <span class="icon" aria-hidden="true">∞</span>
+        <span class="link-copy"><strong>Abundancia Consciente</strong><span>Tu punto de partida para observar y cambiar patrones</span></span>
+        <span class="arrow" aria-hidden="true">→</span>
+      </a>
+      <a class="link-card" href="https://www.instagram.com/kimberlyali/" target="_blank" rel="noopener noreferrer">
+        <span class="icon" aria-hidden="true">◎</span>
+        <span class="link-copy"><strong>Instagram</strong><span>Reflexiones, herramientas y vida diaria</span></span>
+        <span class="arrow" aria-hidden="true">→</span>
+      </a>
+      <a class="link-card" href="https://www.tiktok.com/@kimberlyali" target="_blank" rel="noopener noreferrer">
+        <span class="icon" aria-hidden="true">♪</span>
+        <span class="link-copy"><strong>TikTok</strong><span>Ideas breves para reprogramar tu mentalidad</span></span>
+        <span class="arrow" aria-hidden="true">→</span>
+      </a>
+    </nav>
+
+    <section class="feature" aria-labelledby="codigo-title">
+      <img src="assets/ChatGPT%20Image%2028%20mar%202026%2C%2010_00_12%20a.m..png" alt="El Código Interior, programa de Kimberly Ali">
+      <div>
+        <h2 id="codigo-title">El Código Interior</h2>
+        <p>Un recorrido de siete lecciones para romper el programa de escasez y construir una nueva identidad financiera.</p>
+        <a href="https://kimberlyali.es/" target="_blank" rel="noopener noreferrer">Ver el programa →</a>
+      </div>
+    </section>
+
+    <footer>
       <a href="https://www.instagram.com/kimberlyali/" target="_blank" rel="noopener noreferrer">Instagram</a>
       <a href="https://www.tiktok.com/@kimberlyali" target="_blank" rel="noopener noreferrer">TikTok</a>
-      <a href="https://kimberlyali.es/" target="_blank" rel="noopener noreferrer">Website</a>
-    </div>
-    <div class="stage-wrap">
-      <section class="deck" id="deck" aria-live="polite"></section>
-    </div>
-
-    <nav class="controls" aria-label="Controles de presentación">
-      <div class="status">
-        <span id="slideStatus">Diapositiva 1</span>
-        <div class="progress" aria-hidden="true"><span id="progressBar"></span></div>
-      </div>
-      <div class="btn-row">
-        <button class="nav-btn" id="prevBtn" title="Anterior" aria-label="Anterior">←</button>
-        <button class="nav-btn primary" id="nextBtn" title="Siguiente" aria-label="Siguiente">Siguiente</button>
-        <button class="tool-btn" id="overviewBtn" title="Vista de índice" aria-label="Vista de índice">☷</button>
-      </div>
-    </nav>
+      <a href="https://kimberlyali.es/" target="_blank" rel="noopener noreferrer">Web</a>
+    </footer>
   </main>
-
-  <section class="drawer" id="drawer" aria-modal="true" role="dialog">
-    <div class="drawer-head">
-      <h3>Mapa del módulo</h3>
-      <button class="nav-btn" id="closeOverview" aria-label="Cerrar índice">Cerrar</button>
-    </div>
-    <div class="thumbs" id="thumbs"></div>
-  </section>
-
-  <script>
-    const colors = ["#064e3b", "#0f766e", "#16a34a", "#d4af37", "#047857", "#65a30d"];
-    const bulletIcons = ["💸", "🧠", "✨", "💎", "🌿", "🔑", "📌", "🚀"];
-    const layouts = ["split", "quote", "cards", "path", "statement", "workbook"];
-    const sectionLayouts = {
-      "Ejercicio": "workbook",
-      "Ejercicio final": "workbook",
-      "Fórmula": "statement",
-      "Meditación": "quote",
-      "Próximo paso": "path"
-    };
-
-    const slidesData = [
-      {
-        layout: "cover",
-        section: "Acceso confirmado",
-        title: "¡Tengo acceso!",
-        badge: "🌈 Prueba de acceso",
-        subtitle: "Esta primera diapositiva fue actualizada correctamente.",
-        bullets: [],
-        notes: "Prueba temporal de acceso al repositorio."
-      },
-      {
-        section: "La promesa",
-        title: "No se trata solo de atraer dinero.",
-        badge: "💎 La esencia",
-        cta: [
-          { label: "Quiero sostener más", icon: "✨", kind: "primary", href: "https://abundancia.kimberlyali.es/" }
-        ],
-        bullets: ["1️⃣ Convertirte en la persona capaz de sostenerlo.", "2️⃣ Reconocer qué te frena por dentro.", "3️⃣ Cambiar el patrón, no solo la frase bonita."],
-        notes: "Basado en la esencia de marca encontrada en Drive: no solo atraer abundancia, sino sostenerla."
-      },
-      {
-        section: "Kimberly",
-        title: "Kimberly no enseña teoría.",
-        badge: "🔥 Historia real",
-        story: "Ella vivió miedo, escasez, inseguridad, creencias limitantes y autosabotaje antes de crear su metodología.",
-        image: "assets/02-kimberly-ali.jpg",
-        imageAlt: "Kimberly Ali",
-        socials: ["instagram"],
-        bullets: ["1️⃣ Primero lo vivió.", "2️⃣ Después lo observó.", "3️⃣ Luego lo convirtió en método."],
-        notes: "Referencia directa a la historia de Kimberly: enseña un proceso que primero transformó su propia vida."
-      },
-      {
-        section: "Kimberly",
-        title: "Su quiebre no era solo dinero.",
-        badge: "⚡ Punto de giro",
-        story: "Kimberly entendió que el problema más profundo era interno: miedo, alerta, desconexión y patrones repetidos.",
-        image: "assets/05-kimberly-ali.jpg",
-        imageAlt: "Kimberly Ali",
-        bullets: ["1️⃣ Por fuera parecía dinero.", "2️⃣ Por dentro era miedo.", "3️⃣ En la raíz eran patrones."],
-        notes: "Cuenta esto como una mini historia, no como biografía larga."
-      },
-      {
-        section: "Kimberly",
-        title: "Una parte quería avanzar.",
-        badge: "🧠 Conflicto interno",
-        cta: [
-          { label: "Sigue la historia de Kimberly", icon: "📷", kind: "social", href: "https://www.instagram.com/kimberlyali/" }
-        ],
-        bullets: ["1️⃣ Hacía afirmaciones positivas.", "2️⃣ Pero al recibir o decidir, algo se activaba.", "3️⃣ Su sistema entraba en alerta."],
-        notes: "Esta es una de las frases más humanas de su historia: una parte quería avanzar y otra entraba en alerta."
-      },
-      {
-        section: "Idea central",
-        title: "Tu realidad financiera tiene historia.",
-        badge: "📌 Anótalo",
-        bullets: ["1️⃣ Lo que viste en casa.", "2️⃣ Lo que escuchaste del dinero.", "3️⃣ Lo que aprendiste a sentir cuando recibes."],
-        notes: "Esta es la puerta de entrada al módulo. Una sola idea: la realidad financiera actual no apareció de la nada."
-      },
-      {
-        section: "Clase 1",
-        title: "Tu mente quiere protegerte.",
-        badge: "🛡️ Mente en modo seguridad",
-        bullets: ["1️⃣ Busca lo conocido.", "2️⃣ Repite lo familiar.", "3️⃣ Evita lo que siente peligroso."],
-        notes: "No culpar a la mente. Explicar que busca supervivencia y familiaridad."
-      },
-      {
-        section: "Clase 1",
-        title: "Lo familiar no siempre te conviene.",
-        badge: "🚨 Ojo aquí",
-        bullets: ["1️⃣ Puede sentirse seguro.", "2️⃣ Puede ser escasez conocida.", "3️⃣ Puede mantenerte en el mismo lugar."],
-        notes: "Una idea: familiar no significa sano."
-      },
-      {
-        section: "Clase 1",
-        title: "La consciente entiende.",
-        badge: "💡 Parte 1",
-        bullets: ["1️⃣ Razona.", "2️⃣ Reflexiona.", "3️⃣ Toma decisiones."],
-        notes: "Solo mente consciente. La siguiente slide separa subconsciente para cumplir una idea por slide."
-      },
-      {
-        section: "Clase 1",
-        title: "La subconsciente repite.",
-        badge: "🔁 Parte 2",
-        bullets: ["1️⃣ Guarda memorias.", "2️⃣ Repite creencias.", "3️⃣ Activa emociones aprendidas."],
-        notes: "Una idea: el subconsciente repite lo grabado."
-      },
-      {
-        section: "Ejercicio",
-        title: "¿Qué escuchaste sobre dinero?",
-        badge: "✍️ Responde sin filtro",
-        cta: [
-          { label: "Guarda tu respuesta", icon: "📝", kind: "gold", slide: 12 }
-        ],
-        bullets: ["1️⃣ ¿El dinero era discusión en casa?", "2️⃣ ¿Había que trabajar durísimo?", "3️⃣ ¿Qué historia necesitas cuestionar?"],
-        notes: "Ejercicio breve, con tono de journaling."
-      },
-      {
-        section: "Clase 2",
-        title: "Una creencia es una idea aceptada como verdad.",
-        badge: "🧩 Creencias",
-        bullets: ["1️⃣ No siempre la elegiste.", "2️⃣ A veces la heredaste.", "3️⃣ Muchas veces ya ni la cuestionas."],
-        notes: "Mantener simple y directo."
-      },
-      {
-        section: "Clase 2",
-        title: "Lo repetido se instala.",
-        badge: "📣 Frase clave",
-        bullets: ["1️⃣ Si lo escuchaste muchas veces, pesó.", "2️⃣ Si lo viviste con emoción, marcó.", "3️⃣ Si lo asumiste como regla, te dirigió."],
-        notes: "Esta slide puede decirse fuerte, estilo reel."
-      },
-      {
-        section: "Clase 2",
-        title: "El dinero no alcanza.",
-        badge: "💸 Ejemplo de programación",
-        bullets: ["1️⃣ Frase repetida.", "2️⃣ Emoción de tensión.", "3️⃣ Regla interna: vivir con límite."],
-        notes: "Una sola creencia ejemplo."
-      },
-      {
-        section: "Clase 2",
-        title: "Hay que sufrir para ganar.",
-        badge: "🥵 Otra programación",
-        bullets: ["1️⃣ Conecta dinero con sacrificio.", "2️⃣ Hace sospechoso recibir fácil.", "3️⃣ Vuelve incómoda la abundancia."],
-        notes: "Una sola idea: sufrimiento asociado a ganar."
-      },
-      {
-        section: "Ejercicio",
-        title: "Completa tu verdad automática.",
-        badge: "📝 Mini workbook",
-        cta: [
-          { label: "Comparte tu insight", icon: "📷", kind: "social", href: "https://www.instagram.com/kimberlyali/" }
-        ],
-        bullets: ["1️⃣ Yo creo que el dinero...", "2️⃣ Cuando quiero crecer, siento...", "3️⃣ Cuando cobro, mi mente dice..."],
-        notes: "Convertido a formato más social y accionable."
-      },
-      {
-        section: "Clase 3",
-        title: "Tu mente habla.",
-        badge: "🗣️ Diálogo interno",
-        bullets: ["1️⃣ “No puedo”.", "2️⃣ “Mejor después”.", "3️⃣ “Seguro sale mal”."],
-        notes: "Una idea: diálogo interno como voz automática."
-      },
-      {
-        section: "Clase 3",
-        title: "Tu mente también imagina.",
-        badge: "🎬 Película mental",
-        bullets: ["1️⃣ Imagina rechazo.", "2️⃣ Anticipa conflicto.", "3️⃣ Visualiza que algo sale mal."],
-        notes: "Una idea: imágenes mentales."
-      },
-      {
-        section: "Clase 3",
-        title: "Las palabras activan emociones.",
-        badge: "💥 Cadena interna",
-        bullets: ["1️⃣ Te hablas.", "2️⃣ Te imaginas.", "3️⃣ Tu cuerpo responde."],
-        notes: "Una idea: palabras + imágenes influyen en emoción."
-      },
-      {
-        section: "Ejercicio",
-        title: "¿Qué te dices cuando tienes miedo?",
-        badge: "🔎 Observa",
-        socials: ["tiktok"],
-        bullets: ["1️⃣ Escribe la frase exacta.", "2️⃣ Mira la imagen que aparece.", "3️⃣ Nombra la emoción que se activa."],
-        notes: "Ejercicio de autoobservación."
-      },
-      {
-        section: "Clase 4",
-        title: "Tu mente hace asociaciones.",
-        badge: "🧠 Neuroasociaciones",
-        bullets: ["1️⃣ Une una palabra.", "2️⃣ Conecta una experiencia.", "3️⃣ Activa una emoción."],
-        notes: "Una idea clara de neuroasociación."
-      },
-      {
-        section: "Clase 4",
-        title: "Dinero = tensión.",
-        badge: "⚡ Ejemplo",
-        bullets: ["1️⃣ No reaccionas al dinero solamente.", "2️⃣ Reaccionas a lo que aprendiste.", "3️⃣ Tu sistema recuerda."],
-        notes: "Una asociación por slide."
-      },
-      {
-        section: "Clase 4",
-        title: "Cobrar = culpa.",
-        badge: "💰 Ejemplo",
-        bullets: ["1️⃣ Dudas del precio.", "2️⃣ Te justificas demasiado.", "3️⃣ Bajas tu valor para sentir seguridad."],
-        notes: "Conecta con ideal client: culpa al cobrar o vender."
-      },
-      {
-        section: "Clase 4",
-        title: "Crecer = peligro.",
-        badge: "🚀 Ejemplo",
-        bullets: ["1️⃣ Más visibilidad.", "2️⃣ Más juicio.", "3️⃣ Más miedo a sostenerlo."],
-        notes: "Esta idea viene de los documentos de cliente ideal: miedo al crecimiento y al éxito."
-      },
-      {
-        section: "Ejercicio",
-        title: "Completa tus asociaciones.",
-        badge: "🎯 Tu mapa",
-        cta: [
-          { label: "Quiero hacerlo con Kimberly", icon: "💎", kind: "primary", href: "https://kimberlyali.es/" }
-        ],
-        bullets: ["1️⃣ Para mí, recibir significa...", "2️⃣ Para mí, vender significa...", "3️⃣ Para mí, crecer significa..."],
-        notes: "Ejercicio de asociaciones actuales."
-      },
-      {
-        section: "Clase 5",
-        title: "Un patrón no aparece solo.",
-        badge: "🧬 Sistema interno",
-        bullets: ["1️⃣ Tiene una creencia.", "2️⃣ Tiene una voz.", "3️⃣ Tiene una emoción asociada."],
-        notes: "Una idea: el patrón es un sistema."
-      },
-      {
-        section: "Clase 5",
-        title: "Cobrar más es difícil.",
-        badge: "🧱 Creencia",
-        bullets: ["1️⃣ La mente lo cree.", "2️⃣ El cuerpo se tensa.", "3️⃣ La acción se posterga."],
-        notes: "Desglosa el ejemplo del módulo."
-      },
-      {
-        section: "Clase 5",
-        title: "Mejor no lo pido todavía.",
-        badge: "🙈 Diálogo interno",
-        bullets: ["1️⃣ La voz suaviza el miedo.", "2️⃣ Parece prudencia.", "3️⃣ Pero sostiene postergación."],
-        notes: "Una idea: diálogo interno como excusa protectora."
-      },
-      {
-        section: "Clase 5",
-        title: "Imagino rechazo.",
-        badge: "🎥 Imagen mental",
-        bullets: ["1️⃣ La escena aparece antes de actuar.", "2️⃣ La emoción llega primero.", "3️⃣ La decisión se frena."],
-        notes: "Una idea: anticipar rechazo."
-      },
-      {
-        section: "Clase 5",
-        title: "El resultado: postergas.",
-        badge: "⏳ Patrón visible",
-        bullets: ["1️⃣ No cobras.", "2️⃣ No vendes.", "3️⃣ No avanzas como sabes que puedes."],
-        notes: "Conectar con comportamiento visible."
-      },
-      {
-        section: "Fórmula",
-        title: "Aprende. Repite. Imagina. Asocia.",
-        badge: "🔥 Fórmula simple",
-        cta: [
-          { label: "Guarda esta fórmula", icon: "🔖", kind: "gold", href: "https://abundancia.kimberlyali.es/" }
-        ],
-        bullets: ["1️⃣ La mente aprende una idea.", "2️⃣ Luego la repite.", "3️⃣ Al final la asocia con emoción."],
-        notes: "La fórmula del módulo en versión social."
-      },
-      {
-        section: "Kimberly",
-        title: "Kimberly lo vio como sistema.",
-        badge: "✨ Su realización",
-        story: "No era una sola cosa. Era cómo se hablaba, lo que imaginaba y lo que asociaba con dinero.",
-        image: "assets/04-kimberly-ali-vida-de-abundancia.jpg",
-        imageAlt: "Kimberly Ali",
-        socials: ["instagram", "website"],
-        bullets: ["1️⃣ No era solo miedo.", "2️⃣ No era solo conducta.", "3️⃣ Era programación interna completa."],
-        notes: "Integra la historia sugerida del módulo y el documento de historia."
-      },
-      {
-        section: "Ejercicio final",
-        title: "Mapa de programación interna.",
-        badge: "🗺️ Hazlo tuyo",
-        bullets: ["1️⃣ Mi creencia es...", "2️⃣ Mi diálogo dice...", "3️⃣ Mi asociación activa..."],
-        notes: "Ejercicio final resumido."
-      },
-      {
-        section: "Ejercicio final",
-        title: "¿Qué patrón sostiene todo esto?",
-        badge: "🔓 Honestidad",
-        bullets: ["1️⃣ ¿Postergar?", "2️⃣ ¿Bajar precios?", "3️⃣ ¿Frenarte justo cuando creces?"],
-        notes: "Una idea por slide: identificar patrón visible."
-      },
-      {
-        section: "Cierre",
-        title: "Tú no eres el problema.",
-        badge: "❤️ Reencuadre",
-        cta: [
-          { label: "Volver al inicio", icon: "↩", kind: "gold", slide: 1 }
-        ],
-        bullets: ["1️⃣ Hay una historia.", "2️⃣ Hay una programación.", "3️⃣ Hay un patrón que puedes observar."],
-        notes: "Cierre emocional: la persona deja de verse como el problema."
-      },
-      {
-        section: "Cierre",
-        title: "Tus creencias no son hechos.",
-        badge: "📌 Recuérdalo",
-        bullets: ["1️⃣ Tu diálogo no es toda la verdad.", "2️⃣ Tus imágenes no son destino.", "3️⃣ Tus asociaciones pueden cambiar."],
-        notes: "Mensaje final del módulo."
-      },
-      {
-        section: "Meditación",
-        title: "Observo lo que aprendí.",
-        badge: "🧘‍♀️ Intención",
-        cta: [
-          { label: "Respira y continúa", icon: "🌿", kind: "primary", slide: 38 }
-        ],
-        bullets: ["1️⃣ Abro espacio interno.", "2️⃣ Suelto historias viejas.", "3️⃣ Me abro a nuevas posibilidades."],
-        notes: "Introducir la meditación del módulo."
-      },
-      {
-        section: "Próximo paso",
-        title: "Ahora empieza la reprogramación.",
-        badge: "🚀 Vamos al siguiente nivel",
-        image: "assets/08-el-c-digo-interior-rompe-el-programa-de-es.png",
-        imageAlt: "El Código Interior de Kimberly Ali",
-        imageCaption: "Más herramientas de reprogramación",
-        imageClass: "product-photo",
-        cta: [
-          { label: "Quiero el siguiente paso", icon: "💎", kind: "primary", href: "https://kimberlyali.es/" },
-          { label: "Seguir a Kimberly", icon: "📷", kind: "social", href: "https://www.instagram.com/kimberlyali/" }
-        ],
-        socials: ["tiktok", "website"],
-        bullets: ["1️⃣ Primero observas.", "2️⃣ Luego cuestionas.", "3️⃣ Después instalas una nueva forma de sostener abundancia."],
-        notes: "Cierre con energía y continuidad."
-      }
-    ];
-
-    const deck = document.getElementById("deck");
-    const progressBar = document.getElementById("progressBar");
-    const slideStatus = document.getElementById("slideStatus");
-    const prevBtn = document.getElementById("prevBtn");
-    const nextBtn = document.getElementById("nextBtn");
-    const overviewBtn = document.getElementById("overviewBtn");
-    const drawer = document.getElementById("drawer");
-    const closeOverview = document.getElementById("closeOverview");
-    const thumbs = document.getElementById("thumbs");
-
-    let current = 0;
-
-    function renderSlides() {
-      deck.innerHTML = "";
-      slidesData.forEach((item, index) => {
-        const pickedLayout = item.layout || sectionLayouts[item.section] || layouts[index % layouts.length];
-        const layout = item.story && pickedLayout === "split" ? "cards" : pickedLayout;
-        const article = document.createElement("article");
-        article.className = `slide layout-${layout} ${item.story ? "has-story" : ""} ${item.title.length > 42 ? "title-small" : ""}`;
-        article.id = `slide-${index + 1}`;
-        article.dataset.title = item.title;
-        article.dataset.notes = item.notes || "";
-
-        const bullets = (item.bullets || []).map((text, i) => `
-          <li class="bullet" style="--color:${colors[(i + index) % colors.length]}">
-            <span class="bullet-number">${i + 1}</span>
-            <span class="bullet-icon">${bulletIcons[(i + index) % bulletIcons.length]}</span>
-            <span>${text.replace(/^\d+️⃣\s*/, "")}</span>
-          </li>
-        `).join("");
-
-        const storyPhoto = item.story && item.image ? `<img class="story-photo" src="${item.image}" alt="${item.imageAlt || ""}">` : "";
-        const story = item.story ? `<aside class="story-card">${storyPhoto}<strong>Kimberly cuenta</strong><span>${item.story}</span></aside>` : "";
-        const slidePhoto = item.image && !item.story ? `
-          <figure class="slide-photo ${item.imageClass || ""}">
-            <img src="${item.image}" alt="${item.imageAlt || ""}">
-            ${item.imageCaption ? `<figcaption>${item.imageCaption}</figcaption>` : ""}
-          </figure>
-        ` : "";
-        const mainContent = item.subtitle
-          ? `<p class="cover-subtitle">${item.subtitle}</p><div class="gold-rule"></div>`
-          : `<ol class="bullets">${bullets}</ol>`;
-
-        article.innerHTML = `
-          <span class="visual-mark">${String(index + 1).padStart(2, "0")}</span>
-          <div class="content ${item.story ? "kimberly" : ""} ${item.image ? "with-image" : ""}" data-section="${item.section}">
-            <div>
-              <div class="meta"><span>${item.section}</span><span>${String(index + 1).padStart(2, "0")}/${String(slidesData.length).padStart(2, "0")}</span></div>
-              <div class="badge">${item.badge}</div>
-              <h1 class="slide-title">${item.title}</h1>
-              ${mainContent}
-            </div>
-            ${story || slidePhoto}
-          </div>
-        `;
-        deck.appendChild(article);
-      });
-    }
-
-    function buildThumbs() {
-      thumbs.innerHTML = "";
-      slidesData.forEach((slide, index) => {
-        const button = document.createElement("button");
-        button.type = "button";
-        button.className = "thumb";
-        button.innerHTML = `<b>${String(index + 1).padStart(2, "0")}</b><span>${slide.title}</span>`;
-        button.addEventListener("click", () => {
-          showSlide(index);
-          toggleOverview(false);
-        });
-        thumbs.appendChild(button);
-      });
-    }
-
-    function showSlide(index) {
-      const slides = Array.from(document.querySelectorAll(".slide"));
-      current = Math.max(0, Math.min(slides.length - 1, index));
-      slides.forEach((slide, i) => slide.classList.toggle("active", i === current));
-      slideStatus.textContent = `Diapositiva ${current + 1} de ${slides.length}`;
-      progressBar.style.width = `${((current + 1) / slides.length) * 100}%`;
-      prevBtn.disabled = current === 0;
-      nextBtn.textContent = current === slides.length - 1 ? "Final" : "Siguiente";
-      Array.from(thumbs.children).forEach((thumb, i) => thumb.classList.toggle("active", i === current));
-    }
-
-    function nextSlide() { showSlide(current + 1); }
-    function prevSlide() { showSlide(current - 1); }
-
-    function toggleOverview(force) {
-      const open = typeof force === "boolean" ? force : !drawer.classList.contains("open");
-      drawer.classList.toggle("open", open);
-      overviewBtn.classList.toggle("active", open);
-    }
-
-    prevBtn.addEventListener("click", prevSlide);
-    nextBtn.addEventListener("click", nextSlide);
-    overviewBtn.addEventListener("click", () => toggleOverview());
-    closeOverview.addEventListener("click", () => toggleOverview(false));
-    document.addEventListener("click", (event) => {
-      const link = event.target.closest("[data-go-to]");
-      if (!link) return;
-      event.preventDefault();
-      showSlide(Number(link.dataset.goTo));
-    });
-
-    window.addEventListener("keydown", (event) => {
-      if (event.key === "ArrowRight" || event.key === "PageDown" || event.key === " ") nextSlide();
-      if (event.key === "ArrowLeft" || event.key === "PageUp") prevSlide();
-      if (event.key === "Home") showSlide(0);
-      if (event.key === "End") showSlide(slidesData.length - 1);
-      if (event.key.toLowerCase() === "o") toggleOverview();
-      if (event.key === "Escape") toggleOverview(false);
-    });
-
-    renderSlides();
-    buildThumbs();
-    showSlide(0);
-  </script>
 </body>
 </html>
