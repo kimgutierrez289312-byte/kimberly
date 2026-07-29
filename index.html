@@ -45,22 +45,6 @@
       text-align: center;
     }
 
-    .mark {
-      display: grid;
-      place-items: center;
-      width: 68px;
-      height: 68px;
-      margin-bottom: 22px;
-      color: var(--paper);
-      background: var(--ink);
-      border-radius: 50%;
-      font-family: Georgia, serif;
-      font-size: 28px;
-      font-weight: 700;
-      letter-spacing: -0.12em;
-      text-indent: -0.12em;
-    }
-
     h1 {
       margin: 0;
       font-size: clamp(32px, 7vw, 46px);
@@ -89,7 +73,7 @@
       position: relative;
       width: min(210px, 100%);
       aspect-ratio: 1;
-      margin: 30px auto 0;
+      margin: 0 auto 22px;
       overflow: hidden;
       border-radius: 50%;
       background: var(--soft);
@@ -298,24 +282,22 @@
 <body>
   <main class="page">
     <header class="brand">
-      <div class="mark" aria-hidden="true">KA</div>
+      <section class="gallery" aria-label="Galería de Kimberly Ali">
+        <div class="gallery-track">
+          <figure class="gallery-slide"><img src="assets/images.jpeg" alt="Kimberly Ali"></figure>
+          <figure class="gallery-slide"><img src="assets/images%20%282%29.jpeg" alt="Kimberly Ali"></figure>
+          <figure class="gallery-slide"><img src="assets/images%20%281%29.jpeg" alt="Kimberly Ali con su hija"></figure>
+        </div>
+        <div class="gallery-dots" aria-label="Seleccionar foto"></div>
+        <div class="gallery-controls">
+          <button class="gallery-button" type="button" data-gallery-previous aria-label="Foto anterior">‹</button>
+          <button class="gallery-button" type="button" data-gallery-next aria-label="Foto siguiente">›</button>
+        </div>
+      </section>
       <h1>Kimberly Ali</h1>
       <p class="eyebrow">Abundancia consciente</p>
       <p class="intro">Un espacio para transformar tu relación con el dinero, recibir más y sostener tu próximo nivel con seguridad.</p>
     </header>
-
-    <section class="gallery" aria-label="Galería de Kimberly Ali">
-      <div class="gallery-track">
-        <figure class="gallery-slide"><img src="assets/images.jpeg" alt="Kimberly Ali"></figure>
-        <figure class="gallery-slide"><img src="assets/images%20%282%29.jpeg" alt="Kimberly Ali"></figure>
-        <figure class="gallery-slide"><img src="assets/images%20%281%29.jpeg" alt="Kimberly Ali con su hija"></figure>
-      </div>
-      <div class="gallery-dots" aria-label="Seleccionar foto"></div>
-      <div class="gallery-controls">
-        <button class="gallery-button" type="button" data-gallery-previous aria-label="Foto anterior">‹</button>
-        <button class="gallery-button" type="button" data-gallery-next aria-label="Foto siguiente">›</button>
-      </div>
-    </section>
 
     <nav class="links" aria-label="Enlaces de Kimberly Ali">
       <a class="link-card primary" href="https://kimberlyali.es/" target="_blank" rel="noopener noreferrer">
