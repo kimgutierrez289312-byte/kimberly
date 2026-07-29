@@ -4,18 +4,18 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="Kimberly Ali: recursos y programas para transformar tu relación con el dinero y sostener una abundancia consciente.">
-  <meta name="theme-color" content="#ffffff">
+  <meta name="theme-color" content="#100b08">
   <title>Kimberly Ali | Abundancia Consciente</title>
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E%F0%9F%8C%88%3C/text%3E%3C/svg%3E">
   <style>
     :root {
-      --ink: #151515;
-      --muted: #696969;
-      --line: #e9e9e9;
-      --paper: #ffffff;
-      --soft: #f7f7f5;
-      --accent: #315c4b;
-      --accent-dark: #1e4335;
+      --ink: #fff5e9;
+      --muted: #cdbdae;
+      --line: rgba(255, 148, 54, 0.28);
+      --paper: #100b08;
+      --soft: #21130d;
+      --accent: #ff812f;
+      --accent-dark: #e85112;
     }
 
     * { box-sizing: border-box; }
@@ -26,7 +26,7 @@
       min-width: 320px;
       margin: 0;
       color: var(--ink);
-      background: var(--paper);
+      background: radial-gradient(circle at 50% -10%, #4b2010 0, var(--paper) 42%);
       font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
       -webkit-font-smoothing: antialiased;
     }
@@ -77,6 +77,8 @@
       overflow: hidden;
       border-radius: 50%;
       background: var(--soft);
+      border: 2px solid var(--accent);
+      box-shadow: 0 0 0 8px rgba(255, 129, 47, 0.1), 0 20px 50px rgba(0, 0, 0, 0.48);
     }
 
     .gallery-track {
@@ -114,10 +116,10 @@
       width: 32px;
       height: 32px;
       padding: 0;
-      color: var(--ink);
+      color: #180b06;
       border: 0;
       border-radius: 50%;
-      background: rgba(255, 255, 255, 0.92);
+      background: #ffb16f;
       box-shadow: 0 4px 14px rgba(0, 0, 0, 0.12);
       cursor: pointer;
       font-size: 22px;
@@ -171,7 +173,7 @@
       inset: -2px;
       content: "";
       opacity: 0.28;
-      background: linear-gradient(110deg, transparent 20%, #ff4d94 36%, #ffbf4d 45%, #f6ef4a 51%, #56d98b 58%, #4fb7ff 66%, #9a6cff 74%, transparent 88%);
+      background: linear-gradient(110deg, transparent 18%, #ef4e12 36%, #ff852e 47%, #ffd176 54%, #ff852e 64%, #ef4e12 75%, transparent 90%);
       background-size: 240% 100%;
       animation: rainbow-shimmer 2.8s linear infinite;
       pointer-events: none;
@@ -194,8 +196,8 @@
 
     .link-card:hover,
     .link-card:focus-visible {
-      border-color: #b9c8bf;
-      box-shadow: 0 12px 28px rgba(25, 46, 37, 0.09);
+      border-color: #ff9e57;
+      box-shadow: 0 16px 34px rgba(255, 104, 30, 0.22);
       transform: translateY(-2px);
       outline: none;
     }
@@ -208,7 +210,7 @@
     .link-card.primary {
       color: var(--paper);
       border-color: var(--accent-dark);
-      background: var(--accent-dark);
+      background: linear-gradient(135deg, #f05a16, #ff9c42);
     }
 
     .link-card.primary::before { opacity: 0.55; }
@@ -219,15 +221,15 @@
       flex: 0 0 auto;
       width: 42px;
       height: 42px;
-      color: var(--accent-dark);
-      background: var(--soft);
+      color: #ffab61;
+      background: #31180d;
       border-radius: 10px;
       font-size: 20px;
     }
 
     .primary .icon {
-      color: var(--paper);
-      background: rgba(255, 255, 255, 0.14);
+      color: #1b0b05;
+      background: rgba(34, 13, 4, 0.18);
     }
 
     .link-copy { min-width: 0; }
@@ -384,6 +386,6 @@
       setInterval(() => showSlide(activeSlide + 1), 5000);
     }
   </script>
-  <script src="/assets/site-nav.js?v=20260729-footer2"></script>
+  <script src="/assets/site-nav.js?v=20260729-orange1"></script>
 </body>
 </html>
