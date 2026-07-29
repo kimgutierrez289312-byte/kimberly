@@ -118,4 +118,5 @@ next.onclick=()=>current===slides.length-1?show(0):show(current+1);prev.onclick=
 window.onkeydown=e=>{if(e.key==="ArrowRight")next.click();if(e.key==="ArrowLeft")prev.click()};
 window.addEventListener("touchstart",e=>touch=e.changedTouches[0].screenX);
 window.addEventListener("touchend",e=>{const d=e.changedTouches[0].screenX-touch;if(Math.abs(d)>45)(d<0?next:prev).click()});
-</script></body></html>
+</script>  <script src="/assets/site-nav.js"></script>
+</body></html>
