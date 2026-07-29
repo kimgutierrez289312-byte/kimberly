@@ -85,6 +85,82 @@
       line-height: 1.5;
     }
 
+    .gallery {
+      position: relative;
+      margin-top: 34px;
+      overflow: hidden;
+      border-radius: 18px;
+      background: var(--soft);
+    }
+
+    .gallery-track {
+      display: flex;
+      transition: transform 480ms ease;
+    }
+
+    .gallery-slide {
+      position: relative;
+      flex: 0 0 100%;
+      aspect-ratio: 1 / 0.82;
+      margin: 0;
+    }
+
+    .gallery-slide img {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center 35%;
+    }
+
+    .gallery-controls {
+      position: absolute;
+      right: 14px;
+      bottom: 14px;
+      display: flex;
+      gap: 8px;
+    }
+
+    .gallery-button {
+      display: grid;
+      place-items: center;
+      width: 38px;
+      height: 38px;
+      padding: 0;
+      color: var(--ink);
+      border: 0;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.92);
+      box-shadow: 0 4px 14px rgba(0, 0, 0, 0.12);
+      cursor: pointer;
+      font-size: 22px;
+      line-height: 1;
+    }
+
+    .gallery-button:hover,
+    .gallery-button:focus-visible { background: var(--paper); outline: 2px solid var(--accent); outline-offset: 2px; }
+
+    .gallery-dots {
+      position: absolute;
+      bottom: 18px;
+      left: 50%;
+      display: flex;
+      gap: 7px;
+      transform: translateX(-50%);
+    }
+
+    .gallery-dot {
+      width: 7px;
+      height: 7px;
+      padding: 0;
+      border: 0;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.65);
+      cursor: pointer;
+    }
+
+    .gallery-dot[aria-current="true"] { width: 20px; border-radius: 10px; background: var(--paper); }
+
     .links {
       display: grid;
       gap: 12px;
@@ -231,6 +307,19 @@
       <p class="intro">Un espacio para transformar tu relación con el dinero, recibir más y sostener tu próximo nivel con seguridad.</p>
     </header>
 
+    <section class="gallery" aria-label="Galería de Kimberly Ali">
+      <div class="gallery-track">
+        <figure class="gallery-slide"><img src="assets/images.jpeg" alt="Kimberly Ali"></figure>
+        <figure class="gallery-slide"><img src="assets/images%20%282%29.jpeg" alt="Kimberly Ali"></figure>
+        <figure class="gallery-slide"><img src="assets/images%20%281%29.jpeg" alt="Kimberly Ali con su hija"></figure>
+      </div>
+      <div class="gallery-dots" aria-label="Seleccionar foto"></div>
+      <div class="gallery-controls">
+        <button class="gallery-button" type="button" data-gallery-previous aria-label="Foto anterior">‹</button>
+        <button class="gallery-button" type="button" data-gallery-next aria-label="Foto siguiente">›</button>
+      </div>
+    </section>
+
     <nav class="links" aria-label="Enlaces de Kimberly Ali">
       <a class="link-card primary" href="https://kimberlyali.es/" target="_blank" rel="noopener noreferrer">
         <span class="icon" aria-hidden="true">✦</span>
@@ -269,5 +358,35 @@
       <a href="https://kimberlyali.es/" target="_blank" rel="noopener noreferrer">Web</a>
     </footer>
   </main>
+  <script>
+    const gallery = document.querySelector('.gallery');
+    const galleryTrack = gallery.querySelector('.gallery-track');
+    const slides = [...gallery.querySelectorAll('.gallery-slide')];
+    const dots = gallery.querySelector('.gallery-dots');
+    let activeSlide = 0;
+
+    slides.forEach((_, index) => {
+      const dot = document.createElement('button');
+      dot.className = 'gallery-dot';
+      dot.type = 'button';
+      dot.setAttribute('aria-label', `Ver foto ${index + 1}`);
+      dot.addEventListener('click', () => showSlide(index));
+      dots.append(dot);
+    });
+
+    function showSlide(index) {
+      activeSlide = (index + slides.length) % slides.length;
+      galleryTrack.style.transform = `translateX(-${activeSlide * 100}%)`;
+      [...dots.children].forEach((dot, dotIndex) => dot.setAttribute('aria-current', String(dotIndex === activeSlide)));
+    }
+
+    gallery.querySelector('[data-gallery-previous]').addEventListener('click', () => showSlide(activeSlide - 1));
+    gallery.querySelector('[data-gallery-next]').addEventListener('click', () => showSlide(activeSlide + 1));
+    showSlide(0);
+
+    if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      setInterval(() => showSlide(activeSlide + 1), 5000);
+    }
+  </script>
 </body>
 </html>
