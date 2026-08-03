@@ -656,16 +656,17 @@
     .today-price-small { font-size: 26px; }
   }
 
-  /* Ajuste estructural: contenido y diseño originales; hero en dos columnas. */
+  /* Ajuste estructural: contenido y diseño originales; hero centrado. */
   .sales-hero {
     display: grid;
-    grid-template-columns: minmax(0, 1.05fr) minmax(340px, .84fr);
+    grid-template-columns: minmax(0, 650px);
+    justify-content: center;
     align-items: center;
-    gap: 48px;
+    gap: 32px;
     margin-bottom: 50px;
   }
-  .sales-hero .offer-header { margin-bottom: 0; }
-  .sales-hero .cta-card { margin: 0; }
+  .sales-hero .offer-header { margin: 0; text-align: center; }
+  .sales-hero .cta-card { margin: 0 auto; }
   @media (max-width: 780px) {
     .sales-hero { grid-template-columns: 1fr; gap: 32px; margin-bottom: 40px; }
   }
