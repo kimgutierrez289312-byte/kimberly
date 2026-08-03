@@ -100,7 +100,7 @@
     .links {
       display: grid;
       gap: 12px;
-      margin-top: 38px;
+      margin-top: 46px;
     }
 
     .link-card {
@@ -127,7 +127,12 @@
     }
 
     .link-card.primary {
+      display: grid;
+      justify-items: center;
+      min-height: 190px;
+      padding: 28px 32px;
       color: #fff;
+      text-align: center;
       border-color: #e8752e;
       background: linear-gradient(105deg, #ef6c22 0%, #f58a26 48%, #ffb14a 100%);
       box-shadow: 0 14px 30px rgba(213, 82, 26, 0.24), inset 0 1px rgba(255, 255, 255, 0.32);
@@ -161,8 +166,7 @@
     }
 
     .primary .icon {
-      color: #fff;
-      background: rgba(255, 255, 255, 0.14);
+      display: none;
     }
 
     .link-copy { min-width: 0; }
@@ -176,6 +180,15 @@
       letter-spacing: -0.02em;
     }
 
+    .primary .link-copy strong {
+      max-width: 510px;
+      font-size: clamp(30px, 5.9vw, 47px);
+      font-weight: 800;
+      line-height: 0.98;
+      letter-spacing: -0.055em;
+      text-shadow: 0 2px 0 rgba(145, 57, 13, 0.16);
+    }
+
     .link-copy span {
       margin-top: 4px;
       color: var(--muted);
@@ -185,11 +198,20 @@
 
     .primary .link-copy span { color: rgba(255, 255, 255, 0.76); }
 
+    .primary .link-copy span {
+      margin-top: 12px;
+      font-size: clamp(15px, 2.5vw, 18px);
+      font-weight: 700;
+      letter-spacing: -0.02em;
+    }
+
     .arrow {
       margin-left: auto;
       font-size: 20px;
       font-weight: 400;
     }
+
+    .primary .arrow { display: none; }
 
     .social-links {
       display: flex;
@@ -271,6 +293,7 @@
     @media (max-width: 440px) {
       .page { padding-top: 40px; }
       .feature { gap: 16px; padding: 16px; }
+      .link-card.primary { min-height: 168px; padding: 24px 20px; }
     }
 
     @media (prefers-reduced-motion: reduce) {
