@@ -127,30 +127,26 @@
     }
 
     .link-card.primary {
-      display: grid;
-      justify-items: center;
-      min-height: 190px;
-      padding: 28px 32px;
+      display: inline-flex;
+      justify-self: center;
+      align-items: center;
+      justify-content: center;
+      gap: 22px;
+      min-height: 96px;
+      padding: 20px 34px;
       color: #fff;
       text-align: center;
-      border-color: #e8752e;
-      background: linear-gradient(105deg, #ef6c22 0%, #f58a26 48%, #ffb14a 100%);
-      box-shadow: 0 14px 30px rgba(213, 82, 26, 0.24), inset 0 1px rgba(255, 255, 255, 0.32);
-      animation: cta-vibrate 2.4s ease-in-out infinite;
+      border: 0;
+      border-radius: 10px;
+      background: linear-gradient(135deg, #ff4d2d 0%, #ff751d 100%);
+      box-shadow: 0 16px 30px rgba(255, 90, 35, 0.24);
     }
 
     .link-card.primary:hover,
     .link-card.primary:focus-visible {
-      border-color: #ffd18c;
-      box-shadow: 0 18px 38px rgba(213, 82, 26, 0.34), inset 0 1px rgba(255, 255, 255, 0.34);
-    }
-
-    @keyframes cta-vibrate {
-      0%, 62%, 100% { transform: translate3d(0, 0, 0); }
-      64% { transform: translate3d(-1px, 0, 0) rotate(-0.2deg); }
-      66% { transform: translate3d(1px, 0, 0) rotate(0.2deg); }
-      68% { transform: translate3d(-1px, 0, 0); }
-      70% { transform: translate3d(0, 0, 0); }
+      border-color: transparent;
+      background: linear-gradient(135deg, #ff5937 0%, #ff851f 100%);
+      box-shadow: 0 20px 38px rgba(255, 90, 35, 0.34);
     }
 
     .icon {
@@ -182,11 +178,11 @@
 
     .primary .link-copy strong {
       max-width: 510px;
-      font-size: clamp(30px, 5.9vw, 47px);
+      font-size: clamp(22px, 4.2vw, 32px);
       font-weight: 800;
-      line-height: 0.98;
-      letter-spacing: -0.055em;
-      text-shadow: 0 2px 0 rgba(145, 57, 13, 0.16);
+      line-height: 1;
+      letter-spacing: -0.045em;
+      text-transform: uppercase;
     }
 
     .link-copy span {
@@ -199,10 +195,7 @@
     .primary .link-copy span { color: rgba(255, 255, 255, 0.76); }
 
     .primary .link-copy span {
-      margin-top: 12px;
-      font-size: clamp(15px, 2.5vw, 18px);
-      font-weight: 700;
-      letter-spacing: -0.02em;
+      display: none;
     }
 
     .arrow {
@@ -211,7 +204,13 @@
       font-weight: 400;
     }
 
-    .primary .arrow { display: none; }
+    .primary .arrow {
+      display: block;
+      margin-left: 0;
+      font-size: 32px;
+      font-weight: 700;
+      line-height: 1;
+    }
 
     .social-links {
       display: flex;
@@ -293,7 +292,9 @@
     @media (max-width: 440px) {
       .page { padding-top: 40px; }
       .feature { gap: 16px; padding: 16px; }
-      .link-card.primary { min-height: 168px; padding: 24px 20px; }
+      .link-card.primary { gap: 14px; min-height: 82px; padding: 18px 20px; }
+      .primary .link-copy strong { font-size: clamp(18px, 6.2vw, 26px); }
+      .primary .arrow { font-size: 27px; }
     }
 
     @media (prefers-reduced-motion: reduce) {
@@ -320,7 +321,7 @@
     <nav class="links" aria-label="Enlaces de Kimberly Ali">
       <a class="link-card primary" href="flujo.html">
         <span class="icon" aria-hidden="true">✦</span>
-        <span class="link-copy"><strong>El dinero fluye hacia mí</strong><span>Quiero subir mi ingreso</span></span>
+        <span class="link-copy"><strong>El Dinero Fluye Hacia Mí</strong><span>Quiero Subir Mi Ingreso</span></span>
         <span class="arrow" aria-hidden="true">→</span>
       </a>
     </nav>
