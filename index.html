@@ -128,12 +128,25 @@
 
     .link-card.primary {
       color: #fff;
-      border-color: var(--emerald);
-      background: var(--emerald);
+      border-color: #e8752e;
+      background: linear-gradient(105deg, #ef6c22 0%, #f58a26 48%, #ffb14a 100%);
+      box-shadow: 0 14px 30px rgba(213, 82, 26, 0.24), inset 0 1px rgba(255, 255, 255, 0.32);
+      animation: cta-vibrate 2.4s ease-in-out infinite;
     }
 
-    .links .link-card:nth-child(2) { border-color: rgba(168, 38, 61, 0.28); }
-    .links .link-card:nth-child(3) { border-color: rgba(200, 169, 107, 0.72); }
+    .link-card.primary:hover,
+    .link-card.primary:focus-visible {
+      border-color: #ffd18c;
+      box-shadow: 0 18px 38px rgba(213, 82, 26, 0.34), inset 0 1px rgba(255, 255, 255, 0.34);
+    }
+
+    @keyframes cta-vibrate {
+      0%, 62%, 100% { transform: translate3d(0, 0, 0); }
+      64% { transform: translate3d(-1px, 0, 0) rotate(-0.2deg); }
+      66% { transform: translate3d(1px, 0, 0) rotate(0.2deg); }
+      68% { transform: translate3d(-1px, 0, 0); }
+      70% { transform: translate3d(0, 0, 0); }
+    }
 
     .icon {
       display: grid;
@@ -176,6 +189,30 @@
       margin-left: auto;
       font-size: 20px;
       font-weight: 400;
+    }
+
+    .social-links {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 8px 20px;
+      margin: 24px 0 0;
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .social-links a {
+      color: inherit;
+      font-weight: 600;
+      text-decoration: none;
+      text-underline-offset: 4px;
+    }
+
+    .social-links a:hover,
+    .social-links a:focus-visible {
+      color: var(--burgundy);
+      text-decoration: underline;
+      outline: none;
     }
 
     .feature {
@@ -235,6 +272,15 @@
       .page { padding-top: 40px; }
       .feature { gap: 16px; padding: 16px; }
     }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        scroll-behavior: auto !important;
+        transition-duration: 0.01ms !important;
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+      }
+    }
   </style>
 </head>
 <body>
@@ -251,19 +297,15 @@
     <nav class="links" aria-label="Enlaces de Kimberly Ali">
       <a class="link-card primary" href="flujo.html">
         <span class="icon" aria-hidden="true">✦</span>
-        <span class="link-copy"><strong>Flujo de dinero</strong><span>Activa una nueva relación con recibir y sostener más</span></span>
+        <span class="link-copy"><strong>El dinero fluye hacia mí</strong><span>Quiero subir mi ingreso</span></span>
         <span class="arrow" aria-hidden="true">→</span>
       </a>
-      <a class="link-card" href="/codigo">
-        <span class="icon" aria-hidden="true">⌘</span>
-        <span class="link-copy"><strong>Abundancia Consciente</strong><span>Un proceso para transformar tu relación con el dinero desde adentro</span></span>
-        <span class="arrow" aria-hidden="true">→</span>
-      </a>
-      <a class="link-card" href="blog/slideshows/index.html">
-        <span class="icon" aria-hidden="true">✺</span>
-        <span class="link-copy"><strong>Sabiduría dorada</strong><span>14 ideas para expandir tu mentalidad</span></span>
-        <span class="arrow" aria-hidden="true">→</span>
-      </a>
+    </nav>
+
+    <nav class="social-links" aria-label="Redes sociales de Kimberly Ali">
+      <a href="https://www.instagram.com/kimberlyali/">Instagram</a>
+      <a href="https://www.tiktok.com/@kimberlyali">TikTok</a>
+      <a href="https://www.youtube.com/watch?v=-lOrt4ffTnk">YouTube</a>
     </nav>
 
   </main>
