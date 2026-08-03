@@ -4,18 +4,23 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="Kimberly Ali: recursos y programas para transformar tu relación con el dinero y sostener una abundancia consciente.">
-  <meta name="theme-color" content="#100b08">
+  <meta name="theme-color" content="#164e3e">
   <title>Kimberly Ali | Abundancia Consciente</title>
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E%F0%9F%8C%88%3C/text%3E%3C/svg%3E">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <style>
     :root {
-      --ink: #fff5e9;
-      --muted: #cdbdae;
-      --line: rgba(255, 148, 54, 0.28);
-      --paper: #100b08;
-      --soft: #21130d;
-      --accent: #ff812f;
-      --accent-dark: #e85112;
+      --ink: #261f1d;
+      --muted: #765f58;
+      --line: #e6d8ce;
+      --paper: #faf7f2;
+      --soft: #f4ede6;
+      --emerald: #164e3e;
+      --burgundy: #a8263d;
+      --gold: #c8a96b;
+      --rose: #d8a7a7;
     }
 
     * { box-sizing: border-box; }
@@ -26,8 +31,8 @@
       min-width: 320px;
       margin: 0;
       color: var(--ink);
-      background: radial-gradient(circle at 50% -10%, #4b2010 0, var(--paper) 42%);
-      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: radial-gradient(circle at 50% -15%, #fff 0, var(--paper) 55%);
+      font-family: Montserrat, ui-sans-serif, system-ui, sans-serif;
       -webkit-font-smoothing: antialiased;
     }
 
@@ -47,14 +52,17 @@
 
     h1 {
       margin: 0;
-      font-size: clamp(32px, 7vw, 46px);
-      line-height: 0.98;
-      letter-spacing: -0.06em;
+      color: var(--emerald);
+      font-family: "Cormorant Garamond", Georgia, serif;
+      font-size: clamp(44px, 9vw, 64px);
+      font-weight: 600;
+      line-height: 0.86;
+      letter-spacing: 0.03em;
     }
 
     .eyebrow {
       margin: 12px 0 0;
-      color: var(--accent);
+      color: var(--gold);
       font-size: 12px;
       font-weight: 800;
       letter-spacing: 0.13em;
@@ -77,72 +85,17 @@
       overflow: hidden;
       border-radius: 50%;
       background: var(--soft);
-      border: 2px solid var(--accent);
-      box-shadow: 0 0 0 8px rgba(255, 129, 47, 0.1), 0 20px 50px rgba(0, 0, 0, 0.48);
+      border: 2px solid var(--gold);
+      box-shadow: 0 0 0 8px rgba(200, 169, 107, 0.17), 0 20px 50px rgba(38, 31, 29, 0.14);
     }
 
-    .gallery-track {
-      display: flex;
-      transition: transform 480ms ease;
-    }
-
-    .gallery-slide {
-      position: relative;
-      flex: 0 0 100%;
-      aspect-ratio: 1;
-      margin: 0;
-    }
-
-    .gallery-slide img {
+    .gallery img {
       display: block;
       width: 100%;
       height: 100%;
       object-fit: cover;
       object-position: center 35%;
     }
-
-    .gallery-controls {
-      position: absolute;
-      inset: 0 10px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      pointer-events: none;
-    }
-
-    .gallery-button {
-      display: grid;
-      place-items: center;
-      width: 32px;
-      height: 32px;
-      padding: 0;
-      color: #180b06;
-      border: 0;
-      border-radius: 50%;
-      background: #ffb16f;
-      box-shadow: 0 4px 14px rgba(0, 0, 0, 0.12);
-      cursor: pointer;
-      font-size: 22px;
-      line-height: 1;
-      pointer-events: auto;
-    }
-
-    .gallery-button:hover,
-    .gallery-button:focus-visible { background: var(--paper); outline: 2px solid var(--accent); outline-offset: 2px; }
-
-    .gallery-dots { display: none; }
-
-    .gallery-dot {
-      width: 7px;
-      height: 7px;
-      padding: 0;
-      border: 0;
-      border-radius: 50%;
-      background: rgba(255, 255, 255, 0.65);
-      cursor: pointer;
-    }
-
-    .gallery-dot[aria-current="true"] { width: 20px; border-radius: 10px; background: var(--paper); }
 
     .links {
       display: grid;
@@ -160,60 +113,27 @@
       padding: 14px 18px;
       text-decoration: none;
       border: 1px solid var(--line);
-      overflow: hidden;
       border-radius: 14px;
-      background: var(--paper);
+      background: #fffdfa;
       transition: border-color 160ms ease, box-shadow 160ms ease, transform 160ms ease;
-      animation: rainbow-vibrate 3.8s ease-in-out infinite;
-    }
-
-    .link-card::before {
-      position: absolute;
-      z-index: -1;
-      inset: -2px;
-      content: "";
-      opacity: 0.28;
-      background: linear-gradient(110deg, transparent 18%, #ef4e12 36%, #ff852e 47%, #ffd176 54%, #ff852e 64%, #ef4e12 75%, transparent 90%);
-      background-size: 240% 100%;
-      animation: rainbow-shimmer 2.8s linear infinite;
-      pointer-events: none;
-    }
-
-    .link-card > * { position: relative; z-index: 1; }
-
-    @keyframes rainbow-shimmer {
-      from { background-position: 180% 0; }
-      to { background-position: -70% 0; }
-    }
-
-    @keyframes rainbow-vibrate {
-      0%, 84%, 100% { transform: translate(0, 0); }
-      87% { transform: translate(1px, -1px); }
-      90% { transform: translate(-1px, 1px); }
-      93% { transform: translate(1px, 0); }
-      96% { transform: translate(0, -1px); }
     }
 
     .link-card:hover,
     .link-card:focus-visible {
-      border-color: #ff9e57;
-      box-shadow: 0 16px 34px rgba(255, 104, 30, 0.22);
+      border-color: var(--gold);
+      box-shadow: 0 16px 34px rgba(22, 78, 62, 0.13);
       transform: translateY(-2px);
       outline: none;
     }
 
-    @media (prefers-reduced-motion: reduce) {
-      .link-card,
-      .link-card::before { animation: none; }
-    }
-
     .link-card.primary {
-      color: var(--paper);
-      border-color: var(--accent-dark);
-      background: linear-gradient(135deg, #f05a16, #ff9c42);
+      color: #fff;
+      border-color: var(--emerald);
+      background: var(--emerald);
     }
 
-    .link-card.primary::before { opacity: 0.55; }
+    .links .link-card:nth-child(2) { border-color: rgba(168, 38, 61, 0.28); }
+    .links .link-card:nth-child(3) { border-color: rgba(200, 169, 107, 0.72); }
 
     .icon {
       display: grid;
@@ -221,15 +141,15 @@
       flex: 0 0 auto;
       width: 42px;
       height: 42px;
-      color: #ffab61;
-      background: #31180d;
+      color: var(--emerald);
+      background: #edf3ef;
       border-radius: 10px;
       font-size: 20px;
     }
 
     .primary .icon {
-      color: #1b0b05;
-      background: rgba(34, 13, 4, 0.18);
+      color: #fff;
+      background: rgba(255, 255, 255, 0.14);
     }
 
     .link-copy { min-width: 0; }
@@ -250,7 +170,7 @@
       line-height: 1.25;
     }
 
-    .primary .link-copy span { color: rgba(255, 255, 255, 0.72); }
+    .primary .link-copy span { color: rgba(255, 255, 255, 0.76); }
 
     .arrow {
       margin-left: auto;
@@ -292,7 +212,7 @@
     }
 
     .feature a {
-      color: var(--accent-dark);
+      color: var(--burgundy);
       font-size: 14px;
       font-weight: 800;
       text-decoration-thickness: 1px;
@@ -320,17 +240,8 @@
 <body>
   <main class="page">
     <header class="brand">
-      <section class="gallery" aria-label="Galería de Kimberly Ali">
-        <div class="gallery-track">
-          <figure class="gallery-slide"><img src="assets/images.jpeg" alt="Kimberly Ali"></figure>
-          <figure class="gallery-slide"><img src="assets/images%20%282%29.jpeg" alt="Kimberly Ali"></figure>
-          <figure class="gallery-slide"><img src="assets/images%20%281%29.jpeg" alt="Kimberly Ali con su hija"></figure>
-        </div>
-        <div class="gallery-dots" aria-label="Seleccionar foto"></div>
-        <div class="gallery-controls">
-          <button class="gallery-button" type="button" data-gallery-previous aria-label="Foto anterior">‹</button>
-          <button class="gallery-button" type="button" data-gallery-next aria-label="Foto siguiente">›</button>
-        </div>
+      <section class="gallery" aria-label="Foto de Kimberly Ali">
+        <img src="assets/images.jpeg" alt="Kimberly Ali">
       </section>
       <h1>Kimberly Ali</h1>
       <p class="eyebrow">Abundancia consciente</p>
@@ -356,36 +267,6 @@
     </nav>
 
   </main>
-  <script>
-    const gallery = document.querySelector('.gallery');
-    const galleryTrack = gallery.querySelector('.gallery-track');
-    const slides = [...gallery.querySelectorAll('.gallery-slide')];
-    const dots = gallery.querySelector('.gallery-dots');
-    let activeSlide = 0;
-
-    slides.forEach((_, index) => {
-      const dot = document.createElement('button');
-      dot.className = 'gallery-dot';
-      dot.type = 'button';
-      dot.setAttribute('aria-label', `Ver foto ${index + 1}`);
-      dot.addEventListener('click', () => showSlide(index));
-      dots.append(dot);
-    });
-
-    function showSlide(index) {
-      activeSlide = (index + slides.length) % slides.length;
-      galleryTrack.style.transform = `translateX(-${activeSlide * 100}%)`;
-      [...dots.children].forEach((dot, dotIndex) => dot.setAttribute('aria-current', String(dotIndex === activeSlide)));
-    }
-
-    gallery.querySelector('[data-gallery-previous]').addEventListener('click', () => showSlide(activeSlide - 1));
-    gallery.querySelector('[data-gallery-next]').addEventListener('click', () => showSlide(activeSlide + 1));
-    showSlide(0);
-
-    if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-      setInterval(() => showSlide(activeSlide + 1), 5000);
-    }
-  </script>
   <script src="/assets/site-nav-abundancia.js"></script>
 </body>
 </html>
