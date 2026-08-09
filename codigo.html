@@ -896,7 +896,8 @@
   /* La oferta se presentará más adelante: no mostramos precio, urgencia ni compra en esta versión. */
   #precio,
   .sticky-bar,
-  .urgency-bar { display:none !important; }
+  .urgency-bar,
+  .days-section { display:none !important; }
 </style>
 </head>
 <body>
@@ -1007,7 +1008,7 @@
     <p>
       A diferencia de los cursos de motivación que te dan energía por 2 días y después nada, este método trabaja directamente las <strong>creencias concretas</strong> que te frenan — con ejercicios prácticos que puedes hacer hoy.
     </p>
-    <p style="font-size:14px; color:var(--mid); margin-bottom:16px; letter-spacing:0.05em; text-transform:uppercase; font-weight:700;">Con ejercicios simples pero poderosos, en 7 días vas a:</p>
+    <p style="font-size:14px; color:var(--mid); margin-bottom:16px; letter-spacing:0.05em; text-transform:uppercase; font-weight:700;">Con ejercicios simples pero poderosos, podrás:</p>
     <ul class="how-list">
       <li>Identificar exactamente qué creencias te están costando dinero real</li>
       <li>Reemplazarlas con una identidad financiera nueva y funcional</li>
@@ -1047,7 +1048,7 @@
           </div>
           <div style="margin-left:auto; font-size:13px;">⭐⭐⭐⭐⭐</div>
         </div>
-        <div style="font-size:clamp(14px,1.5vw,16px); color:#2d2620; line-height:1.75; font-style:italic;">"Entré escéptica porque ya había comprado cursos que no funcionaron. Esto es diferente — son ejercicios que se sienten, no conferencias. <strong>Al día 5 ya actuaba diferente con el dinero.</strong>"</div>
+        <div style="font-size:clamp(14px,1.5vw,16px); color:#2d2620; line-height:1.75; font-style:italic;">"Entré escéptica porque ya había comprado cursos que no funcionaron. Esto es diferente: son ejercicios que se sienten, no conferencias. <strong>Empecé a actuar diferente con el dinero.</strong>"</div>
       </div>
       <div style="background:#eaf5ea; border-radius:4px 18px 18px 18px; padding:22px 26px; position:relative; box-shadow:0 2px 16px rgba(0,0,0,0.07); display:flex; flex-direction:column; gap:14px;">
         <div style="display:flex; align-items:center; gap:12px; margin-bottom:4px;">
@@ -1069,7 +1070,7 @@
           </div>
           <div style="margin-left:auto; font-size:13px;">⭐⭐⭐⭐⭐</div>
         </div>
-        <div style="font-size:clamp(14px,1.5vw,16px); color:#2d2620; line-height:1.75; font-style:italic;">"Lo que más me gustó es que Kimberly habla desde experiencia real — no desde un libro. El ejercicio del Día 1 me abrió los ojos. <strong>Por fin entendí por qué el dinero siempre se me iba.</strong>"</div>
+        <div style="font-size:clamp(14px,1.5vw,16px); color:#2d2620; line-height:1.75; font-style:italic;">"Lo que más me gustó es que Kimberly habla desde experiencia real, no desde un libro. Un ejercicio me abrió los ojos. <strong>Por fin entendí por qué el dinero siempre se me iba.</strong>"</div>
       </div>
       <div style="background:#eaf5ea; border-radius:4px 18px 18px 18px; padding:22px 26px; position:relative; box-shadow:0 2px 16px rgba(0,0,0,0.07); display:flex; flex-direction:column; gap:14px;">
         <div style="display:flex; align-items:center; gap:12px; margin-bottom:4px;">
@@ -1080,7 +1081,7 @@
           </div>
           <div style="margin-left:auto; font-size:13px;">⭐⭐⭐⭐⭐</div>
         </div>
-        <div style="font-size:clamp(14px,1.5vw,16px); color:#2d2620; line-height:1.75; font-style:italic;">"Yo soy hombre y pensé que esto no era para mí. Pero los ejercicios son universales — atacan la raíz del problema. <strong>En el día 4 identifiqué una creencia que tenía desde los 8 años.</strong> Increíble."</div>
+        <div style="font-size:clamp(14px,1.5vw,16px); color:#2d2620; line-height:1.75; font-style:italic;">"Yo soy hombre y pensé que esto no era para mí. Pero los ejercicios son universales y atacan la raíz del problema. <strong>Identifiqué una creencia que tenía desde los 8 años.</strong> Increíble."</div>
       </div>
       <div style="background:#eaf5ea; border-radius:4px 18px 18px 18px; padding:22px 26px; position:relative; box-shadow:0 2px 16px rgba(0,0,0,0.07); display:flex; flex-direction:column; gap:14px;">
         <div style="display:flex; align-items:center; gap:12px; margin-bottom:4px;">
@@ -1091,7 +1092,7 @@
           </div>
           <div style="margin-left:auto; font-size:13px;">⭐⭐⭐⭐⭐</div>
         </div>
-        <div style="font-size:clamp(14px,1.5vw,16px); color:#2d2620; line-height:1.75; font-style:italic;">"Nunca había invertido en desarrollo personal. Este fue mi primero — y entendí por qué la gente lo hace. <strong>7 días cambiaron algo fundamental en cómo veo el dinero.</strong> Recomendado 100%."</div>
+        <div style="font-size:clamp(14px,1.5vw,16px); color:#2d2620; line-height:1.75; font-style:italic;">"Nunca había invertido en desarrollo personal. Este fue mi primero y entendí por qué la gente lo hace. <strong>Este proceso cambió algo fundamental en cómo veo el dinero.</strong> Recomendado 100%."</div>
       </div>
       <div style="background:#eaf5ea; border-radius:4px 18px 18px 18px; padding:22px 26px; position:relative; box-shadow:0 2px 16px rgba(0,0,0,0.07); display:flex; flex-direction:column; gap:14px;">
         <div style="display:flex; align-items:center; gap:12px; margin-bottom:4px;">
@@ -1125,8 +1126,8 @@
       </div>
       <div style="width:1px; height:48px; background:var(--border);"></div>
       <div style="text-align:center;">
-        <div style="font-family:'Playfair Display',serif; font-size:clamp(32px,4vw,48px); font-weight:900; color:var(--gold);">7 días</div>
-        <div style="font-size:12px; color:var(--mid); letter-spacing:0.12em; text-transform:uppercase; font-weight:700;">Para ver resultados</div>
+        <div style="font-family:'Playfair Display',serif; font-size:clamp(32px,4vw,48px); font-weight:900; color:var(--gold);">A tu ritmo</div>
+        <div style="font-size:12px; color:var(--mid); letter-spacing:0.12em; text-transform:uppercase; font-weight:700;">Para integrar el proceso</div>
       </div>
       <div style="width:1px; height:48px; background:var(--border);"></div>
       <div style="text-align:center;">
@@ -1229,7 +1230,7 @@
 <div class="transform-section">
   <div class="transform-inner">
     <span class="sec-emoji" style="text-align:center; display:block;">⚡</span>
-    <h2>En 7 días, <em>todo cambia.</em></h2>
+    <h2>Cuando cambias tu relación, <em>todo cambia.</em></h2>
     <div class="t-cols">
       <div class="t-col">
         <div class="t-head before">❌ &nbsp;Antes del proceso</div>
@@ -1296,7 +1297,7 @@
       </div>
       <div class="exp-item">
         <div class="exp-num">3</div>
-        <div class="exp-text">Guía PDF de ejercicios para los 7 días — descargable</div>
+        <div class="exp-text">Guía PDF de ejercicios descargable</div>
       </div>
       <div class="exp-item">
         <div class="exp-num">4</div>
@@ -1461,7 +1462,7 @@
         </details>
         <details class="faq">
           <summary class="faq-q">¿Cuándo obtengo acceso?</summary>
-          <p class="faq-ans">Inmediatamente después de tu pago. Recibes el acceso en tu email y puedes comenzar el Día 1 hoy mismo.</p>
+          <p class="faq-ans">Recibirás los detalles de acceso al confirmar tu inscripción.</p>
         </details>
       </div>
     </div>
@@ -1486,7 +1487,7 @@
       Transformar tu relación con el dinero comienza con mirar tus patrones, pensamientos y emociones con honestidad.
     </p>
     <a href="#metodo" class="btn-gold" style="font-size:clamp(17px,2vw,22px); padding:22px 56px; display:inline-block;">
-      💰 Ver la oferta completa →
+      ✦ Conoce Abundancia Consciente →
     </a>
   </div>
 </div>
@@ -1727,6 +1728,6 @@
   tick();
 })();
 </script>
-  <script src="/assets/site-nav-abundancia.js"></script>
+  <script src="assets/site-nav.js?v=20260809-architecture"></script>
 </body>
 </html>
