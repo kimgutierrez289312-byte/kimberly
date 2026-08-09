@@ -728,6 +728,15 @@
   }
   .main-title { margin: 0 0 22px; font-size: clamp(56px, 9vw, 108px); line-height: .93; }
   .sub-headline { max-width: 720px; margin: 0 auto 30px; color: var(--muted); font-family: 'DM Sans', sans-serif; font-size: clamp(20px, 3vw, 29px); font-weight: 500; line-height: 1.42; }
+  .hero-video {
+    position: relative; display: block; width: min(100%, 620px); margin: 30px auto 38px;
+    overflow: hidden; border: 1px solid var(--line-ui); border-radius: 16px;
+    box-shadow: 0 20px 42px rgba(76, 38, 16, .16); text-decoration: none;
+  }
+  .hero-video img { display: block; width: 100%; aspect-ratio: 16 / 9; object-fit: cover; }
+  .hero-video::after { content: '▶'; position: absolute; top: 50%; left: 50%; display: grid; width: 68px; height: 68px; place-items: center; color: #fff; background: var(--orange); border-radius: 50%; box-shadow: 0 12px 28px rgba(72, 26, 4, .28); font-size: 27px; transform: translate(-50%, -50%); transition: transform .2s ease; }
+  .hero-video:hover::after, .hero-video:focus-visible::after { transform: translate(-50%, -50%) scale(1.08); }
+  .hero-video span { position: absolute; right: 14px; bottom: 12px; left: 14px; color: #fff; font-size: 13px; font-weight: 800; letter-spacing: .06em; text-align: center; text-shadow: 0 2px 10px rgba(0,0,0,.8); text-transform: uppercase; }
   .story-icons { display: grid; grid-template-columns: repeat(2, 1fr); gap: 14px; max-width: 820px; margin: 38px auto 0; }
   .story-item { align-items: flex-start; gap: 13px; padding: 20px; color: var(--ink); background: #fff; border: 1px solid var(--line-ui); border-radius: 14px; backdrop-filter: none; }
   .story-icon { min-width: 32px; font-size: 26px; }
@@ -750,10 +759,13 @@
   .btn-primary:hover { background: linear-gradient(135deg, #ff4f20, #ff913a); box-shadow: 0 24px 36px rgba(255,100,40,.32); }
   .badge-item { color: var(--muted); background: transparent; border-color: var(--line-ui); }
   .benefits-grid, .reviews-grid { gap: 16px; }
+  .section-intro { max-width: 720px; margin: 0 auto 34px; text-align: center; }
+  .section-intro .offer-eyebrow { margin-bottom: 14px; }
+  .section-intro h2 { margin: 0; color: var(--ink); font: 800 clamp(38px, 5vw, 64px)/1.02 'Playfair Display', Georgia, serif; letter-spacing: -.055em; }
   .benefit-item, .review-card { color: var(--ink); background: #fff; border: 1px solid var(--line-ui); border-radius: 14px; box-shadow: none; }
   .benefit-item h4, .benefit-item p, .review-quote, .review-person b, .review-person span { color: var(--ink) !important; }
   .benefit-item p, .review-person span { color: var(--muted) !important; }
-  .reviews-section, .real-world-section, .about-kimberly, .testimonial-video, .faq-section { margin: 0; padding: 96px 0; color: var(--ink); background: transparent; border: 0; border-radius: 0; box-shadow: none; }
+  .reviews-section, .real-world-section, .about-kimberly, .testimonial-video, .faq-section { margin: 0; padding: 96px 0; color: var(--ink); background: transparent; border: 0; border-radius: 0; box-shadow: none; text-align: center; }
   .reviews-section { border-top: 1px solid var(--line-ui); }
   .reviews-title, .real-title, .faq-title { margin-bottom: 20px; font-size: clamp(40px, 5.5vw, 68px); line-height: 1.02; }
   .reviews-title em { color: var(--orange); }
@@ -766,6 +778,8 @@
   .ba-before, .ba-after { border: 0; }
   .ba-before .ba-title, .ba-after .ba-title, .ba-desc, .ba-arrow { color: var(--ink); }
   .about-inner { padding: clamp(30px, 6vw, 68px); color: #fff7ef; background: #21120b; border-radius: 18px; }
+  .about-kimberly .section-intro { margin-bottom: 31px; }
+  .about-kimberly .section-intro h2 { color: var(--ink); }
   .about-text h2, .about-text p, .about-text .proof-number, .about-text .method-tag { color: #fff7ef !important; }
   .about-text h2 { -webkit-text-fill-color: #fff7ef !important; }
   .about-text .story-badge { color: #b84214; }
@@ -783,6 +797,7 @@
     .ka-site-nav { display: none !important; }
     .story-icons { grid-template-columns: 1fr; }
     .reviews-section, .real-world-section, .about-kimberly, .testimonial-video, .faq-section { padding: 70px 0; }
+    .hero-video::after { width: 58px; height: 58px; font-size: 23px; }
     .ba-row { grid-template-columns: 1fr; gap: 14px; }
     .ba-before, .ba-after { padding: 0; text-align: left; }
     .ba-arrow { transform: rotate(90deg); }
@@ -805,6 +820,10 @@
     <div class="offer-eyebrow">Reprogramación subconsciente para el dinero</div>
     <div class="main-title">FLUJO DE DINERO</div>
     <div class="sub-headline">No estás bloqueada… <br>estás programada para NO recibir.</div>
+    <a class="hero-video" href="https://youtube.com/shorts/2u5ijcgotic?feature=share" target="_blank" rel="noopener" aria-label="Ver video de Kimberly Ali en YouTube">
+      <img src="https://img.youtube.com/vi/2u5ijcgotic/hqdefault.jpg" alt="Video de Kimberly Ali sobre Flujo de Dinero">
+      <span>Ver la introducción en YouTube</span>
+    </a>
     <div class="story-icons">
       <div class="story-item"><div class="story-icon">🧠</div><div class="story-text"><strong>Tu subconsciente escupe el dinero</strong> — aunque lo necesites, lo rechazas sin darte cuenta.</div></div>
       <div class="story-item"><div class="story-icon">🔒</div><div class="story-text"><strong>La resistencia invisible</strong> que hace que no cobres lo que vales, no publiques, no cierres.</div></div>
@@ -869,6 +888,10 @@
   </div>
 
   <!-- BENEFICIOS GRID -->
+  <div class="section-intro">
+    <div class="offer-eyebrow">La transformación</div>
+    <h2>Lo que empieza a cambiar cuando eliges recibir</h2>
+  </div>
   <div class="benefits-grid">
     <div class="benefit-item"><span class="emoji">✂️</span><h4>Corta el patrón de escasez</h4><p>Rompe el ciclo hereditario de "no merecer"</p></div>
     <div class="benefit-item"><span class="emoji">💎</span><h4>Te abre a recibir sin culpa</h4><p>Elimina el rechazo automático al dinero</p></div>
@@ -924,6 +947,10 @@
   </div>
 
   <div class="about-kimberly">
+    <div class="section-intro">
+      <div class="offer-eyebrow">La historia detrás del método</div>
+      <h2>Kimberly no enseña desde la teoría.</h2>
+    </div>
     <div class="about-inner">
       <div class="about-evidence">
         <img src="https://iili.io/BL4KBiN.jpg" alt="Kimberly Ali cheque $65,000" onerror="this.src='https://placehold.co/400x250/2A1536/C9A96E?text=Cheque+%2465k'">
