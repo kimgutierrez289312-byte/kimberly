@@ -5,7 +5,6 @@
   const links = [
     ['Inicio', '/'],
     ['Flujo', '/flujo.html'],
-    ['Abundancia', '/codigo.html'],
     ['Sabiduría', '/blog/slideshows/']
   ];
   const social = [
