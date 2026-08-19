@@ -213,6 +213,24 @@
     .section-shell { padding-right: 18px; padding-left: 18px; }
   }
 
+  /* CONSISTENCIA FINAL DE COMPONENTES */
+  .section-shell--dark .review-card, .section-shell--dark .science-card { color: var(--dark-text); background: rgba(255,255,255,.08); border-color: rgba(255,248,241,.20); }
+  .section-shell--dark .review-card .stars { color: #ffd166; }
+  .section-shell--dark .science-card h3 { color: var(--dark-text) !important; }
+  .section-shell--dark .science-card p { color: rgba(255,248,241,.78) !important; }
+  .section-shell--dark .review-quote { color: var(--dark-text) !important; }
+  .section-shell--dark .review-person b { color: var(--dark-text) !important; }
+  .section-shell--dark .section-heading h2 span { color: #ffd0ad !important; }
+  .section-heading h2 span { color: inherit !important; }
+  .hero-points { text-align: left; }
+  .point { min-height: 68px; }
+  .benefit-card, .review-card, .audio-card, .science-card, .mechanism-card, .before-after, .steps-list li { box-shadow: none; }
+  .benefit-card, .review-card, .audio-card, .science-card, .mechanism-card, .before-after, .steps-list li, .offer-card, .section-shell, .hero { border-radius: 18px; }
+  .section-shell, .hero, .offer-card { box-shadow: 0 12px 32px rgba(76,38,16,.06); }
+  .stars, .audio-index, .check { font-family: 'DM Sans', sans-serif; }
+  .review-quote, .example-box p, .faq-answer, .before-after-side p, .benefit-card p, .science-card p, .audio-card p { font-family: 'DM Sans', sans-serif; }
+  .offer-item-copy, .offer-value, .badge, .faq-question, .steps-list li, .steps-list b { font-family: 'DM Sans', sans-serif; }
+
   @media (prefers-reduced-motion: reduce) { *, *::before, *::after { animation: none !important; transition: none !important; } }
 </style>
 </head>
@@ -306,7 +324,7 @@
     </section>
 
     <section class="section-shell" aria-labelledby="resenas-flujo">
-      <div class="section-heading"><div class="eyebrow">Experiencias compartidas</div><h2 id="resenas-flujo">Personas reales. <span style="color: var(--orange);">Cambios reales.</span></h2></div>
+      <div class="section-heading"><div class="eyebrow">Experiencias compartidas</div><h2 id="resenas-flujo">Personas reales. <span class="heading-accent">Cambios reales.</span></h2></div>
       <div class="review-grid">
         <article class="review-card"><div class="stars">★★★★★</div><p class="review-quote">“En el Día 3 entendí exactamente de dónde venía esa creencia. La semana siguiente tomé una decisión financiera que llevaba 2 años posponiendo.”</p><div class="review-person"><b>María C.</b><span>Colombia 🇨🇴 · Reseña compartida</span></div></article>
         <article class="review-card"><div class="stars">★★★★★</div><p class="review-quote">“Entré escéptica. Esto es diferente: son ejercicios que se sienten, no conferencias. Al día 5 ya actuaba diferente con el dinero.”</p><div class="review-person"><b>Valentina R.</b><span>Venezuela 🇻🇪 · Reseña compartida</span></div></article>
@@ -327,7 +345,7 @@
     </section>
 
     <section class="section-shell section-shell--dark" aria-labelledby="comunidad-flujo">
-      <div class="section-heading"><div class="eyebrow">Voces de la comunidad</div><h2 id="comunidad-flujo">No es magia. <span style="color: #ffb27c;">Es una nueva relación con el dinero.</span></h2></div>
+      <div class="section-heading"><div class="eyebrow">Voces de la comunidad</div><h2 id="comunidad-flujo">No es magia. <span class="heading-accent">Es una nueva relación con el dinero.</span></h2></div>
       <div class="review-grid review-grid--two">
         <article class="review-card"><div class="stars">★★★★★</div><p class="review-quote">“En el día 4 identifiqué una creencia que tenía desde los 8 años. Los ejercicios atacan la raíz del problema.”</p><div class="review-person"><b>Carlos V.</b><span>Colombia 🇨🇴 · Reseña compartida</span></div></article>
         <article class="review-card"><div class="stars">★★★★★</div><p class="review-quote">“Cada día abre un nivel más profundo. El audio del Día 6 fue el momento que más me impactó; todavía lo escucho antes de dormir.”</p><div class="review-person"><b>Diana S.</b><span>Ecuador 🇪🇨 · Reseña compartida</span></div></article>
