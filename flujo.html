@@ -6,1175 +6,341 @@
 <title>Kimberly Ali · Flujo de Dinero | Reprogramación Cuántica</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700;9..40,800&family=Playfair+Display:ital,wght@0,700;0,800;1,700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Playfair+Display:wght@700;800;900&display=swap" rel="stylesheet">
 <style>
-  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
   :root {
-    --gold: #C9A96E;
-    --gold-light: #E8D5B0;
-    --gold-dark: #8B6A3E;
-    --magenta: #D4006A;
-    --violet: #5B0EA6;
-    --deep: #0A0612;
-    --mid: #140A26;
-    --surface: rgba(255,255,255,0.04);
-    --border: rgba(201,169,110,0.2);
-    --white: #FFFFFF;
-    --cream: #F5F0E8;
-    --text-muted: #B8A99A;
-    --green-check: #2ECC71;
-    --red-cross: #E74C3C;
+    --bg: #fffaf5;
+    --surface: #ffffff;
+    --surface-soft: #fff1e5;
+    --surface-muted: #f7eee7;
+    --ink: #21140e;
+    --muted: #6e5f56;
+    --muted-dark: #4e4038;
+    --line: #eadbd0;
+    --orange: #ff5a24;
+    --orange-dark: #c94318;
+    --orange-pale: #ffe1d0;
+    --green: #2f9b52;
+    --green-pale: #e8f6eb;
+    --dark: #24150e;
+    --dark-2: #3a2116;
+    --dark-text: #fff8f1;
+    --radius-lg: 26px;
+    --radius-md: 16px;
+    --shadow: 0 18px 50px rgba(76, 38, 16, .08);
   }
 
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
   html { scroll-behavior: smooth; }
+  body { min-width: 320px; overflow-x: hidden; color: var(--ink); background: var(--bg); font-family: 'DM Sans', sans-serif; -webkit-font-smoothing: antialiased; }
+  img { max-width: 100%; }
+  a { color: inherit; }
+  .bg-canvas, .orb, .stars, .ka-site-nav { display: none !important; }
 
-  body {
-    font-family: 'Raleway', sans-serif;
-    background: var(--deep);
-    color: #ffffff;
-    min-height: 100vh;
-    overflow-x: hidden;
-    -webkit-font-smoothing: antialiased;
-  }
+  .page { width: 100%; max-width: 1240px; margin: 0 auto; padding: 28px 28px 76px; }
+  .section-shell { width: 100%; margin: 28px 0 0; padding: clamp(48px, 6vw, 82px) clamp(22px, 5vw, 72px); background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius-lg); box-shadow: var(--shadow); }
+  .section-shell--soft { background: linear-gradient(135deg, #fff8f1, var(--surface-soft)); border-color: #f1c9ac; }
+  .section-shell--muted { background: var(--surface-muted); border-color: var(--line); }
+  .section-shell--dark { color: var(--dark-text); background: linear-gradient(135deg, var(--dark), var(--dark-2)); border-color: var(--dark); }
+  .section-shell--dark h2, .section-shell--dark h3, .section-shell--dark h4, .section-shell--dark p, .section-shell--dark .review-quote, .section-shell--dark .review-person b { color: var(--dark-text) !important; -webkit-text-fill-color: currentColor !important; }
+  .section-shell--dark .review-person span { color: rgba(255,248,241,.68) !important; }
 
-  /* ANIMATED BACKGROUND */
-  .bg-canvas {
-    position: fixed;
-    inset: 0;
-    z-index: 0;
-    background:
-      radial-gradient(ellipse 80% 60% at 50% -10%, rgba(91,14,166,0.45) 0%, transparent 60%),
-      radial-gradient(ellipse 50% 40% at 90% 80%, rgba(212,0,106,0.2) 0%, transparent 55%),
-      radial-gradient(ellipse 60% 50% at 10% 70%, rgba(91,14,166,0.15) 0%, transparent 50%),
-      #0A0612;
-  }
-  .orb {
-    position: fixed;
-    border-radius: 50%;
-    filter: blur(80px);
-    pointer-events: none;
-    animation: drift linear infinite;
-    z-index: 0;
-  }
-  .orb-1 { width: 500px; height: 500px; background: rgba(91,14,166,0.25); top: -150px; left: -100px; animation-duration: 25s; }
-  .orb-2 { width: 350px; height: 350px; background: rgba(212,0,106,0.18); bottom: 10%; right: -80px; animation-duration: 20s; }
-  .orb-3 { width: 250px; height: 250px; background: rgba(201,169,110,0.12); top: 40%; left: 50%; animation-duration: 30s; }
-  @keyframes drift {
-    0%   { transform: translate(0, 0) scale(1); }
-    33%  { transform: translate(30px, -40px) scale(1.05); }
-    66%  { transform: translate(-20px, 30px) scale(0.95); }
-    100% { transform: translate(0, 0) scale(1); }
-  }
-  .stars { position: fixed; inset: 0; z-index: 0; pointer-events: none; overflow: hidden; }
-  .star {
-    position: absolute;
-    background: white;
-    border-radius: 50%;
-    animation: twinkle ease-in-out infinite;
-  }
-  @keyframes twinkle { 0%,100% { opacity: 0.1; transform: scale(1); } 50% { opacity: 0.7; transform: scale(1.3); } }
+  .eyebrow { display: inline-flex; align-items: center; width: fit-content; margin-bottom: 16px; padding: 8px 12px; color: var(--orange-dark); background: var(--orange-pale); border-radius: 999px; font-size: 12px; font-weight: 800; letter-spacing: .14em; line-height: 1; text-transform: uppercase; }
+  .section-shell--dark .eyebrow { color: #ffd0ad; background: rgba(255,255,255,.10); }
+  h1, h2, h3, h4 { font-family: 'Playfair Display', Georgia, serif; letter-spacing: -.055em; }
+  h2 { color: var(--ink); font-size: clamp(40px, 5.6vw, 70px); line-height: .98; }
+  h3 { color: var(--ink); font-size: clamp(28px, 3.2vw, 44px); line-height: 1.02; }
+  p { color: var(--muted); }
+  .section-heading { max-width: 760px; margin: 0 auto 34px; text-align: center; }
+  .section-heading h2 { margin-bottom: 16px; }
+  .section-heading p { max-width: 650px; margin: 0 auto; font-size: 19px; line-height: 1.45; }
 
-  .page {
-    position: relative;
-    z-index: 2;
-    max-width: 1100px;
-    margin: 0 auto;
-    padding: 40px 20px 80px;
-  }
-
-  /* KIMBERLY HERO */
-  .kimberly-hero {
-    text-align: center;
-    margin-bottom: 50px;
-    animation: fadeUp 0.8s ease both;
-  }
-  .avatar-wrap {
-    position: relative;
-    width: 130px;
-    height: 130px;
-    margin: 0 auto 20px;
-  }
-  .avatar-ring {
-    position: absolute;
-    inset: -5px;
-    border-radius: 50%;
-    background: conic-gradient(var(--gold) 0deg, var(--magenta) 120deg, var(--violet) 240deg, var(--gold) 360deg);
-    animation: spin 8s linear infinite;
-  }
-  @keyframes spin { to { transform: rotate(360deg); } }
-  .avatar-inner {
-    position: absolute;
-    inset: 3px;
-    border-radius: 50%;
-    background: var(--deep);
-    overflow: hidden;
-  }
-  .avatar-inner img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    object-position: center top;
-  }
-  .kimberly-name {
-    font-family: 'Cinzel Decorative', serif;
-    font-size: 32px;
-    background: linear-gradient(135deg, var(--gold-light) 0%, var(--gold) 70%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    margin-bottom: 8px;
-  }
-  .kimberly-sub {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 22px;
-    font-style: italic;
-    color: rgba(255,255,255,0.9);
-  }
-
-  /* ABOUT SECTION */
-  .about-kimberly {
-    background: linear-gradient(135deg, rgba(20,10,38,0.9), rgba(10,6,18,0.96));
-    border: 1px solid rgba(201,169,110,0.4);
-    border-radius: 48px;
-    padding: 48px 36px;
-    margin: 30px auto 70px;
-    max-width: 780px;
-    backdrop-filter: blur(12px);
-    box-shadow: 0 25px 45px rgba(0,0,0,0.5);
-    text-align: center;
-  }
-  .about-inner {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 30px;
-  }
-  .about-evidence {
-    max-width: 320px;
-    margin: 0 auto;
-  }
-  .about-evidence img {
-    width: 100%;
-    border-radius: 24px;
-    border: 1px solid var(--gold);
-    box-shadow: 0 16px 32px rgba(0,0,0,0.3);
-  }
-  .about-text {
-    max-width: 620px;
-  }
-  .about-text h2 {
-    font-family: 'Cinzel Decorative', serif;
-    font-size: 42px;
-    background: linear-gradient(135deg, #fff, var(--gold-light));
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    margin-bottom: 12px;
-  }
-  .story-badge {
-    display: inline-block;
-    background: rgba(212,0,106,0.2);
-    border-radius: 100px;
-    padding: 6px 20px;
-    font-size: 14px;
-    letter-spacing: 1px;
-    border: 1px solid var(--gold);
-    margin-bottom: 24px;
-    color: var(--gold-light);
-  }
-  .about-text p {
-    font-size: 18px;
-    line-height: 1.5;
-    color: var(--cream);
-    margin-bottom: 24px;
-  }
-  .proof-number {
-    font-size: 48px;
-    font-weight: 800;
-    color: var(--gold-light);
-    font-family: 'Cinzel Decorative', serif;
-    display: inline-block;
-    margin-right: 12px;
-  }
-  .method-tags {
-    display: flex;
-    gap: 16px;
-    flex-wrap: wrap;
-    justify-content: center;
-    margin: 30px 0 20px;
-  }
-  .method-tag {
-    background: rgba(255,255,255,0.05);
-    border-radius: 60px;
-    padding: 8px 20px;
-    font-size: 14px;
-    font-weight: 600;
-    border-left: 2px solid var(--gold);
-  }
-
-  /* OFFER HEADER */
-  .offer-header {
-    text-align: center;
-    margin-bottom: 40px;
-  }
-  .offer-eyebrow {
-    margin-bottom: 14px;
-    color: var(--gold);
-    font-size: 13px;
-    font-weight: 800;
-    letter-spacing: .18em;
-    text-transform: uppercase;
-  }
-  /* Flujo comienza con el mensaje de venta, sin navegación superpuesta. */
-  .ka-site-nav { display: none !important; }
-  .main-title {
-    font-family: 'Cinzel Decorative', serif;
-    font-size: clamp(48px, 12vw, 90px);
-    font-weight: 900;
-    line-height: 1;
-    background: linear-gradient(135deg, var(--gold-light) 0%, var(--gold) 40%, #FFF2D7 80%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    letter-spacing: 0.02em;
-    margin-bottom: 20px;
-    text-transform: uppercase;
-  }
-  .sub-headline {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: clamp(26px, 5vw, 38px);
-    font-weight: 600;
-    color: var(--gold-light);
-    margin-bottom: 25px;
-  }
-  /* SOCIAL PROOF */
-  .reviews-section { margin: 0 -24px 88px; padding: clamp(58px,8vw,96px) 24px; }
-  .reviews-inner { max-width: 1120px; margin: 0 auto; }
-  .reviews-kicker { margin: 0 0 12px; font-size: 12px; font-weight: 800; letter-spacing: .15em; text-align: center; text-transform: uppercase; }
-  .reviews-title { max-width: 720px; margin: 0 auto 38px; font-family: 'Cormorant Garamond', serif; font-size: clamp(40px,6vw,68px); line-height: .95; text-align: center; }
-  .reviews-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 16px; }
-  .review-card { display: flex; min-height: 260px; flex-direction: column; padding: 24px; border: 1px solid rgba(201,169,110,.28); border-radius: 18px; background: transparent; box-shadow: none; }
-  .review-stars { margin-bottom: 18px; color: #d79a27; font-size: 17px; letter-spacing: .08em; }
-  .review-quote { flex: 1; margin: 0 0 24px; font-family: 'Cormorant Garamond', serif; font-size: 21px; font-style: italic; line-height: 1.22; }
-  .review-person { display: flex; align-items: center; gap: 0; }
-  .review-person b { display: block; font-size: 14px; }
-  .review-person span { display: block; margin-top: 3px; font-size: 11px; letter-spacing: .04em; }
-  .reviews-section--light { background: transparent; color: var(--cream); }
-  .reviews-section--light .reviews-kicker { color: var(--gold-light); }
-  .reviews-section--light .reviews-title em { color: var(--gold); }
-  .reviews-section--light .review-person span { color: var(--text-muted); }
-  .reviews-section--dark { border: 0; background: transparent; color: var(--cream); }
-  .reviews-section--dark .reviews-kicker { color: var(--gold-light); }
-  .reviews-section--dark .reviews-title em { color: var(--gold); }
-  .reviews-section--dark .reviews-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); max-width: 800px; margin: 0 auto; }
-  .reviews-section--dark .review-card { border-color: rgba(201,169,110,.28); }
-  .reviews-section--dark .review-person span { color: rgba(255,248,237,.68); }
-  @media (max-width: 860px) { .reviews-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
-  @media (max-width: 560px) { .reviews-section { margin: 0 -16px 62px; padding: 52px 16px; } .reviews-grid, .reviews-section--dark .reviews-grid { grid-template-columns: 1fr; } .review-card { min-height: 0; } }
-  
-  .story-icons {
-    display: flex;
-    flex-direction: column;
-    gap: 24px;
-    max-width: 700px;
-    margin: 35px auto 30px;
-  }
-  .story-item {
-    display: flex;
-    align-items: center;
-    gap: 18px;
-    background: rgba(255,255,255,0.02);
-    backdrop-filter: blur(8px);
-    padding: 16px 24px;
-    border-radius: 60px;
-    border: 1px solid rgba(201,169,110,0.2);
-    text-align: left;
-  }
-  .story-icon {
-    font-size: 38px;
-    min-width: 60px;
-    text-align: center;
-  }
-  .story-text {
-    font-size: 18px;
-    font-weight: 500;
-    color: var(--cream);
-  }
-  .story-text strong {
-    color: var(--gold-light);
-  }
-  .impact-line {
-    font-size: 28px;
-    font-weight: 800;
-    background: linear-gradient(135deg, #fff, var(--gold-light));
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    margin: 35px 0 15px;
-  }
-  .inner-text {
-    color: var(--text-muted);
-    font-size: 18px;
-    max-width: 700px;
-    margin: 0 auto;
-  }
-
-  /* BEFORE & AFTER TABLE */
-  .real-world-section {
-    background: linear-gradient(135deg, rgba(91,14,166,0.15), rgba(212,0,106,0.08));
-    border-radius: 48px;
-    padding: 48px 32px;
-    margin: 48px 0 60px;
-    border: 1px solid rgba(201,169,110,0.3);
-  }
-  .real-title {
-    font-family: 'Cinzel Decorative', serif;
-    font-size: 36px;
-    text-align: center;
-    margin-bottom: 16px;
-  }
-  .real-sub {
-    text-align: center;
-    color: var(--gold-light);
-    margin-bottom: 40px;
-    font-size: 18px;
-  }
-  .before-after-table {
-    display: flex;
-    flex-direction: column;
-    gap: 24px;
-  }
-  .ba-row {
-    display: grid;
-    grid-template-columns: 1fr 60px 1fr;
-    gap: 16px;
-    background: rgba(0,0,0,0.4);
-    border-radius: 28px;
-    padding: 20px 24px;
-    transition: all 0.2s;
-    border: 1px solid rgba(255,255,255,0.05);
-  }
-  .ba-row:hover {
-    border-color: rgba(201,169,110,0.4);
-    transform: translateX(4px);
-  }
-  .ba-before, .ba-after {
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-  }
-  .ba-before {
-    text-align: right;
-    border-right: 1px dashed rgba(255,255,255,0.2);
-    padding-right: 20px;
-  }
-  .ba-after {
-    text-align: left;
-    padding-left: 20px;
-  }
-  .ba-icon {
-    font-size: 32px;
-  }
-  .ba-title {
-    font-weight: 700;
-    font-size: 18px;
-  }
-  .ba-before .ba-title { color: #ff8888; }
-  .ba-after .ba-title { color: var(--green-check); }
-  .ba-desc {
-    font-size: 14px;
-    color: var(--text-muted);
-    line-height: 1.4;
-  }
-  .ba-arrow {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 28px;
-    color: var(--gold-light);
-    font-weight: 800;
-  }
-  @media (max-width: 780px) {
-    .ba-row {
-      grid-template-columns: 1fr 40px 1fr;
-      gap: 8px;
-      padding: 16px;
-    }
-    .ba-title { font-size: 15px; }
-    .ba-icon { font-size: 24px; }
-    .ba-arrow { font-size: 20px; }
-    .ba-before { padding-right: 10px; }
-    .ba-after { padding-left: 10px; }
-  }
-
-  /* CTA BOX */
-  .cta-card {
-    background: linear-gradient(135deg, rgba(20,10,38,0.95) 0%, rgba(10,6,18,0.98) 100%);
-    border: 2px solid rgba(201,169,110,0.5);
-    border-radius: 48px;
-    padding: 40px 32px;
-    max-width: 650px;
-    margin: 0 auto 50px;
-    box-shadow: 0 25px 50px rgba(0,0,0,0.6);
-    backdrop-filter: blur(12px);
-    text-align: center;
-  }
-  
-  .instant-access-headline {
-    font-family: 'Cinzel Decorative', serif;
-    font-size: 24px;
-    font-weight: 600;
-    color: var(--gold-light);
-    margin-bottom: 20px;
-    letter-spacing: 0.5px;
-    background: linear-gradient(135deg, #fff, var(--gold));
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    animation: pulseText 2s ease infinite;
-  }
-  @keyframes pulseText {
-    0%, 100% { opacity: 0.9; transform: scale(1);}
-    50% { opacity: 1; transform: scale(1.02); text-shadow: 0 0 5px rgba(201,169,110,0.5);}
-  }
-  
-  /* Imagen del producto - más grande y responsiva */
-  .product-img-large {
-    max-width: 280px;
-    margin: 0 auto 25px;
-    border-radius: 24px;
-    overflow: hidden;
-    box-shadow: 0 20px 35px rgba(0,0,0,0.5);
-    transition: transform 0.3s ease;
-  }
-  .product-img-large img {
-    width: 100%;
-    display: block;
-  }
-  .product-img-large:hover {
-    transform: scale(1.02);
-  }
-  
-  /* Checklist con valores en dólares */
-  .checklist-big {
-    text-align: left;
-    background: rgba(0,0,0,0.4);
-    border-radius: 32px;
-    padding: 28px 32px;
-    margin: 28px 0 20px;
-    border: 1px solid rgba(46,204,113,0.3);
-  }
-  .checklist-item {
-    display: flex;
-    align-items: center;
-    gap: 14px;
-    font-size: 17px;
-    font-weight: 500;
-    padding: 14px 0;
-    border-bottom: 1px solid rgba(255,255,255,0.08);
-    color: var(--cream);
-  }
-  .checklist-item:last-child {
-    border-bottom: none;
-  }
-  .check-icon {
-    font-size: 28px;
-    color: var(--green-check);
-    filter: drop-shadow(0 0 4px #2ECC71);
-    min-width: 36px;
-    text-align: center;
-  }
-  .checklist-item strong {
-    color: var(--gold-light);
-  }
-  .item-price {
-    margin-left: auto;
-    font-weight: 700;
-    color: var(--gold);
-    font-size: 18px;
-    background: rgba(0,0,0,0.4);
-    padding: 4px 12px;
-    border-radius: 40px;
-    white-space: nowrap;
-  }
-  
-  .total-value-box {
-    background: linear-gradient(135deg, rgba(46,204,113,0.15), rgba(201,169,110,0.1));
-    border-radius: 60px;
-    padding: 16px 24px;
-    margin: 20px 0 16px;
-    text-align: center;
-    border: 1px solid rgba(201,169,110,0.4);
-  }
-  .total-label {
-    font-size: 18px;
-    font-weight: 600;
-    color: var(--text-muted);
-    letter-spacing: 1px;
-  }
-  .total-amount {
-    font-size: 48px;
-    font-weight: 900;
-    color: #ff8888;
-    text-decoration: line-through;
-    font-family: 'Cinzel Decorative', serif;
-    margin: 8px 0;
-  }
-  .today-price-small {
-    font-size: 32px;
-    font-weight: 800;
-    color: var(--green-check);
-    background: rgba(46,204,113,0.2);
-    display: inline-block;
-    padding: 6px 24px;
-    border-radius: 60px;
-    margin-top: 8px;
-  }
-  .price-note {
-    font-size: 13px;
-    color: var(--text-muted);
-    margin-top: 12px;
-  }
-
-  .btn-primary {
-    display: inline-block;
-    width: 100%;
-    background: linear-gradient(135deg, #F5D742, #C9A96E, #A17F46);
-    color: #0A0612;
-    text-align: center;
-    padding: 20px 24px;
-    border-radius: 60px;
-    font-weight: 800;
-    font-size: 1.4rem;
-    text-decoration: none;
-    letter-spacing: 0.05em;
-    transition: all 0.3s ease;
-    box-shadow: 0 0 0 0 rgba(201,169,110,0.7), 0 8px 20px rgba(0,0,0,0.3);
-    margin: 20px 0 20px;
-    animation: pulseGlow 1.8s infinite, shakeSubtle 3s infinite;
-    border: none;
-    cursor: pointer;
-  }
-  
-  @keyframes pulseGlow {
-    0% { box-shadow: 0 0 0 0 rgba(201,169,110,0.4), 0 8px 20px rgba(0,0,0,0.3); transform: scale(1); }
-    50% { box-shadow: 0 0 0 8px rgba(201,169,110,0.2), 0 0 0 16px rgba(212,0,106,0.1), 0 12px 28px rgba(0,0,0,0.4); transform: scale(1.02); }
-    100% { box-shadow: 0 0 0 0 rgba(201,169,110,0), 0 8px 20px rgba(0,0,0,0.3); transform: scale(1); }
-  }
-  
-  @keyframes shakeSubtle {
-    0%, 100% { transform: translateX(0); }
-    95% { transform: translateX(0); }
-    97% { transform: translateX(-2px) rotate(-0.5deg); }
-    99% { transform: translateX(2px) rotate(0.5deg); }
-  }
-  
-  .btn-primary:hover {
-    animation: none;
-    transform: translateY(-4px) scale(1.03);
-    background: linear-gradient(135deg, #FFE173, #DBAF5A, #C4954A);
-    box-shadow: 0 12px 30px rgba(201,169,110,0.7);
-  }
-  
-  .security-badges {
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-    gap: 18px;
-    margin-top: 12px;
-    margin-bottom: 8px;
-  }
-  .badge-item {
-    display: inline-flex;
-    align-items: center;
-    gap: 6px;
-    background: rgba(0,0,0,0.5);
-    backdrop-filter: blur(4px);
-    padding: 6px 14px;
-    border-radius: 40px;
-    font-size: 12px;
-    font-weight: 500;
-    color: var(--gold-light);
-    border: 0.5px solid rgba(201,169,110,0.4);
-  }
-  
-  .benefits-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
-    gap: 18px;
-    margin: 48px 0 60px;
-  }
-  .benefit-item {
-    background: rgba(255,255,255,0.02);
-    border: 1px solid rgba(201,169,110,0.2);
-    border-radius: 24px;
-    padding: 24px 16px;
-    text-align: center;
-    backdrop-filter: blur(8px);
-    transition: all 0.3s;
-  }
-  .benefit-item:hover { border-color: rgba(201,169,110,0.5); transform: translateY(-6px); }
-  .benefit-item .emoji { font-size: 44px; margin-bottom: 12px; display: block; }
-  .benefit-item h4 { font-size: 20px; font-weight: 700; color: var(--gold-light); margin-bottom: 8px; }
-  .benefit-item p { font-size: 14px; color: var(--text-muted); }
-
-  .testimonial-video {
-    max-width: 700px;
-    margin: 40px auto 50px;
-    text-align: center;
-  }
-  .testimonial-title {
-    font-family: 'Cinzel Decorative', serif;
-    font-size: 28px;
-    margin-bottom: 20px;
-    color: var(--gold-light);
-  }
-  .video-container {
-    position: relative;
-    padding-bottom: 56.25%;
-    height: 0;
-    overflow: hidden;
-    border-radius: 32px;
-    border: 2px solid rgba(201,169,110,0.4);
-    box-shadow: 0 20px 35px rgba(0,0,0,0.5);
-    background: #000;
-  }
-  .video-container iframe {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    border-radius: 30px;
-    border: none;
-  }
-
-  .faq-section {
-    margin-top: 60px;
-    border-top: 1px solid rgba(201,169,110,0.2);
-    padding-top: 60px;
-  }
-  .faq-title {
-    font-family: 'Cinzel Decorative', serif;
-    font-size: 36px;
-    text-align: center;
-    margin-bottom: 40px;
-  }
-  .faq-item {
-    background: rgba(255,255,255,0.02);
-    border-bottom: 1px solid rgba(255,255,255,0.05);
-    padding: 24px 0;
-  }
-  .faq-question { font-size: 20px; font-weight: 700; color: var(--gold-light); margin-bottom: 10px; }
-  .faq-answer { font-size: 16px; color: var(--text-muted); line-height: 1.5; }
-
-  .footer-note {
-    text-align: center;
-    margin-top: 70px;
-    color: rgba(255,255,255,0.3);
-    font-size: 14px;
-  }
-
-  @keyframes fadeUp {
-    from { opacity: 0; transform: translateY(30px); }
-    to { opacity: 1; transform: translateY(0); }
-  }
-  @media (max-width: 680px) {
-    .page { padding: 20px 16px 60px; }
-    .cta-card { padding: 28px 20px; }
-    .product-img-large { max-width: 220px; }
-    .checklist-item { font-size: 17px; gap: 10px; flex-wrap: wrap; }
-    .check-icon { font-size: 22px; min-width: 28px; }
-    .item-price { font-size: 14px; margin-left: 0; margin-top: 6px; width: 100%; text-align: left; padding-left: 36px; }
-    .checklist-item { flex-wrap: wrap; }
-    .btn-primary { font-size: 1.1rem; padding: 16px 20px; }
-    .real-title { font-size: 28px; }
-    .instant-access-headline { font-size: 18px; }
-    .total-amount { font-size: 36px; }
-    .today-price-small { font-size: 26px; }
-  }
-
-  /* Ajuste estructural: contenido y diseño originales; hero centrado. */
-  .sales-hero {
-    display: grid;
-    grid-template-columns: minmax(0, 650px);
-    justify-content: center;
-    align-items: center;
-    gap: 32px;
-    margin-bottom: 50px;
-  }
-  .sales-hero .offer-header { margin: 0; text-align: center; }
-  .sales-hero .cta-card { margin: 0 auto; }
-  @media (max-width: 780px) {
-    .sales-hero { grid-template-columns: 1fr; gap: 32px; margin-bottom: 40px; }
-  }
-
-  /* SISTEMA VISUAL COMPARTIDO CON INICIO */
-  :root { --ink: #20120b; --muted: #6b5e56; --orange: #ff6428; --orange-2: #ff9a4d; --cream-ui: #fff9f3; --line-ui: #eaded3; }
-  body {
-    background: var(--cream-ui) !important;
-    color: var(--ink) !important;
-    font-family: 'DM Sans', 'Raleway', sans-serif !important;
-  }
-  .bg-canvas, .orb, .stars { display: none !important; }
-  .page { max-width: 1160px; margin: 0 auto; padding: 0 20px; }
-  .ka-site-nav { display: none !important; }
-  .sales-hero { display: block; max-width: 920px; margin: 0 auto 92px; }
-  .offer-header { margin: 0 auto 44px; text-align: center; }
-  .offer-eyebrow, .story-badge {
-    display: inline-block; margin: 0 0 19px; padding: 8px 12px;
-    color: #b84214; background: #ffe4cf; border: 0; border-radius: 999px;
-    font: 800 12px/1 'DM Sans', sans-serif; letter-spacing: .13em; text-transform: uppercase;
-  }
-  .main-title, .reviews-title, .real-title, .faq-title, .about-text h2, .testimonial-title {
-    color: var(--ink) !important; background: none !important; -webkit-text-fill-color: currentColor !important;
-    font-family: 'Playfair Display', Georgia, serif !important; letter-spacing: -.055em; text-transform: none;
-  }
-  .main-title { max-width: 650px; margin: 0 auto 20px; font-size: clamp(34px, 4.5vw, 58px); line-height: 1.02; }
-  .main-title .head-red { color: #d94129; font-weight: 900; }
-  .main-title .head-yellow { display: inline-block; padding: .02em .14em .08em; color: #21120b; font-weight: 900; background: #ffe16a; box-shadow: inset 0 -.12em 0 rgba(255,179,53,.42); }
-  .sub-headline { max-width: 650px; margin: 0 auto 28px; color: var(--muted); font-family: 'DM Sans', sans-serif; font-size: clamp(18px, 2.4vw, 24px); font-weight: 500; line-height: 1.42; }
-  .hero-video {
-    position: relative; display: block; width: min(100%, 620px); margin: 30px auto 38px;
-    overflow: hidden; border: 1px solid var(--line-ui); border-radius: 16px;
-    box-shadow: 0 20px 42px rgba(76, 38, 16, .16); text-decoration: none;
-  }
+  .hero { display: grid; grid-template-columns: minmax(0, 1.02fr) minmax(360px, .98fr); gap: 44px; align-items: center; min-height: 690px; padding: clamp(26px, 5vw, 68px) clamp(22px, 5vw, 72px); background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius-lg); box-shadow: var(--shadow); }
+  .hero-copy { max-width: 630px; }
+  .hero h1 { margin-bottom: 22px; color: var(--ink); font-size: clamp(46px, 6vw, 82px); line-height: .93; }
+  .hero h1 .highlight { display: inline; padding: 0 .10em .05em; background: #ffe36c; box-shadow: inset 0 -.12em 0 rgba(255,176,46,.35); }
+  .hero h1 .red { color: #d6442c; }
+  .hero-subtitle { max-width: 570px; margin-bottom: 25px; font-size: clamp(19px, 2.2vw, 25px); line-height: 1.42; }
+  .hero-video { position: relative; display: block; width: 100%; max-width: 640px; margin: 0 0 24px; overflow: hidden; border: 1px solid var(--line); border-radius: 18px; box-shadow: 0 18px 34px rgba(76,38,16,.12); text-decoration: none; }
   .hero-video img { display: block; width: 100%; aspect-ratio: 16 / 9; object-fit: cover; }
-  .hero-video::after { content: '▶'; position: absolute; top: 50%; left: 50%; display: grid; width: 68px; height: 68px; place-items: center; color: #fff; background: var(--orange); border-radius: 50%; box-shadow: 0 12px 28px rgba(72, 26, 4, .28); font-size: 27px; transform: translate(-50%, -50%); transition: transform .2s ease; }
+  .hero-video::after { content: '▶'; position: absolute; top: 50%; left: 50%; display: grid; width: 68px; height: 68px; place-items: center; color: #fff; background: var(--orange); border-radius: 50%; box-shadow: 0 10px 22px rgba(72,26,4,.25); font-size: 26px; transform: translate(-50%, -50%); transition: transform .2s ease; }
   .hero-video:hover::after, .hero-video:focus-visible::after { transform: translate(-50%, -50%) scale(1.08); }
-  .hero-video span { position: absolute; right: 14px; bottom: 12px; left: 14px; color: #fff; font-size: 13px; font-weight: 800; letter-spacing: .06em; text-align: center; text-shadow: 0 2px 10px rgba(0,0,0,.8); text-transform: uppercase; }
-  .story-icons { display: grid; grid-template-columns: repeat(2, 1fr); gap: 14px; max-width: 820px; margin: 38px auto 0; }
-  .story-item { align-items: flex-start; gap: 13px; padding: 20px; color: var(--ink); background: #fff; border: 1px solid var(--line-ui); border-radius: 14px; backdrop-filter: none; }
-  .story-icon { min-width: 32px; font-size: 26px; }
-  .story-text, .story-text strong { color: var(--ink); font-size: 16px; line-height: 1.48; }
-  .impact-line { margin: 35px 0 12px; color: var(--ink); background: none; -webkit-text-fill-color: currentColor; font: 800 clamp(30px, 4vw, 47px)/1.03 'Playfair Display', Georgia, serif; letter-spacing: -.045em; }
-  .inner-text { color: var(--muted); font-size: 18px; line-height: 1.55; }
-  .cta-card { max-width: 760px; margin: 0 auto; padding: clamp(25px, 5vw, 46px); color: var(--ink); background: #fff; border: 1px solid var(--line-ui); border-radius: 18px; box-shadow: 0 24px 50px rgba(76, 38, 16, .10); }
-  .instant-access-headline { margin-bottom: 24px; color: #b84214; background: none; -webkit-text-fill-color: currentColor; font: 800 clamp(18px, 2.5vw, 28px)/1.14 'Playfair Display', Georgia, serif; animation: none; }
-  .product-showcase { position: relative; display: grid; place-items: center; width: min(100%, 520px); margin: 4px auto 36px; padding: 26px 32px 30px; isolation: isolate; }
-  .product-showcase::before { content: ''; position: absolute; z-index: -2; width: 88%; aspect-ratio: 1; border-radius: 50%; background: radial-gradient(circle, rgba(255,129,51,.27) 0%, rgba(255,179,109,.13) 36%, transparent 70%); filter: blur(8px); }
-  .product-showcase::after { content: ''; position: absolute; z-index: -1; inset: 13% 9%; border: 1px solid rgba(255,121,47,.30); border-radius: 50% 45% 48% 44%; transform: rotate(-7deg); }
-  .product-img-large { position: relative; z-index: 1; width: min(100%, 400px); max-width: none; margin: 0; overflow: visible; border: 10px solid #fff; border-radius: 22px; background: #fff; box-shadow: 0 27px 48px rgba(59,35,21,.25), 0 0 0 1px rgba(255,121,47,.22); transform: rotate(-2.2deg); }
-  .product-img-large::before { content: ''; position: absolute; inset: -17px; z-index: -1; border-radius: 32px; background: linear-gradient(135deg, #ff4f20, #ffd3a3 46%, #ff8d38); opacity: .9; transform: rotate(4deg); }
-  .product-img-large img { border-radius: 12px; }
-  .product-seal, .product-chip { position: absolute; z-index: 2; display: inline-flex; align-items: center; justify-content: center; font-family: 'DM Sans', sans-serif; font-weight: 800; line-height: 1.08; box-shadow: 0 10px 22px rgba(59,35,21,.16); }
-  .product-seal { top: 7px; right: 19px; width: 108px; height: 108px; padding: 15px; border-radius: 50%; color: #fff; text-align: center; font-size: 13px; background: linear-gradient(135deg, #ff4f20, #f07824); border: 4px solid #fff; transform: rotate(9deg); }
-  .product-chip { bottom: 7px; left: 4px; padding: 11px 14px; border: 2px solid #fff; border-radius: 999px; color: #2b170d; font-size: 12px; letter-spacing: .03em; background: #ffe6d2; transform: rotate(-5deg); }
-  .product-spark { position: absolute; z-index: 2; color: #ff5a20; font-size: 32px; line-height: 1; text-shadow: 0 5px 12px rgba(255,104,39,.25); }
-  .product-spark--one { top: 40px; left: 24px; }
-  .product-spark--two { right: 1px; bottom: 38px; font-size: 23px; }
-  .checklist-big { padding: 10px 0; background: none; border: 0; border-radius: 0; }
-  .checklist-item { padding: 18px 0; color: var(--ink); border-color: var(--line-ui); font-size: 16px; }
-  .checklist-item strong, .item-price { color: var(--ink); }
-  .check-icon { filter: none; }
-  .item-price { background: #fff0e4; font-size: 14px; }
-  .total-value-box { background: #fff4ea; border: 1px solid #f3c8ac; border-radius: 14px; }
-  .total-label, .price-note { color: var(--muted); }
-  .total-amount { color: #9a877b; font-family: 'DM Sans', sans-serif; }
-  .today-price-small { color: #fff; background: #21120b; font-family: 'DM Sans', sans-serif; }
-  .btn-primary { padding: 21px 24px; color: #fff; background: linear-gradient(135deg, #ff4f20, #ff913a); border-radius: 10px; box-shadow: 0 18px 30px rgba(255,100,40,.23); font-size: clamp(18px, 3vw, 23px); animation: none; }
-  .btn-primary:hover { background: linear-gradient(135deg, #ff4f20, #ff913a); box-shadow: 0 24px 36px rgba(255,100,40,.32); }
-  .badge-item { color: var(--muted); background: transparent; border-color: var(--line-ui); }
-  .benefits-grid, .reviews-grid { gap: 16px; }
-  .section-intro { max-width: 720px; margin: 0 auto 34px; text-align: center; }
-  .section-intro .offer-eyebrow { margin-bottom: 14px; }
-  .section-intro h2 { margin: 0; color: var(--ink); font: 800 clamp(38px, 5vw, 64px)/1.02 'Playfair Display', Georgia, serif; letter-spacing: -.055em; }
-  .benefit-item, .review-card { color: var(--ink); background: #fff; border: 1px solid var(--line-ui); border-radius: 14px; box-shadow: none; }
-  .review-card, .review-person, .review-stars { text-align: center; justify-content: center; }
-  .benefit-item h4, .benefit-item p, .review-quote, .review-person b, .review-person span { color: var(--ink) !important; }
-  .benefit-item p, .review-person span { color: var(--muted) !important; }
-  .reviews-section, .real-world-section, .about-kimberly, .testimonial-video, .faq-section { margin: 0; padding: 96px 0; color: var(--ink); background: transparent; border: 0; border-radius: 0; box-shadow: none; text-align: center; }
-  .reviews-section { border-top: 1px solid var(--line-ui); }
-  .reviews-title, .real-title, .faq-title { margin-bottom: 20px; font-size: clamp(40px, 5.5vw, 68px); line-height: 1.02; }
-  .reviews-title em { color: var(--orange); }
-  .reviews-kicker, .review-stars { color: #b84214; }
-  .reviews-section--light .reviews-kicker, .reviews-section--dark .reviews-kicker, .reviews-section--light .reviews-title em, .reviews-section--dark .reviews-title em { color: #b84214; }
-  .reviews-section--light, .reviews-section--dark { color: var(--ink); }
-  .real-world-section { border-top: 1px solid var(--line-ui); }
-  .real-sub { color: var(--muted); }
-  .ba-row { padding: 24px; color: var(--ink); background: #fff; border: 1px solid var(--line-ui); border-radius: 14px; }
-  .ba-before, .ba-after { border: 0; }
-  .ba-before .ba-title, .ba-after .ba-title, .ba-desc, .ba-arrow { color: var(--ink); }
-  .about-inner { display: grid; justify-items: center; padding: clamp(30px, 6vw, 68px); color: #fff7ef; background: #21120b; border-radius: 18px; text-align: center; }
-  .about-kimberly .section-intro { margin-bottom: 31px; }
-  .about-kimberly .section-intro h2 { color: var(--ink); }
-  .about-kimberly .about-evidence, .about-kimberly .about-text { margin-right: auto; margin-left: auto; text-align: center; }
-  .about-text h2, .about-text p, .about-text .proof-number, .about-text .method-tag { color: #fff7ef !important; }
-  .about-text h2 { -webkit-text-fill-color: #fff7ef !important; }
-  .about-text .story-badge { color: #b84214; }
-  .about-evidence img { border: 0; border-radius: 14px; }
-  .method-tag { background: rgba(255,255,255,.1); border-left-color: var(--orange-2); }
-  .testimonial-title { font-size: clamp(30px,4vw,48px); }
-  .video-container { border: 1px solid var(--line-ui); border-radius: 14px; box-shadow: 0 20px 35px rgba(59,35,21,.14); }
-  .faq-section { border-top: 1px solid var(--line-ui); }
-  .faq-item { padding: 24px 0; background: transparent; border-color: var(--line-ui); }
-  .faq-question { color: var(--ink); font-size: 22px; }
-  .faq-answer { color: var(--muted); font-size: 17px; line-height: 1.45; }
-  .ka-purchase-steps { margin: 0 auto 80px; }
-  @media (max-width: 700px) {
-    .page { width: 100%; padding: 0 16px; }
-    .ka-site-nav { display: none !important; }
-    .story-icons { grid-template-columns: 1fr; }
-    .reviews-section, .real-world-section, .about-kimberly, .testimonial-video, .faq-section { padding: 70px 0; }
-    .hero-video::after { width: 58px; height: 58px; font-size: 23px; }
-    .product-showcase { width: min(100%, 390px); padding: 22px 20px 28px; margin-bottom: 28px; }
-    .product-img-large { width: min(100%, 300px); border-width: 7px; border-radius: 18px; }
-    .product-seal { top: 3px; right: 8px; width: 82px; height: 82px; padding: 11px; border-width: 3px; font-size: 10px; }
-    .product-chip { bottom: 2px; left: 0; padding: 9px 11px; font-size: 10px; }
-    .product-spark--one { top: 34px; left: 12px; font-size: 25px; }
-    .product-spark--two { right: 0; bottom: 34px; font-size: 18px; }
-    .ba-row { grid-template-columns: 1fr; gap: 14px; }
-    .ba-before, .ba-after { padding: 0; text-align: left; }
-    .ba-arrow { transform: rotate(90deg); }
-  }
-  /* MECANISMO Y CIENCIA */
-  .mechanism-section { margin: 0; padding: 78px 0; border-top: 1px solid var(--line-ui); color: var(--ink); }
-  .mechanism-intro { max-width: 780px; margin: 0 auto 34px; text-align: center; }
-  .mechanism-intro h2 { margin: 0 0 15px; color: var(--ink); font: 800 clamp(42px, 5.5vw, 72px)/.98 'Playfair Display', Georgia, serif; letter-spacing: -.06em; }
-  .mechanism-intro p { margin: 0 auto; max-width: 620px; color: var(--muted); font-size: 20px; line-height: 1.42; }
-  .mechanism-grid { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 12px; margin: 0 0 48px; }
-  .mechanism-step { position: relative; min-height: 174px; padding: 23px 18px 20px; background: #fff; border: 1px solid var(--line-ui); border-radius: 16px; box-shadow: 0 14px 30px rgba(76,38,16,.07); }
-  .mechanism-step:not(:last-child)::after { content: '→'; position: absolute; top: 50%; right: -17px; z-index: 2; color: var(--orange); font-size: 25px; font-weight: 800; transform: translateY(-50%); }
-  .mechanism-number { display: inline-grid; width: 38px; height: 38px; margin-bottom: 17px; place-items: center; color: #fff; background: var(--orange); border-radius: 50%; font-size: 16px; font-weight: 800; }
-  .mechanism-step h3 { margin: 0 0 8px; color: var(--ink); font: 800 27px/1.02 'Playfair Display', Georgia, serif; }
-  .mechanism-step p { margin: 0; color: var(--muted); font-size: 17px; line-height: 1.32; }
-  .science-panel { padding: clamp(28px, 5vw, 48px); color: #fff7ef; background: #21120b; border-radius: 18px; }
-  .science-panel .offer-eyebrow { margin-bottom: 12px; color: #ffb27c; background: rgba(255,255,255,.1); }
-  .science-panel h3 { max-width: 720px; margin: 0 0 12px; color: #fff7ef; font: 800 clamp(38px, 5vw, 60px)/.98 'Playfair Display', Georgia, serif; letter-spacing: -.055em; }
-  .science-panel > p { max-width: 680px; margin: 0 0 25px; color: rgba(255,247,239,.84); font-size: 19px; line-height: 1.42; }
-  .science-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
-  .science-card { display: flex; align-items: flex-start; gap: 12px; padding: 21px; background: rgba(255,255,255,.09); border: 1px solid rgba(255,210,170,.22); border-radius: 14px; }
+  .hero-video span { position: absolute; right: 14px; bottom: 13px; left: 14px; color: #fff; font-size: 12px; font-weight: 800; letter-spacing: .07em; text-align: center; text-shadow: 0 2px 10px rgba(0,0,0,.85); text-transform: uppercase; }
+  .hero-points { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
+  .point { display: flex; align-items: flex-start; gap: 11px; min-height: 70px; padding: 16px; background: var(--surface-muted); border: 1px solid var(--line); border-radius: var(--radius-md); }
+  .point-icon { flex: 0 0 auto; font-size: 24px; line-height: 1; }
+  .point strong { display: block; color: var(--ink); font-size: 15px; line-height: 1.28; }
+  .hero-note { margin-top: 24px; color: var(--ink); font: 800 clamp(26px, 3.4vw, 42px)/1 'Playfair Display', Georgia, serif; }
+  .hero-note-sub { margin-top: 10px; font-size: 17px; line-height: 1.45; }
+
+  .offer-card { padding: clamp(28px, 4vw, 48px); background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius-lg); box-shadow: var(--shadow); }
+  .offer-header { margin-bottom: 28px; text-align: center; }
+  .offer-header h2 { max-width: 700px; margin: 0 auto 14px; font-size: clamp(34px, 4vw, 52px); }
+  .offer-header p { font-size: 18px; line-height: 1.45; }
+  .product-showcase { position: relative; display: grid; place-items: center; min-height: 420px; margin: 0 auto 30px; padding: 24px; overflow: hidden; background: linear-gradient(135deg, #fff5eb, #ffe1ca); border: 1px solid #f3c8ac; border-radius: 20px; }
+  .product-showcase::before { content: ''; position: absolute; width: 74%; aspect-ratio: 1; border-radius: 50%; background: radial-gradient(circle, rgba(255,110,38,.22), transparent 68%); filter: blur(7px); }
+  .product-img { position: relative; z-index: 1; width: min(100%, 410px); overflow: visible; border: 9px solid #fff; border-radius: 22px; box-shadow: 0 26px 42px rgba(59,35,21,.22); transform: rotate(-2deg); }
+  .product-img::before { content: ''; position: absolute; inset: -16px; z-index: -1; border-radius: 28px; background: linear-gradient(135deg, #ff4f20, #ffd3a3 46%, #ff8d38); transform: rotate(4deg); }
+  .product-img img { display: block; width: 100%; border-radius: 12px; }
+  .product-seal { position: absolute; top: 32px; right: 10%; z-index: 2; display: grid; width: 106px; height: 106px; place-items: center; padding: 14px; color: #fff; background: var(--orange); border: 4px solid #fff; border-radius: 50%; box-shadow: 0 10px 22px rgba(59,35,21,.16); font-size: 13px; font-weight: 800; line-height: 1.08; text-align: center; transform: rotate(8deg); }
+  .product-chip { position: absolute; bottom: 26px; left: 8%; z-index: 2; padding: 11px 15px; color: var(--ink); background: #ffe8d5; border: 2px solid #fff; border-radius: 999px; box-shadow: 0 8px 18px rgba(59,35,21,.12); font-size: 12px; font-weight: 800; transform: rotate(-4deg); }
+  .offer-list { display: grid; gap: 0; margin-bottom: 26px; }
+  .offer-item { display: grid; grid-template-columns: auto minmax(0, 1fr) auto; gap: 13px; align-items: center; padding: 17px 0; border-bottom: 1px solid var(--line); }
+  .offer-item:last-child { border-bottom: 0; }
+  .check { color: var(--green); font-size: 24px; line-height: 1; }
+  .offer-item-copy { color: var(--muted-dark); font-size: 16px; line-height: 1.35; }
+  .offer-item-copy strong { color: var(--ink); }
+  .offer-value { padding: 5px 10px; color: var(--orange-dark); background: var(--orange-pale); border-radius: 999px; font-size: 13px; font-weight: 800; white-space: nowrap; }
+  .value-box { display: flex; align-items: center; justify-content: space-between; gap: 15px; margin: 20px 0; padding: 18px 20px; background: var(--surface-soft); border: 1px solid #f1c9ac; border-radius: var(--radius-md); }
+  .value-box span { color: var(--muted); font-size: 14px; font-weight: 700; }
+  .value-box strong { color: var(--ink); font-size: 30px; }
+  .primary-button { display: block; width: 100%; padding: 20px 24px; color: #fff; background: linear-gradient(135deg, #ff4f20, #ff913a); border: 0; border-radius: 13px; box-shadow: 0 16px 28px rgba(255,100,40,.24); font-size: clamp(18px, 2.3vw, 23px); font-weight: 800; letter-spacing: .02em; text-align: center; text-decoration: none; transition: transform .2s ease, box-shadow .2s ease; }
+  .primary-button:hover, .primary-button:focus-visible { box-shadow: 0 20px 34px rgba(255,100,40,.32); transform: translateY(-2px); }
+  .security-badges { display: flex; flex-wrap: wrap; justify-content: center; gap: 9px; margin-top: 15px; }
+  .badge { padding: 7px 11px; color: var(--muted); background: var(--surface-muted); border: 1px solid var(--line); border-radius: 999px; font-size: 12px; font-weight: 700; }
+
+  .benefit-grid, .review-grid, .science-grid, .audio-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 14px; }
+  .benefit-card, .review-card, .audio-card, .science-card { padding: 24px 20px; background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius-md); }
+  .benefit-card { min-height: 190px; text-align: center; }
+  .card-emoji { display: block; margin-bottom: 13px; font-size: 36px; line-height: 1; }
+  .benefit-card h3 { margin-bottom: 9px; font-size: 25px; }
+  .benefit-card p, .science-card p, .audio-card p { font-size: 16px; line-height: 1.4; }
+
+  .mechanism-flow { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 12px; }
+  .mechanism-card { position: relative; min-height: 185px; padding: 23px 18px; background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius-md); box-shadow: 0 10px 22px rgba(76,38,16,.05); }
+  .mechanism-card:not(:last-child)::after { content: '→'; position: absolute; top: 50%; right: -18px; z-index: 2; color: var(--orange); font-size: 25px; font-weight: 800; transform: translateY(-50%); }
+  .mechanism-number { display: grid; width: 38px; height: 38px; margin-bottom: 17px; place-items: center; color: #fff; background: var(--orange); border-radius: 50%; font-size: 15px; font-weight: 800; }
+  .mechanism-card h3 { margin-bottom: 8px; font-size: 26px; }
+  .mechanism-card p { color: var(--muted); font-size: 16px; line-height: 1.35; }
+
+  .science-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .science-card { display: flex; gap: 13px; align-items: flex-start; }
   .science-card::before { content: '✅'; flex: 0 0 auto; font-size: 24px; line-height: 1; }
-  .science-card h4 { margin: 0 0 6px; color: #ffd6b0; font: 800 25px/1.03 'Playfair Display', Georgia, serif; }
-  .science-card p { margin: 0; color: rgba(255,247,239,.82); font-size: 16px; line-height: 1.34; }
-  .audio-process { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 12px; margin: 34px 0 0; }
-  .audio-step { padding: 22px 20px; background: #fff; border: 1px solid var(--line-ui); border-radius: 14px; }
-  .audio-step b { display: block; margin-bottom: 9px; color: #2d9e50; font-size: 14px; letter-spacing: .08em; }
-  .audio-step h4 { margin: 0 0 7px; color: var(--ink); font: 800 26px/1.02 'Playfair Display', Georgia, serif; }
-  .audio-step p { margin: 0; color: var(--muted); font-size: 17px; line-height: 1.3; }
-  .mechanism-example { margin: 34px auto 0; padding: 25px 28px; max-width: 800px; color: var(--ink); background: #fff4ea; border: 1px solid #f3c8ac; border-radius: 14px; }
-  .mechanism-example h3 { margin: 0 0 10px; color: var(--ink); font: 800 32px/1.02 'Playfair Display', Georgia, serif; }
-  .mechanism-example p { margin: 8px 0 0; color: var(--muted); font-size: 18px; line-height: 1.35; }
-  .mechanism-example strong { color: var(--ink); }
-  .science-note { margin: 22px auto 0; max-width: 780px; color: var(--muted); font-size: 13px; line-height: 1.4; text-align: center; }
-  .science-note a { color: #b84214; font-weight: 700; }
-  .expectations-note { margin: 0 auto 70px; padding: 28px 30px; max-width: 820px; color: var(--ink); background: #fff; border: 1px solid var(--line-ui); border-radius: 14px; }
-  .expectations-note h3 { margin: 0 0 10px; color: var(--ink); font: 800 30px/1.08 'Playfair Display', Georgia, serif; }
-  .expectations-note p { margin: 0; color: var(--muted); font-size: 17px; line-height: 1.45; }
-  @media (max-width: 980px) { .mechanism-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); } .mechanism-step:not(:last-child)::after { display: none; } .science-grid, .audio-process { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
-  @media (max-width: 700px) { .mechanism-section { padding: 62px 0; } .mechanism-intro p { font-size: 18px; } .mechanism-grid, .science-grid, .audio-process { grid-template-columns: 1fr; } .mechanism-step:not(:last-child)::after { display: block; top: auto; right: 50%; bottom: -22px; transform: translateX(50%) rotate(90deg); } .mechanism-step { min-height: 0; margin-bottom: 10px; } .science-panel { padding: 26px 18px; } .science-panel > p { font-size: 18px; } .mechanism-example, .expectations-note { padding: 23px 19px; } .mechanism-example p { font-size: 17px; } }
+  .science-card h3 { margin-bottom: 7px; font-size: 26px; }
+  .audio-grid { margin-top: 10px; }
+  .audio-card { min-height: 155px; }
+  .audio-index { display: block; margin-bottom: 13px; color: var(--green); font-size: 14px; font-weight: 800; letter-spacing: .08em; }
+  .audio-card h3 { margin-bottom: 8px; font-size: 27px; }
+  .example-box { max-width: 820px; margin: 28px auto 0; padding: 24px 26px; background: var(--surface-soft); border: 1px solid #f1c9ac; border-radius: var(--radius-md); }
+  .example-box h3 { margin-bottom: 11px; font-size: 31px; }
+  .example-box p { margin-top: 8px; color: var(--muted-dark); font-size: 18px; line-height: 1.4; }
+  .science-footnote { margin-top: 20px; color: var(--muted); font-size: 13px; line-height: 1.4; text-align: center; }
 
-  /* SEPARACIÓN MINIMAL SAAS PARA EL CONTENIDO BAJO EL VÍDEO */
-  .sales-hero > .offer-header { margin-bottom: 0; }
-  .sales-hero > .cta-card { margin-top: 28px; }
-  .post-video-section { margin: 28px 0 0; padding: clamp(54px, 7vw, 88px) clamp(20px, 4vw, 48px); background: #fff; border: 1px solid var(--line-ui); border-radius: 24px; box-shadow: 0 16px 36px rgba(76,38,16,.06); }
-  .post-video-section--soft { background: #fff4ea; border-color: #f3c8ac; }
-  .post-video-section--dark { color: #fff7ef; background: #21120b; border-color: #21120b; }
-  .post-video-section .section-intro, .post-video-section .mechanism-intro { margin-bottom: 30px; }
-  .post-video-section .benefits-grid { margin: 0; }
-  .post-video-section .reviews-section, .post-video-section .real-world-section, .post-video-section .faq-section { margin: 0; padding: 0; border: 0; box-shadow: none; background: transparent; }
-  .post-video-section--dark .reviews-title, .post-video-section--dark .reviews-kicker, .post-video-section--dark .review-quote, .post-video-section--dark .review-person b, .post-video-section--dark .review-person span { color: #fff7ef !important; }
-  .post-video-section--dark .review-person span { opacity: .7; }
-  .section-divider { display: flex; align-items: center; gap: 14px; margin: 28px auto 0; max-width: 920px; color: #b84214; font-size: 12px; font-weight: 800; letter-spacing: .13em; text-transform: uppercase; }
-  .section-divider::before, .section-divider::after { content: ''; height: 1px; flex: 1; background: var(--line-ui); }
-  .section-divider--light { color: #ffb27c; }
-  .section-divider--light::before, .section-divider--light::after { background: rgba(255,255,255,.2); }
-  .post-video-section--soft .real-world-section { padding: 0; }
-  .post-video-section--soft .real-title { margin-bottom: 12px; }
-  .post-video-section--soft .real-sub { margin-bottom: 30px; }
-  .post-video-section--soft .ba-row { box-shadow: 0 8px 20px rgba(76,38,16,.05); }
-  .post-video-section--dark .reviews-section { padding: 0; }
-  .post-video-section--dark .reviews-title { margin-bottom: 28px; }
-  @media (max-width: 700px) { .post-video-section { margin-top: 18px; padding: 48px 18px; border-radius: 18px; } .section-divider { margin-top: 20px; } }
+  .review-card { display: flex; min-height: 240px; flex-direction: column; }
+  .stars { margin-bottom: 16px; color: #d3911e; font-size: 17px; letter-spacing: .08em; }
+  .review-quote { flex: 1; margin-bottom: 22px; color: var(--ink); font-family: 'Playfair Display', Georgia, serif; font-size: 20px; font-style: italic; line-height: 1.3; }
+  .review-person b { display: block; color: var(--ink); font-size: 14px; }
+  .review-person span { display: block; margin-top: 4px; color: var(--muted); font-size: 12px; }
+  .review-grid--two { max-width: 860px; margin: 0 auto; grid-template-columns: repeat(2, minmax(0, 1fr)); }
 
-  /* FULL WIDTH + CONTRASTE SEGURO */
-  .page { width: 100%; max-width: 1440px; padding-left: 32px; padding-right: 32px; }
-  .sales-hero { width: 100%; max-width: none; }
-  .sales-hero > .offer-header { width: min(100%, 920px); margin-right: auto; margin-left: auto; }
-  .sales-hero > .cta-card { width: min(100%, 1040px); max-width: none; }
-  .section-divider { width: 100%; max-width: none; }
-  .section-divider--light { color: #b84214; }
-  .post-video-section { width: 100%; max-width: none; border-radius: 28px; padding-right: clamp(24px, 5vw, 76px); padding-left: clamp(24px, 5vw, 76px); }
-  .post-video-section > * { width: 100%; max-width: 1240px; margin-right: auto; margin-left: auto; }
-  .post-video-section .benefits-grid, .post-video-section .mechanism-grid, .post-video-section .science-grid, .post-video-section .audio-process, .post-video-section .reviews-grid, .post-video-section .before-after-table { width: 100%; max-width: none; }
-  .post-video-section:not(.post-video-section--dark), .post-video-section:not(.post-video-section--dark) .section-intro h2, .post-video-section:not(.post-video-section--dark) .mechanism-intro h2, .post-video-section:not(.post-video-section--dark) .real-title, .post-video-section:not(.post-video-section--dark) .faq-title, .post-video-section:not(.post-video-section--dark) .faq-question, .post-video-section:not(.post-video-section--dark) .audio-step h4, .post-video-section:not(.post-video-section--dark) .mechanism-step h3, .post-video-section:not(.post-video-section--dark) .mechanism-example h3 { color: var(--ink) !important; -webkit-text-fill-color: currentColor !important; }
-  .post-video-section:not(.post-video-section--dark) p, .post-video-section:not(.post-video-section--dark) .real-sub, .post-video-section:not(.post-video-section--dark) .faq-answer, .post-video-section:not(.post-video-section--dark) .audio-step p, .post-video-section:not(.post-video-section--dark) .mechanism-step p, .post-video-section:not(.post-video-section--dark) .mechanism-example p { color: var(--muted) !important; }
-  .post-video-section--soft { color: var(--ink) !important; background: linear-gradient(135deg, #fff8f1 0%, #fff1e4 100%); border-color: #f0c9ac; }
-  .post-video-section--soft [style*="color: var(--gold-light)"] { color: #b84214 !important; }
-  .post-video-section--dark { color: #fff7ef !important; background: linear-gradient(135deg, #21120b 0%, #3a1d12 100%); border-color: #21120b; }
-  .post-video-section--dark .reviews-title, .post-video-section--dark .reviews-kicker, .post-video-section--dark .review-quote, .post-video-section--dark .review-person b { color: #fff7ef !important; -webkit-text-fill-color: currentColor !important; }
-  .post-video-section--dark .review-stars { color: #ffd166 !important; }
-  .post-video-section--dark .review-person span { color: rgba(255,247,239,.72) !important; }
-  .post-video-section--dark .review-card { background: rgba(255,255,255,.09); border-color: rgba(255,247,239,.2); }
-  .post-video-section--dark .reviews-title em { color: #ffb27c !important; }
-  .post-video-section--dark .section-intro h2, .post-video-section--dark .mechanism-intro h2 { color: #fff7ef !important; }
-  .post-video-section .faq-item { border-color: var(--line-ui); }
-  .post-video-section--dark .faq-question, .post-video-section--dark .faq-answer { color: #fff7ef !important; }
-  .post-video-section--dark .faq-answer { color: rgba(255,247,239,.78) !important; }
-  .ka-purchase-steps h2 { color: var(--ink) !important; -webkit-text-fill-color: currentColor !important; }
-  .ka-purchase-steps li, .ka-purchase-steps li b { color: var(--ink) !important; }
-  @media (max-width: 700px) { .page { padding-right: 16px; padding-left: 16px; } .post-video-section { width: 100%; } }
+  .before-after-list { display: grid; gap: 14px; }
+  .before-after { display: grid; grid-template-columns: minmax(0, 1fr) 48px minmax(0, 1fr); gap: 15px; align-items: stretch; padding: 22px; background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius-md); }
+  .before-after-side { padding: 4px 0; }
+  .before-after-side h3 { margin: 7px 0; font-size: 25px; }
+  .before-after-side p { font-size: 16px; line-height: 1.4; }
+  .before-after-side--before h3 { color: #b94c36; }
+  .before-after-side--after h3 { color: var(--green); }
+  .before-after-icon { font-size: 30px; line-height: 1; }
+  .before-after-arrow { display: grid; place-items: center; color: var(--orange); font-size: 28px; font-weight: 800; }
 
+  .steps-list { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px; list-style: none; counter-reset: steps; }
+  .steps-list li { position: relative; min-height: 145px; padding: 25px 20px 20px 60px; color: var(--muted); background: var(--surface-muted); border: 1px solid var(--line); border-radius: var(--radius-md); font-size: 16px; line-height: 1.45; }
+  .steps-list li::before { content: counter(steps); counter-increment: steps; position: absolute; top: 22px; left: 19px; display: grid; width: 30px; height: 30px; place-items: center; color: #fff; background: var(--orange); border-radius: 50%; font-size: 14px; font-weight: 800; }
+  .steps-list b { display: block; margin-bottom: 8px; color: var(--ink); font-size: 18px; }
+
+  .faq-list { display: grid; max-width: 920px; margin: 0 auto; }
+  .faq-item { padding: 23px 0; border-bottom: 1px solid var(--line); }
+  .faq-item:first-child { border-top: 1px solid var(--line); }
+  .faq-question { margin-bottom: 9px; color: var(--ink); font-size: 22px; font-weight: 800; line-height: 1.25; }
+  .faq-answer { color: var(--muted); font-size: 17px; line-height: 1.5; }
+  .final-cta { text-align: center; }
+  .final-cta h3 { margin-bottom: 10px; color: var(--ink); font-size: clamp(34px, 4vw, 52px); }
+  .final-cta p { color: var(--muted-dark); font-size: 20px; line-height: 1.4; }
+  .final-cta .primary-button { max-width: 520px; margin: 28px auto 0; }
+  .footer-note { margin-top: 40px; color: #a58f82; font-size: 13px; text-align: center; }
+
+  @media (max-width: 980px) {
+    .hero { grid-template-columns: 1fr; min-height: 0; }
+    .hero-copy { max-width: none; }
+    .hero-video { max-width: 760px; }
+    .benefit-grid, .review-grid, .audio-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .mechanism-flow { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+    .mechanism-card:not(:last-child)::after { display: none; }
+  }
+  @media (max-width: 700px) {
+    .page { padding: 16px 14px 55px; }
+    .section-shell { margin-top: 18px; padding: 42px 18px; border-radius: 20px; }
+    .hero { gap: 28px; padding: 24px 18px 34px; }
+    .hero h1 { font-size: clamp(43px, 13vw, 64px); }
+    .hero-subtitle { font-size: 19px; }
+    .hero-points, .benefit-grid, .review-grid, .review-grid--two, .science-grid, .audio-grid, .mechanism-flow, .steps-list { grid-template-columns: 1fr; }
+    .point { min-height: 0; }
+    .hero-note { font-size: 32px; }
+    .offer-card { padding: 22px 17px; }
+    .product-showcase { min-height: 330px; padding: 18px; }
+    .product-seal { top: 20px; right: 5%; width: 82px; height: 82px; padding: 9px; font-size: 10px; }
+    .product-chip { bottom: 18px; left: 4%; padding: 9px 10px; font-size: 10px; }
+    .offer-item { grid-template-columns: auto minmax(0, 1fr); align-items: start; }
+    .offer-value { grid-column: 2; width: fit-content; }
+    .mechanism-card { min-height: 0; }
+    .mechanism-card:not(:last-child)::after { display: block; top: auto; right: 50%; bottom: -19px; transform: translateX(50%) rotate(90deg); }
+    .before-after { grid-template-columns: 1fr; gap: 8px; }
+    .before-after-arrow { transform: rotate(90deg); }
+    .steps-list li { min-height: 0; }
+    .faq-question { font-size: 20px; }
+    .faq-answer { font-size: 16px; }
+  }
   @media (prefers-reduced-motion: reduce) { *, *::before, *::after { animation: none !important; transition: none !important; } }
 </style>
 </head>
 <body>
-
-<div class="bg-canvas"></div>
-<div class="orb orb-1"></div>
-<div class="orb orb-2"></div>
-<div class="orb orb-3"></div>
-<div class="stars" id="stars"></div>
-
 <div class="page">
-
-  <div class="sales-hero">
-  <div class="offer-header">
-    <div class="main-title">Cómo <span class="head-yellow">Soltar</span> La <span class="head-red">Resistencia</span> Al Dinero<br>Y <span class="head-yellow">Abrirte A Recibir Más</span></div>
-    <div class="sub-headline">Una práctica guiada para reconocer los patrones que te frenan y elegir acciones más claras con tu dinero.</div>
-    <a class="hero-video" href="https://youtube.com/shorts/2u5ijcgotic?feature=share" target="_blank" rel="noopener" aria-label="Ver video de Kimberly Ali en YouTube">
-      <img src="https://img.youtube.com/vi/2u5ijcgotic/hqdefault.jpg" alt="Video de Kimberly Ali sobre Flujo de Dinero">
-      <span>Ver la introducción en YouTube</span>
-    </a>
-    <div class="story-icons">
-      <div class="story-item"><div class="story-icon">🧠</div><div class="story-text"><strong>Tu mente puede aprender a evitar el dinero.</strong></div></div>
-      <div class="story-item"><div class="story-icon">🔒</div><div class="story-text"><strong>El patrón aparece al cobrar, vender o negociar.</strong></div></div>
-      <div class="story-item"><div class="story-icon">⚡</div><div class="story-text"><strong>La práctica crea una pausa.</strong></div></div>
-      <div class="story-item"><div class="story-icon">🔄</div><div class="story-text"><strong>Y te ayuda a elegir tu siguiente paso.</strong></div></div>
-    </div>
-    <div class="impact-line">No es solo esfuerzo. También importa el patrón que se activa.</div>
-    <div class="inner-text">En 20–25 minutos, observa tu respuesta automática y practica una acción financiera más consciente.</div>
-  </div>
-
-  <!-- CTA PRINCIPAL con imagen más grande y valores por ítem -->
-  <div class="cta-card" id="acceso">
-    <div class="instant-access-headline">⚡ ¡Estás a segundos de obtener acceso instantáneo a: ⚡</div>
-    <div class="product-showcase" aria-label="Sesión de audio Flujo de Dinero">
-      <span class="product-spark product-spark--one" aria-hidden="true">✦</span>
-      <div class="product-img-large">
-        <img src="assets/flujo-de-dinero-audio-guiado-kimberly-ali.png" alt="Flujo de Dinero: audio guiado de Kimberly Ali para liberar resistencia y abrir el canal de recibir">
+  <main>
+    <section class="hero" aria-labelledby="page-title">
+      <div class="hero-copy">
+        <div class="eyebrow">Flujo de Dinero</div>
+        <h1 id="page-title">Cómo <span class="highlight">soltar</span> la <span class="red">resistencia</span> al dinero<br>y <span class="highlight">abrirte a recibir más</span></h1>
+        <p class="hero-subtitle">Una práctica guiada para reconocer los patrones que te frenan y elegir acciones más claras con tu dinero.</p>
+        <a class="hero-video" href="https://youtube.com/shorts/2u5ijcgotic?feature=share" target="_blank" rel="noopener" aria-label="Ver video de Kimberly Ali en YouTube">
+          <img src="https://img.youtube.com/vi/2u5ijcgotic/hqdefault.jpg" alt="Video de Kimberly Ali sobre Flujo de Dinero">
+          <span>Ver la introducción en YouTube</span>
+        </a>
+        <div class="hero-points">
+          <div class="point"><span class="point-icon">🧠</span><strong>Tu mente puede aprender a evitar el dinero.</strong></div>
+          <div class="point"><span class="point-icon">🔒</span><strong>El patrón aparece al cobrar, vender o negociar.</strong></div>
+          <div class="point"><span class="point-icon">⚡</span><strong>La práctica crea una pausa.</strong></div>
+          <div class="point"><span class="point-icon">🔄</span><strong>Y te ayuda a elegir tu siguiente paso.</strong></div>
+        </div>
+        <div class="hero-note">No es solo esfuerzo. También importa el patrón que se activa.</div>
+        <p class="hero-note-sub">En 20–25 minutos, observa tu respuesta automática y practica una acción financiera más consciente.</p>
       </div>
-      <span class="product-seal">ACCESO<br>INMEDIATO</span>
-      <span class="product-chip">✦ Audio guiado · 20–25 min</span>
-      <span class="product-spark product-spark--two" aria-hidden="true">✦</span>
-    </div>
-    
-    <div class="checklist-big">
-      <div class="checklist-item">
-        <div class="check-icon">✅</div>
-        <span><strong>Sesión de Audio Guiada</strong> (20–25 min) · Reconoce patrones y ensaya respuestas diferentes</span>
-        <span class="item-price">$97</span>
+
+      <div class="offer-card" id="acceso">
+        <div class="offer-header">
+          <div class="eyebrow">Acceso inmediato</div>
+          <h2>Empieza a abrir tu flujo de dinero</h2>
+          <p>Una práctica guiada, simple y directa para comenzar hoy.</p>
+        </div>
+        <div class="product-showcase" aria-label="Sesión de audio Flujo de Dinero">
+          <div class="product-img"><img src="assets/flujo-de-dinero-audio-guiado-kimberly-ali.png" alt="Flujo de Dinero: audio guiado de Kimberly Ali para liberar resistencia y abrir el canal de recibir"></div>
+          <span class="product-seal">ACCESO<br>INMEDIATO</span>
+          <span class="product-chip">✦ Audio guiado · 20–25 min</span>
+        </div>
+        <div class="offer-list">
+          <div class="offer-item"><span class="check">✅</span><span class="offer-item-copy"><strong>Sesión de Audio Guiada</strong> (20–25 min) · Reconoce patrones y ensaya respuestas diferentes</span><span class="offer-value">$97</span></div>
+          <div class="offer-item"><span class="check">✅</span><span class="offer-item-copy"><strong>Blueprint de Bloqueos Invisibles</strong> · Identifica tu patrón exacto de escasez</span><span class="offer-value">$47</span></div>
+          <div class="offer-item"><span class="check">✅</span><span class="offer-item-copy"><strong>Guía de Acción Inmediata</strong> · Define una primera acción concreta para las próximas 24–48 horas</span><span class="offer-value">$37</span></div>
+          <div class="offer-item"><span class="check">✅</span><span class="offer-item-copy"><strong>Acceso de por vida + actualizaciones gratuitas</strong> · Paga una vez, tuyo para siempre</span><span class="offer-value">$97</span></div>
+          <div class="offer-item"><span class="check">✅</span><span class="offer-item-copy"><strong>Garantía de 7 días</strong> · Pruébalo y consulta las condiciones de devolución</span><span class="offer-value">$27</span></div>
+        </div>
+        <div class="value-box"><span>Pago único · Acceso de por vida</span><strong>$27</strong></div>
+        <a class="primary-button" href="https://pay.hotmart.com/N105653151G">🔥 ABRIR MI FLUJO DE DINERO 🔥</a>
+        <div class="security-badges"><span class="badge">🔒 Pago 100% Seguro</span><span class="badge">🛡️ SSL Encriptación</span><span class="badge">⭐ Garantía 7 Días</span><span class="badge">⚡ Entrega Inmediata</span></div>
       </div>
-      <div class="checklist-item">
-        <div class="check-icon">✅</div>
-        <span><strong>Blueprint de Bloqueos Invisibles</strong> · Identifica tu patrón exacto de escasez</span>
-        <span class="item-price">$47</span>
+    </section>
+
+    <section class="section-shell" aria-labelledby="transformacion-flujo">
+      <div class="section-heading"><div class="eyebrow">La transformación</div><h2 id="transformacion-flujo">Lo que empieza a cambiar cuando eliges recibir</h2></div>
+      <div class="benefit-grid">
+        <article class="benefit-card"><span class="card-emoji">✂️</span><h3>Reconoce tu patrón</h3><p>Identifica qué situaciones activan la evitación o la culpa.</p></article>
+        <article class="benefit-card"><span class="card-emoji">💎</span><h3>Recupera margen de elección</h3><p>Observa la reacción sin convertirla automáticamente en una decisión.</p></article>
+        <article class="benefit-card"><span class="card-emoji">⚡</span><h3>Practica otra respuesta</h3><p>Usa una pausa y una acción concreta para dejar de posponer.</p></article>
+        <article class="benefit-card"><span class="card-emoji">🌊</span><h3>Actúa con más claridad</h3><p>Define el siguiente paso sin prometer resultados financieros automáticos.</p></article>
       </div>
-      <div class="checklist-item">
-        <div class="check-icon">✅</div>
-        <span><strong>Guía de Acción Inmediata</strong> · Define una primera acción concreta para las próximas 24–48 horas</span>
-        <span class="item-price">$37</span>
+    </section>
+
+    <section class="section-shell" aria-labelledby="mecanismo-flujo">
+      <div class="section-heading"><div class="eyebrow">El mecanismo</div><h2 id="mecanismo-flujo">El patrón empieza antes de la decisión.</h2><p>Esto es lo que puede pasar cuando llega una oportunidad de cobrar, vender o negociar.</p></div>
+      <div class="mechanism-flow">
+        <article class="mechanism-card"><span class="mechanism-number">1</span><h3>🫷 Situación</h3><p>Alguien pregunta tu precio.</p></article>
+        <article class="mechanism-card"><span class="mechanism-number">2</span><h3>🧠 Pensamiento</h3><p>«Es demasiado.»</p></article>
+        <article class="mechanism-card"><span class="mechanism-number">3</span><h3>😰 Reacción</h3><p>Aparece la tensión.</p></article>
+        <article class="mechanism-card"><span class="mechanism-number">4</span><h3>↩️ Respuesta</h3><p>Bajas el precio o pospones.</p></article>
+        <article class="mechanism-card"><span class="mechanism-number">5</span><h3>🔁 Patrón</h3><p>El alivio lo refuerza.</p></article>
       </div>
-      <div class="checklist-item">
-        <div class="check-icon">✅</div>
-        <span><strong>Acceso de por vida + actualizaciones gratuitas</strong> · Paga una vez, tuyo para siempre</span>
-        <span class="item-price">$97</span>
-      </div>
-      <div class="checklist-item">
-        <div class="check-icon">✅</div>
-        <span><strong>Garantía de 7 días</strong> · Pruébalo y consulta las condiciones de devolución</span>
-        <span class="item-price">$27</span>
-      </div>
-    </div>
-    
-    <a class="btn-primary" href="https://pay.hotmart.com/N105653151G">🔥 ABRIR MI FLUJO DE DINERO 🔥</a>
-    <div class="security-badges">
-      <div class="badge-item">🔒 Pago 100% Seguro</div>
-      <div class="badge-item">🛡️ SSL Encriptación</div>
-      <div class="badge-item">⭐ Garantía 7 Días</div>
-      <div class="badge-item">⚡ Entrega Inmediata</div>
-    </div>
-  </div>
+    </section>
 
-  </div>
-
-  <div class="section-divider">Tu punto de partida</div>
-
-  <!-- BENEFICIOS GRID -->
-  <section class="post-video-section" aria-labelledby="transformacion-flujo">
-    <div class="section-intro">
-      <div class="offer-eyebrow">La transformación</div>
-      <h2 id="transformacion-flujo">Lo que empieza a cambiar cuando eliges recibir</h2>
-    </div>
-    <div class="benefits-grid">
-      <div class="benefit-item"><span class="emoji">✂️</span><h4>Reconoce tu patrón</h4><p>Identifica qué situaciones activan la evitación o la culpa.</p></div>
-      <div class="benefit-item"><span class="emoji">💎</span><h4>Recupera margen de elección</h4><p>Observa la reacción sin convertirla automáticamente en una decisión.</p></div>
-      <div class="benefit-item"><span class="emoji">⚡</span><h4>Practica otra respuesta</h4><p>Usa una pausa y una acción concreta para dejar de posponer.</p></div>
-      <div class="benefit-item"><span class="emoji">🌊</span><h4>Actúa con más claridad</h4><p>Define el siguiente paso sin prometer resultados financieros automáticos.</p></div>
-    </div>
-  </section>
-
-  <div class="section-divider">Cómo funciona</div>
-
-  <section class="mechanism-section post-video-section" aria-labelledby="mecanismo-flujo">
-    <div class="mechanism-intro">
-      <div class="offer-eyebrow">El mecanismo</div>
-      <h2 id="mecanismo-flujo">El patrón empieza antes de la decisión.</h2>
-      <p>Esto es lo que puede pasar cuando llega una oportunidad de cobrar, vender o negociar.</p>
-    </div>
-
-    <div class="mechanism-grid" aria-label="Ciclo visual de un patrón financiero automático">
-      <article class="mechanism-step"><span class="mechanism-number">1</span><h3>🫷 Situación</h3><p>Alguien pregunta tu precio.</p></article>
-      <article class="mechanism-step"><span class="mechanism-number">2</span><h3>🧠 Pensamiento</h3><p>«Es demasiado.»</p></article>
-      <article class="mechanism-step"><span class="mechanism-number">3</span><h3>😰 Reacción</h3><p>Aparece la tensión.</p></article>
-      <article class="mechanism-step"><span class="mechanism-number">4</span><h3>↩️ Respuesta</h3><p>Bajas el precio o pospones.</p></article>
-      <article class="mechanism-step"><span class="mechanism-number">5</span><h3>🔁 Patrón</h3><p>El alivio lo refuerza.</p></article>
-    </div>
-
-    <div class="science-panel">
-      <div class="offer-eyebrow">Un poco de ciencia</div>
-      <h3>Tu cerebro aprende lo que repites.</h3>
-      <p>Por eso esta práctica combina <strong>conciencia + pausa + acción</strong>.</p>
+    <section class="section-shell section-shell--dark" aria-labelledby="ciencia-flujo">
+      <div class="section-heading"><div class="eyebrow">Un poco de ciencia</div><h2 id="ciencia-flujo">Tu cerebro aprende lo que repites.</h2><p>Por eso esta práctica combina <strong>conciencia + pausa + acción</strong>.</p></div>
       <div class="science-grid">
-        <article class="science-card"><div><h4>✅ La escasez ocupa atención</h4><p>El estrés financiero puede estrechar tu foco.</p></div></article>
-        <article class="science-card"><div><h4>✅ Las creencias influyen</h4><p>Lo que aprendiste sobre el dinero guía decisiones.</p></div></article>
-        <article class="science-card"><div><h4>✅ La pausa abre elección</h4><p>Observar la reacción crea margen para responder.</p></div></article>
-        <article class="science-card"><div><h4>✅ Un plan ayuda a actuar</h4><p>Un «si–entonces» convierte intención en movimiento.</p></div></article>
+        <article class="science-card"><div><h3>La escasez ocupa atención</h3><p>El estrés financiero puede estrechar tu foco.</p></div></article>
+        <article class="science-card"><div><h3>Las creencias influyen</h3><p>Lo que aprendiste sobre el dinero guía decisiones.</p></div></article>
+        <article class="science-card"><div><h3>La pausa abre elección</h3><p>Observar la reacción crea margen para responder.</p></div></article>
+        <article class="science-card"><div><h3>Un plan ayuda a actuar</h3><p>Un «si–entonces» convierte intención en movimiento.</p></div></article>
       </div>
-    </div>
+    </section>
 
-    <div class="mechanism-intro" style="margin-top:58px; margin-bottom:24px;">
-      <div class="offer-eyebrow">Dentro del audio</div>
-      <h2>Cuatro pasos. Una respuesta más clara.</h2>
-    </div>
-    <div class="audio-process">
-      <article class="audio-step"><b>✅ 01</b><h4>Reconoce</h4><p>Nombra el patrón.</p></article>
-      <article class="audio-step"><b>✅ 02</b><h4>Observa</h4><p>Separa pensamiento y decisión.</p></article>
-      <article class="audio-step"><b>✅ 03</b><h4>Pausa</h4><p>Baja el impulso.</p></article>
-      <article class="audio-step"><b>✅ 04</b><h4>Elige</h4><p>Define tu siguiente acción.</p></article>
-    </div>
-
-    <div class="mechanism-example">
-      <h3>Ejemplo: cobrar sin bajar tu precio</h3>
-      <p><strong>❌ Antes:</strong> «Es demasiado» → tensión → descuento automático.</p>
-      <p><strong>✅ Después:</strong> pausa → explicas tu valor → eliges una opción.</p>
-    </div>
-    <p class="science-note">Inspirado en principios de psicología del comportamiento, estrés financiero y planes de acción «si–entonces».</p>
-  </section>
-
-  <div class="section-divider">Experiencias compartidas</div>
-
-  <section class="reviews-section reviews-section--light post-video-section" aria-labelledby="resenas-flujo">
-    <div class="reviews-inner">
-      <div class="reviews-kicker">★★★★★ &nbsp; Experiencias compartidas</div>
-      <h2 class="reviews-title" id="resenas-flujo">Personas reales. <em>Cambios reales.</em></h2>
-      <div class="reviews-grid">
-        <article class="review-card"><div class="review-stars">★★★★★</div><p class="review-quote">“En el Día 3 entendí exactamente de dónde venía esa creencia. La semana siguiente tomé una decisión financiera que llevaba 2 años posponiendo.”</p><div class="review-person"><div><b>María C.</b><span>Colombia 🇨🇴 · Reseña compartida</span></div></div></article>
-        <article class="review-card"><div class="review-stars">★★★★★</div><p class="review-quote">“Entré escéptica. Esto es diferente: son ejercicios que se sienten, no conferencias. Al día 5 ya actuaba diferente con el dinero.”</p><div class="review-person"><div><b>Valentina R.</b><span>Venezuela 🇻🇪 · Reseña compartida</span></div></div></article>
-        <article class="review-card"><div class="review-stars">★★★★★</div><p class="review-quote">“Terminé el desafío y negocié un aumento que llevaba meses sin atreverme a pedir. La conexión entre mente y dinero es real.”</p><div class="review-person"><div><b>Andrea L.</b><span>México 🇲🇽 · Reseña compartida</span></div></div></article>
-        <article class="review-card"><div class="review-stars">★★★★★</div><p class="review-quote">“El ejercicio del Día 1 me abrió los ojos. Por fin entendí por qué el dinero siempre se me iba.”</p><div class="review-person"><div><b>Luciana M.</b><span>Panamá 🇵🇦 · Reseña compartida</span></div></div></article>
+    <section class="section-shell" aria-labelledby="audio-flujo">
+      <div class="section-heading"><div class="eyebrow">Dentro del audio</div><h2 id="audio-flujo">Cuatro pasos. Una respuesta más clara.</h2></div>
+      <div class="audio-grid">
+        <article class="audio-card"><span class="audio-index">✅ 01</span><h3>Reconoce</h3><p>Nombra el patrón.</p></article>
+        <article class="audio-card"><span class="audio-index">✅ 02</span><h3>Observa</h3><p>Separa pensamiento y decisión.</p></article>
+        <article class="audio-card"><span class="audio-index">✅ 03</span><h3>Pausa</h3><p>Baja el impulso.</p></article>
+        <article class="audio-card"><span class="audio-index">✅ 04</span><h3>Elige</h3><p>Define tu siguiente acción.</p></article>
       </div>
-    </div>
-  </section>
+      <div class="example-box"><h3>Ejemplo: cobrar sin bajar tu precio</h3><p><strong>❌ Antes:</strong> «Es demasiado» → tensión → descuento automático.</p><p><strong>✅ Después:</strong> pausa → explicas tu valor → eliges una opción.</p></div>
+      <p class="science-footnote">Inspirado en principios de psicología del comportamiento, estrés financiero y planes de acción «si–entonces».</p>
+    </section>
 
-  <div class="section-divider">Llévalo a tu día a día</div>
-
-  <!-- REAL WORLD USE CASES -->
-  <section class="real-world-section post-video-section post-video-section--soft">
-    <div class="real-title">✨ Cómo cambia tu realidad financiera ✨</div>
-    <div class="real-sub">Casos reales de personas que reprogramaron su relación con el dinero</div>
-    
-    <div class="before-after-table">
-      <div class="ba-row">
-          <div class="ba-before"><div class="ba-icon">😰</div><div class="ba-title">Antes: Miedo a cobrar lo que vales</div><div class="ba-desc">Trabajas el doble, pero cuando toca poner precio, te paralizas o regalas tu trabajo para evitar el rechazo.</div></div>
-        <div class="ba-arrow">➡️</div>
-        <div class="ba-after"><div class="ba-icon">💰</div><div class="ba-title">Después: Precio comunicado con claridad</div><div class="ba-desc">Puedes explicar tu valor y sostener tu precio sin disculparte ni bajar automáticamente.</div></div>
+    <section class="section-shell" aria-labelledby="resenas-flujo">
+      <div class="section-heading"><div class="eyebrow">Experiencias compartidas</div><h2 id="resenas-flujo">Personas reales. <span style="color: var(--orange);">Cambios reales.</span></h2></div>
+      <div class="review-grid">
+        <article class="review-card"><div class="stars">★★★★★</div><p class="review-quote">“En el Día 3 entendí exactamente de dónde venía esa creencia. La semana siguiente tomé una decisión financiera que llevaba 2 años posponiendo.”</p><div class="review-person"><b>María C.</b><span>Colombia 🇨🇴 · Reseña compartida</span></div></article>
+        <article class="review-card"><div class="stars">★★★★★</div><p class="review-quote">“Entré escéptica. Esto es diferente: son ejercicios que se sienten, no conferencias. Al día 5 ya actuaba diferente con el dinero.”</p><div class="review-person"><b>Valentina R.</b><span>Venezuela 🇻🇪 · Reseña compartida</span></div></article>
+        <article class="review-card"><div class="stars">★★★★★</div><p class="review-quote">“Terminé el desafío y negocié un aumento que llevaba meses sin atreverme a pedir. La conexión entre mente y dinero es real.”</p><div class="review-person"><b>Andrea L.</b><span>México 🇲🇽 · Reseña compartida</span></div></article>
+        <article class="review-card"><div class="stars">★★★★★</div><p class="review-quote">“El ejercicio del Día 1 me abrió los ojos. Por fin entendí por qué el dinero siempre se me iba.”</p><div class="review-person"><b>Luciana M.</b><span>Panamá 🇵🇦 · Reseña compartida</span></div></article>
       </div>
-      <div class="ba-row">
-        <div class="ba-before"><div class="ba-icon">💸</div><div class="ba-title">Antes: El dinero siempre se va</div><div class="ba-desc">Cobra hoy, mañana no sabes dónde está. Hueco financiero invisible.</div></div>
-        <div class="ba-arrow">➡️</div>
-        <div class="ba-after"><div class="ba-icon">📊</div><div class="ba-title">Después: Más conciencia financiera</div><div class="ba-desc">Puedes observar lo que entra y sale y tomar decisiones menos reactivas.</div></div>
+    </section>
+
+    <section class="section-shell section-shell--soft" aria-labelledby="realidad-flujo">
+      <div class="section-heading"><div class="eyebrow">Llévalo a tu día a día</div><h2 id="realidad-flujo">✨ Cómo cambia tu realidad financiera ✨</h2><p>Casos reales de personas que reprogramaron su relación con el dinero</p></div>
+      <div class="before-after-list">
+        <article class="before-after"><div class="before-after-side before-after-side--before"><div class="before-after-icon">😰</div><h3>Antes: Miedo a cobrar lo que vales</h3><p>Trabajas el doble, pero cuando toca poner precio, te paralizas o regalas tu trabajo para evitar el rechazo.</p></div><div class="before-after-arrow">➡️</div><div class="before-after-side before-after-side--after"><div class="before-after-icon">💰</div><h3>Después: Precio comunicado con claridad</h3><p>Puedes explicar tu valor y sostener tu precio sin disculparte ni bajar automáticamente.</p></div></article>
+        <article class="before-after"><div class="before-after-side before-after-side--before"><div class="before-after-icon">💸</div><h3>Antes: El dinero siempre se va</h3><p>Cobra hoy, mañana no sabes dónde está. Hueco financiero invisible.</p></div><div class="before-after-arrow">➡️</div><div class="before-after-side before-after-side--after"><div class="before-after-icon">📊</div><h3>Después: Más conciencia financiera</h3><p>Puedes observar lo que entra y sale y tomar decisiones menos reactivas.</p></div></article>
+        <article class="before-after"><div class="before-after-side before-after-side--before"><div class="before-after-icon">🔄</div><h3>Antes: Patrón de escasez heredado</h3><p>"El dinero no alcanza", "eso es para ricos". Frases que operan en piloto automático.</p></div><div class="before-after-arrow">➡️</div><div class="before-after-side before-after-side--after"><div class="before-after-icon">🌊</div><h3>Después: Relación más flexible</h3><p>Puedes cuestionar frases heredadas y elegir acciones alineadas con tus objetivos.</p></div></article>
+        <article class="before-after"><div class="before-after-side before-after-side--before"><div class="before-after-icon">😶</div><h3>Antes: No puedes pedir aumento</h3><p>Llevas años en el mismo sueldo porque negociar te da pánico escénico.</p></div><div class="before-after-arrow">➡️</div><div class="before-after-side before-after-side--after"><div class="before-after-icon">📈</div><h3>Después: Preparas la conversación</h3><p>Llegas a negociar con una respuesta ensayada y más capacidad para sostener tu petición.</p></div></article>
+        <article class="before-after"><div class="before-after-side before-after-side--before"><div class="before-after-icon">🚫</div><h3>Antes: Te saboteas al emprender</h3><p>Creas contenido, pero no publicas. Armás la oferta, pero no la lanzas.</p></div><div class="before-after-arrow">➡️</div><div class="before-after-side before-after-side--after"><div class="before-after-icon">🚀</div><h3>Después: Siguiente acción clara</h3><p>Publicas, envías o lanzas el siguiente paso sin exigir que el miedo desaparezca primero.</p></div></article>
       </div>
-      <div class="ba-row">
-        <div class="ba-before"><div class="ba-icon">🔄</div><div class="ba-title">Antes: Patrón de escasez heredado</div><div class="ba-desc">"El dinero no alcanza", "eso es para ricos". Frases que operan en piloto automático.</div></div>
-        <div class="ba-arrow">➡️</div>
-        <div class="ba-after"><div class="ba-icon">🌊</div><div class="ba-title">Después: Relación más flexible</div><div class="ba-desc">Puedes cuestionar frases heredadas y elegir acciones alineadas con tus objetivos.</div></div>
+    </section>
+
+    <section class="section-shell section-shell--dark" aria-labelledby="comunidad-flujo">
+      <div class="section-heading"><div class="eyebrow">Voces de la comunidad</div><h2 id="comunidad-flujo">No es magia. <span style="color: #ffb27c;">Es una nueva relación con el dinero.</span></h2></div>
+      <div class="review-grid review-grid--two">
+        <article class="review-card"><div class="stars">★★★★★</div><p class="review-quote">“En el día 4 identifiqué una creencia que tenía desde los 8 años. Los ejercicios atacan la raíz del problema.”</p><div class="review-person"><b>Carlos V.</b><span>Colombia 🇨🇴 · Reseña compartida</span></div></article>
+        <article class="review-card"><div class="stars">★★★★★</div><p class="review-quote">“Cada día abre un nivel más profundo. El audio del Día 6 fue el momento que más me impactó; todavía lo escucho antes de dormir.”</p><div class="review-person"><b>Diana S.</b><span>Ecuador 🇪🇨 · Reseña compartida</span></div></article>
       </div>
-      <div class="ba-row">
-        <div class="ba-before"><div class="ba-icon">😶</div><div class="ba-title">Antes: No puedes pedir aumento</div><div class="ba-desc">Llevas años en el mismo sueldo porque negociar te da pánico escénico.</div></div>
-        <div class="ba-arrow">➡️</div>
-        <div class="ba-after"><div class="ba-icon">📈</div><div class="ba-title">Después: Preparas la conversación</div><div class="ba-desc">Llegas a negociar con una respuesta ensayada y más capacidad para sostener tu petición.</div></div>
+    </section>
+
+    <section class="section-shell" aria-labelledby="despues-de-comprar">
+      <div class="section-heading"><div class="eyebrow">Tu siguiente paso</div><h2 id="despues-de-comprar">Así empiezas</h2></div>
+      <ol class="steps-list">
+        <li><b>Pago seguro</b>Completa tu compra con el método de pago que prefieras.</li>
+        <li><b>Acceso inmediato</b>Recibe el acceso a tu audio y materiales incluidos al confirmar tu compra.</li>
+        <li><b>Comienza</b>Escucha la sesión desde tu dispositivo, a tu propio ritmo.</li>
+      </ol>
+    </section>
+
+    <section class="section-shell" aria-labelledby="preguntas-flujo">
+      <div class="section-heading"><div class="eyebrow">Preguntas frecuentes</div><h2 id="preguntas-flujo">❓ Preguntas reales</h2></div>
+      <div class="faq-list">
+        <div class="faq-item"><div class="faq-question">¿Necesito experiencia en meditación?</div><div class="faq-answer">No. Solo busca un lugar tranquilo, escucha la guía y sigue las instrucciones a tu ritmo. La práctica te acompaña; el cambio se consolida con repetición y acciones concretas.</div></div>
+        <div class="faq-item"><div class="faq-question">¿Cuánto dura el efecto?</div><div class="faq-answer">No existe una duración igual para todas las personas. Puedes repetir la práctica durante 7 días y observar qué situaciones, decisiones y acciones empiezan a sentirse más claras.</div></div>
+        <div class="faq-item"><div class="faq-question">¿Es realmente $27 sin costo extra?</div><div class="faq-answer">Sí. Pago único, acceso de por vida. Sin letras chicas, sin membresía oculta.</div></div>
+        <div class="faq-item"><div class="faq-question">¿Funciona si estoy en crisis económica?</div><div class="faq-answer">Puede ayudarte a observar cómo el estrés y la evitación influyen en determinadas decisiones, pero no sustituye apoyo financiero o profesional. Si estás en una crisis, combina esta práctica con orientación práctica y cualificada.</div></div>
+        <div class="faq-item"><div class="faq-question">Garantía de 7 días: ¿cómo funciona?</div><div class="faq-answer">Úsalo una semana. Si no sientes un cambio real en tu relación con el dinero, te devolvemos cada peso. Sin preguntas.</div></div>
       </div>
-      <div class="ba-row">
-        <div class="ba-before"><div class="ba-icon">🚫</div><div class="ba-title">Antes: Te saboteas al emprender</div><div class="ba-desc">Creas contenido, pero no publicas. Armás la oferta, pero no la lanzas.</div></div>
-        <div class="ba-arrow">➡️</div>
-        <div class="ba-after"><div class="ba-icon">🚀</div><div class="ba-title">Después: Siguiente acción clara</div><div class="ba-desc">Publicas, envías o lanzas el siguiente paso sin exigir que el miedo desaparezca primero.</div></div>
-      </div>
-    </div>
-  </section>
+    </section>
 
-  <div class="section-divider section-divider--light">Voces de la comunidad</div>
-
-  <section class="reviews-section reviews-section--dark post-video-section post-video-section--dark" aria-labelledby="resenas-profundas">
-    <div class="reviews-inner">
-      <div class="reviews-kicker">★★★★★ &nbsp; Voces de la comunidad</div>
-      <h2 class="reviews-title" id="resenas-profundas">No es magia. <em>Es una nueva relación con el dinero.</em></h2>
-      <div class="reviews-grid">
-        <article class="review-card"><div class="review-stars">★★★★★</div><p class="review-quote">“En el día 4 identifiqué una creencia que tenía desde los 8 años. Los ejercicios atacan la raíz del problema.”</p><div class="review-person"><div><b>Carlos V.</b><span>Colombia 🇨🇴 · Reseña compartida</span></div></div></article>
-        <article class="review-card"><div class="review-stars">★★★★★</div><p class="review-quote">“Cada día abre un nivel más profundo. El audio del Día 6 fue el momento que más me impactó; todavía lo escucho antes de dormir.”</p><div class="review-person"><div><b>Diana S.</b><span>Ecuador 🇪🇨 · Reseña compartida</span></div></div></article>
-      </div>
-    </div>
-  </section>
-
-  <div class="section-divider">Tu siguiente paso</div>
-
-  <section class="ka-purchase-steps post-video-section" aria-labelledby="despues-de-comprar">
-    <h2 id="despues-de-comprar">Así empiezas</h2>
-    <ol>
-      <li><b>1. Pago seguro</b>Completa tu compra con el método de pago que prefieras.</li>
-      <li><b>2. Acceso inmediato</b>Recibe el acceso a tu audio y materiales incluidos al confirmar tu compra.</li>
-      <li><b>3. Comienza</b>Escucha la sesión desde tu dispositivo, a tu propio ritmo.</li>
-    </ol>
-  </section>
-
-  <section class="faq-section post-video-section" aria-labelledby="preguntas-flujo">
-    <div class="faq-title" id="preguntas-flujo">❓ PREGUNTAS REALES</div>
-    <div class="faq-item"><div class="faq-question">¿Necesito experiencia en meditación?</div><div class="faq-answer">No. Solo busca un lugar tranquilo, escucha la guía y sigue las instrucciones a tu ritmo. La práctica te acompaña; el cambio se consolida con repetición y acciones concretas.</div></div>
-    <div class="faq-item"><div class="faq-question">¿Cuánto dura el efecto?</div><div class="faq-answer">No existe una duración igual para todas las personas. Puedes repetir la práctica durante 7 días y observar qué situaciones, decisiones y acciones empiezan a sentirse más claras.</div></div>
-    <div class="faq-item"><div class="faq-question">¿Es realmente $27 sin costo extra?</div><div class="faq-answer">Sí. Pago único, acceso de por vida. Sin letras chicas, sin membresía oculta.</div></div>
-    <div class="faq-item"><div class="faq-question">¿Funciona si estoy en crisis económica?</div><div class="faq-answer">Puede ayudarte a observar cómo el estrés y la evitación influyen en determinadas decisiones, pero no sustituye apoyo financiero o profesional. Si estás en una crisis, combina esta práctica con orientación práctica y cualificada.</div></div>
-    <div class="faq-item"><div class="faq-question">Garantía de 7 días: ¿cómo funciona?</div><div class="faq-answer">Úsalo una semana. Si no sientes un cambio real en tu relación con el dinero, te devolvemos cada peso. Sin preguntas.</div></div>
-  </section>
-
-  <div class="section-divider">Empieza hoy</div>
-
-  <section class="post-video-section post-video-section--soft" aria-label="Activar Flujo de Dinero">
-  <div style="text-align: center; margin: 0; border-top: 0; padding-top: 0;">
-    <p style="font-size: 24px; font-weight: 700; color: var(--gold-light);">Tu siguiente decisión puede ser más consciente.</p>
-    <p style="font-size: 28px; font-weight: 800;">Empieza por observar qué se activa y elegir tu próximo paso.</p>
-    <div style="max-width: 380px; margin: 32px auto 0;">
-      <a class="btn-primary" href="https://pay.hotmart.com/N105653151G">💰 ACTIVAR MI FLUJO DE DINERO 💰</a>
-      <div class="security-badges" style="margin-top: 16px;">
-        <div class="badge-item">🔒 Compra Segura</div>
-        <div class="badge-item">📥 Acceso Inmediato</div>
-        <div class="badge-item">🔄 Garantía 7 Días</div>
-      </div>
-    </div>
-  </div>
-
-  </div>
-
-  <div class="footer-note">
-    © 2025 Kimberly Ali — Meditaciones Cuánticas · Resultados individuales varían. Este producto no garantiza ingresos específicos.
-  </div>
+    <section class="section-shell section-shell--soft final-cta" aria-label="Activar Flujo de Dinero">
+      <div class="eyebrow">Empieza hoy</div>
+      <h3>Tu siguiente decisión puede ser más consciente.</h3>
+      <p>Empieza por observar qué se activa y elegir tu próximo paso.</p>
+      <a class="primary-button" href="https://pay.hotmart.com/N105653151G">💰 ACTIVAR MI FLUJO DE DINERO 💰</a>
+      <div class="security-badges"><span class="badge">🔒 Compra Segura</span><span class="badge">📥 Acceso Inmediato</span><span class="badge">🔄 Garantía 7 Días</span></div>
+    </section>
+  </main>
+  <div class="footer-note">© 2025 Kimberly Ali — Meditaciones Cuánticas · Resultados individuales varían. Este producto no garantiza ingresos específicos.</div>
 </div>
-
-<script>
-  const starsEl = document.getElementById('stars');
-  for (let i = 0; i < 100; i++) {
-    const s = document.createElement('div');
-    s.className = 'star';
-    const size = Math.random() * 2 + 0.5;
-    s.style.cssText = `width:${size}px;height:${size}px;top:${Math.random()*100}%;left:${Math.random()*100}%;animation-duration:${2+Math.random()*4}s;animation-delay:${Math.random()*5}s`;
-    starsEl.appendChild(s);
-  }
-</script>
-  <script src="assets/site-nav.js?v=20260809-architecture"></script>
+<script src="assets/site-nav.js?v=20260809-architecture"></script>
 </body>
 </html>
