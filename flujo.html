@@ -883,6 +883,34 @@
   .post-video-section--dark .reviews-title { margin-bottom: 28px; }
   @media (max-width: 700px) { .post-video-section { margin-top: 18px; padding: 48px 18px; border-radius: 18px; } .section-divider { margin-top: 20px; } }
 
+  /* FULL WIDTH + CONTRASTE SEGURO */
+  .page { width: 100%; max-width: 1440px; padding-left: 32px; padding-right: 32px; }
+  .sales-hero { width: 100%; max-width: none; }
+  .sales-hero > .offer-header { width: min(100%, 920px); margin-right: auto; margin-left: auto; }
+  .sales-hero > .cta-card { width: min(100%, 1040px); max-width: none; }
+  .section-divider { width: 100%; max-width: none; }
+  .section-divider--light { color: #b84214; }
+  .post-video-section { width: 100%; max-width: none; border-radius: 28px; padding-right: clamp(24px, 5vw, 76px); padding-left: clamp(24px, 5vw, 76px); }
+  .post-video-section > * { width: 100%; max-width: 1240px; margin-right: auto; margin-left: auto; }
+  .post-video-section .benefits-grid, .post-video-section .mechanism-grid, .post-video-section .science-grid, .post-video-section .audio-process, .post-video-section .reviews-grid, .post-video-section .before-after-table { width: 100%; max-width: none; }
+  .post-video-section:not(.post-video-section--dark), .post-video-section:not(.post-video-section--dark) .section-intro h2, .post-video-section:not(.post-video-section--dark) .mechanism-intro h2, .post-video-section:not(.post-video-section--dark) .real-title, .post-video-section:not(.post-video-section--dark) .faq-title, .post-video-section:not(.post-video-section--dark) .faq-question, .post-video-section:not(.post-video-section--dark) .audio-step h4, .post-video-section:not(.post-video-section--dark) .mechanism-step h3, .post-video-section:not(.post-video-section--dark) .mechanism-example h3 { color: var(--ink) !important; -webkit-text-fill-color: currentColor !important; }
+  .post-video-section:not(.post-video-section--dark) p, .post-video-section:not(.post-video-section--dark) .real-sub, .post-video-section:not(.post-video-section--dark) .faq-answer, .post-video-section:not(.post-video-section--dark) .audio-step p, .post-video-section:not(.post-video-section--dark) .mechanism-step p, .post-video-section:not(.post-video-section--dark) .mechanism-example p { color: var(--muted) !important; }
+  .post-video-section--soft { color: var(--ink) !important; background: linear-gradient(135deg, #fff8f1 0%, #fff1e4 100%); border-color: #f0c9ac; }
+  .post-video-section--soft [style*="color: var(--gold-light)"] { color: #b84214 !important; }
+  .post-video-section--dark { color: #fff7ef !important; background: linear-gradient(135deg, #21120b 0%, #3a1d12 100%); border-color: #21120b; }
+  .post-video-section--dark .reviews-title, .post-video-section--dark .reviews-kicker, .post-video-section--dark .review-quote, .post-video-section--dark .review-person b { color: #fff7ef !important; -webkit-text-fill-color: currentColor !important; }
+  .post-video-section--dark .review-stars { color: #ffd166 !important; }
+  .post-video-section--dark .review-person span { color: rgba(255,247,239,.72) !important; }
+  .post-video-section--dark .review-card { background: rgba(255,255,255,.09); border-color: rgba(255,247,239,.2); }
+  .post-video-section--dark .reviews-title em { color: #ffb27c !important; }
+  .post-video-section--dark .section-intro h2, .post-video-section--dark .mechanism-intro h2 { color: #fff7ef !important; }
+  .post-video-section .faq-item { border-color: var(--line-ui); }
+  .post-video-section--dark .faq-question, .post-video-section--dark .faq-answer { color: #fff7ef !important; }
+  .post-video-section--dark .faq-answer { color: rgba(255,247,239,.78) !important; }
+  .ka-purchase-steps h2 { color: var(--ink) !important; -webkit-text-fill-color: currentColor !important; }
+  .ka-purchase-steps li, .ka-purchase-steps li b { color: var(--ink) !important; }
+  @media (max-width: 700px) { .page { padding-right: 16px; padding-left: 16px; } .post-video-section { width: 100%; } }
+
   @media (prefers-reduced-motion: reduce) { *, *::before, *::after { animation: none !important; transition: none !important; } }
 </style>
 </head>
