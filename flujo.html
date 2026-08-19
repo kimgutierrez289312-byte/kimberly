@@ -860,6 +860,29 @@
   @media (max-width: 980px) { .mechanism-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); } .mechanism-step:not(:last-child)::after { display: none; } .science-grid, .audio-process { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
   @media (max-width: 700px) { .mechanism-section { padding: 62px 0; } .mechanism-intro p { font-size: 18px; } .mechanism-grid, .science-grid, .audio-process { grid-template-columns: 1fr; } .mechanism-step:not(:last-child)::after { display: block; top: auto; right: 50%; bottom: -22px; transform: translateX(50%) rotate(90deg); } .mechanism-step { min-height: 0; margin-bottom: 10px; } .science-panel { padding: 26px 18px; } .science-panel > p { font-size: 18px; } .mechanism-example, .expectations-note { padding: 23px 19px; } .mechanism-example p { font-size: 17px; } }
 
+  /* SEPARACIÓN MINIMAL SAAS PARA EL CONTENIDO BAJO EL VÍDEO */
+  .sales-hero > .offer-header { margin-bottom: 0; }
+  .sales-hero > .cta-card { margin-top: 28px; }
+  .post-video-section { margin: 28px 0 0; padding: clamp(54px, 7vw, 88px) clamp(20px, 4vw, 48px); background: #fff; border: 1px solid var(--line-ui); border-radius: 24px; box-shadow: 0 16px 36px rgba(76,38,16,.06); }
+  .post-video-section--soft { background: #fff4ea; border-color: #f3c8ac; }
+  .post-video-section--dark { color: #fff7ef; background: #21120b; border-color: #21120b; }
+  .post-video-section .section-intro, .post-video-section .mechanism-intro { margin-bottom: 30px; }
+  .post-video-section .benefits-grid { margin: 0; }
+  .post-video-section .reviews-section, .post-video-section .real-world-section, .post-video-section .faq-section { margin: 0; padding: 0; border: 0; box-shadow: none; background: transparent; }
+  .post-video-section--dark .reviews-title, .post-video-section--dark .reviews-kicker, .post-video-section--dark .review-quote, .post-video-section--dark .review-person b, .post-video-section--dark .review-person span { color: #fff7ef !important; }
+  .post-video-section--dark .review-person span { opacity: .7; }
+  .section-divider { display: flex; align-items: center; gap: 14px; margin: 28px auto 0; max-width: 920px; color: #b84214; font-size: 12px; font-weight: 800; letter-spacing: .13em; text-transform: uppercase; }
+  .section-divider::before, .section-divider::after { content: ''; height: 1px; flex: 1; background: var(--line-ui); }
+  .section-divider--light { color: #ffb27c; }
+  .section-divider--light::before, .section-divider--light::after { background: rgba(255,255,255,.2); }
+  .post-video-section--soft .real-world-section { padding: 0; }
+  .post-video-section--soft .real-title { margin-bottom: 12px; }
+  .post-video-section--soft .real-sub { margin-bottom: 30px; }
+  .post-video-section--soft .ba-row { box-shadow: 0 8px 20px rgba(76,38,16,.05); }
+  .post-video-section--dark .reviews-section { padding: 0; }
+  .post-video-section--dark .reviews-title { margin-bottom: 28px; }
+  @media (max-width: 700px) { .post-video-section { margin-top: 18px; padding: 48px 18px; border-radius: 18px; } .section-divider { margin-top: 20px; } }
+
   @media (prefers-reduced-motion: reduce) { *, *::before, *::after { animation: none !important; transition: none !important; } }
 </style>
 </head>
@@ -943,19 +966,25 @@
 
   </div>
 
-  <!-- BENEFICIOS GRID -->
-  <div class="section-intro">
-    <div class="offer-eyebrow">La transformación</div>
-    <h2>Lo que empieza a cambiar cuando eliges recibir</h2>
-  </div>
-  <div class="benefits-grid">
-    <div class="benefit-item"><span class="emoji">✂️</span><h4>Reconoce tu patrón</h4><p>Identifica qué situaciones activan la evitación o la culpa.</p></div>
-    <div class="benefit-item"><span class="emoji">💎</span><h4>Recupera margen de elección</h4><p>Observa la reacción sin convertirla automáticamente en una decisión.</p></div>
-    <div class="benefit-item"><span class="emoji">⚡</span><h4>Practica otra respuesta</h4><p>Usa una pausa y una acción concreta para dejar de posponer.</p></div>
-    <div class="benefit-item"><span class="emoji">🌊</span><h4>Actúa con más claridad</h4><p>Define el siguiente paso sin prometer resultados financieros automáticos.</p></div>
-  </div>
+  <div class="section-divider">Tu punto de partida</div>
 
-  <section class="mechanism-section" aria-labelledby="mecanismo-flujo">
+  <!-- BENEFICIOS GRID -->
+  <section class="post-video-section" aria-labelledby="transformacion-flujo">
+    <div class="section-intro">
+      <div class="offer-eyebrow">La transformación</div>
+      <h2 id="transformacion-flujo">Lo que empieza a cambiar cuando eliges recibir</h2>
+    </div>
+    <div class="benefits-grid">
+      <div class="benefit-item"><span class="emoji">✂️</span><h4>Reconoce tu patrón</h4><p>Identifica qué situaciones activan la evitación o la culpa.</p></div>
+      <div class="benefit-item"><span class="emoji">💎</span><h4>Recupera margen de elección</h4><p>Observa la reacción sin convertirla automáticamente en una decisión.</p></div>
+      <div class="benefit-item"><span class="emoji">⚡</span><h4>Practica otra respuesta</h4><p>Usa una pausa y una acción concreta para dejar de posponer.</p></div>
+      <div class="benefit-item"><span class="emoji">🌊</span><h4>Actúa con más claridad</h4><p>Define el siguiente paso sin prometer resultados financieros automáticos.</p></div>
+    </div>
+  </section>
+
+  <div class="section-divider">Cómo funciona</div>
+
+  <section class="mechanism-section post-video-section" aria-labelledby="mecanismo-flujo">
     <div class="mechanism-intro">
       <div class="offer-eyebrow">El mecanismo</div>
       <h2 id="mecanismo-flujo">El patrón empieza antes de la decisión.</h2>
@@ -1001,7 +1030,9 @@
     <p class="science-note">Inspirado en principios de psicología del comportamiento, estrés financiero y planes de acción «si–entonces».</p>
   </section>
 
-  <section class="reviews-section reviews-section--light" aria-labelledby="resenas-flujo">
+  <div class="section-divider">Experiencias compartidas</div>
+
+  <section class="reviews-section reviews-section--light post-video-section" aria-labelledby="resenas-flujo">
     <div class="reviews-inner">
       <div class="reviews-kicker">★★★★★ &nbsp; Experiencias compartidas</div>
       <h2 class="reviews-title" id="resenas-flujo">Personas reales. <em>Cambios reales.</em></h2>
@@ -1014,8 +1045,10 @@
     </div>
   </section>
 
+  <div class="section-divider">Llévalo a tu día a día</div>
+
   <!-- REAL WORLD USE CASES -->
-  <div class="real-world-section">
+  <section class="real-world-section post-video-section post-video-section--soft">
     <div class="real-title">✨ Cómo cambia tu realidad financiera ✨</div>
     <div class="real-sub">Casos reales de personas que reprogramaron su relación con el dinero</div>
     
@@ -1046,9 +1079,11 @@
         <div class="ba-after"><div class="ba-icon">🚀</div><div class="ba-title">Después: Siguiente acción clara</div><div class="ba-desc">Publicas, envías o lanzas el siguiente paso sin exigir que el miedo desaparezca primero.</div></div>
       </div>
     </div>
-  </div>
+  </section>
 
-  <section class="reviews-section reviews-section--dark" aria-labelledby="resenas-profundas">
+  <div class="section-divider section-divider--light">Voces de la comunidad</div>
+
+  <section class="reviews-section reviews-section--dark post-video-section post-video-section--dark" aria-labelledby="resenas-profundas">
     <div class="reviews-inner">
       <div class="reviews-kicker">★★★★★ &nbsp; Voces de la comunidad</div>
       <h2 class="reviews-title" id="resenas-profundas">No es magia. <em>Es una nueva relación con el dinero.</em></h2>
@@ -1059,7 +1094,9 @@
     </div>
   </section>
 
-  <section class="ka-purchase-steps" aria-labelledby="despues-de-comprar">
+  <div class="section-divider">Tu siguiente paso</div>
+
+  <section class="ka-purchase-steps post-video-section" aria-labelledby="despues-de-comprar">
     <h2 id="despues-de-comprar">Así empiezas</h2>
     <ol>
       <li><b>1. Pago seguro</b>Completa tu compra con el método de pago que prefieras.</li>
@@ -1068,16 +1105,19 @@
     </ol>
   </section>
 
-  <div class="faq-section">
-    <div class="faq-title">❓ PREGUNTAS REALES</div>
+  <section class="faq-section post-video-section" aria-labelledby="preguntas-flujo">
+    <div class="faq-title" id="preguntas-flujo">❓ PREGUNTAS REALES</div>
     <div class="faq-item"><div class="faq-question">¿Necesito experiencia en meditación?</div><div class="faq-answer">No. Solo busca un lugar tranquilo, escucha la guía y sigue las instrucciones a tu ritmo. La práctica te acompaña; el cambio se consolida con repetición y acciones concretas.</div></div>
     <div class="faq-item"><div class="faq-question">¿Cuánto dura el efecto?</div><div class="faq-answer">No existe una duración igual para todas las personas. Puedes repetir la práctica durante 7 días y observar qué situaciones, decisiones y acciones empiezan a sentirse más claras.</div></div>
     <div class="faq-item"><div class="faq-question">¿Es realmente $27 sin costo extra?</div><div class="faq-answer">Sí. Pago único, acceso de por vida. Sin letras chicas, sin membresía oculta.</div></div>
     <div class="faq-item"><div class="faq-question">¿Funciona si estoy en crisis económica?</div><div class="faq-answer">Puede ayudarte a observar cómo el estrés y la evitación influyen en determinadas decisiones, pero no sustituye apoyo financiero o profesional. Si estás en una crisis, combina esta práctica con orientación práctica y cualificada.</div></div>
     <div class="faq-item"><div class="faq-question">Garantía de 7 días: ¿cómo funciona?</div><div class="faq-answer">Úsalo una semana. Si no sientes un cambio real en tu relación con el dinero, te devolvemos cada peso. Sin preguntas.</div></div>
-  </div>
+  </section>
 
-  <div style="text-align: center; margin: 70px 0 20px; border-top: 1px solid rgba(201,169,110,0.2); padding-top: 50px;">
+  <div class="section-divider">Empieza hoy</div>
+
+  <section class="post-video-section post-video-section--soft" aria-label="Activar Flujo de Dinero">
+  <div style="text-align: center; margin: 0; border-top: 0; padding-top: 0;">
     <p style="font-size: 24px; font-weight: 700; color: var(--gold-light);">Tu siguiente decisión puede ser más consciente.</p>
     <p style="font-size: 28px; font-weight: 800;">Empieza por observar qué se activa y elegir tu próximo paso.</p>
     <div style="max-width: 380px; margin: 32px auto 0;">
@@ -1088,6 +1128,8 @@
         <div class="badge-item">🔄 Garantía 7 Días</div>
       </div>
     </div>
+  </div>
+
   </div>
 
   <div class="footer-note">
