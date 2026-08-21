@@ -289,6 +289,30 @@
   .photo-break-caption { max-width: 760px; margin: -42px auto 0; padding: 14px 18px; color: #2a1710; background: #ffbd75; border-left: 6px solid #b82b1c; font-size: 16px; font-weight: 800; line-height: 1.35; }
   @media (max-width: 700px) { .photo-break-stage { padding: 0 24px 92px 0; } .photo-break-main { height: 390px; } .photo-break-secondary { width: 175px; height: 220px; } .photo-break-caption { margin-top: -56px; font-size: 15px; } }
 
+  /* CONTENIDO SOBRE EL FONDO: SIN TARJETAS ANIDADAS */
+  .section-shell:not(.photo-break) .benefit-card, .section-shell:not(.photo-break) .review-card, .section-shell:not(.photo-break) .audio-card, .section-shell:not(.photo-break) .science-card, .section-shell:not(.photo-break) .mechanism-card, .section-shell:not(.photo-break) .before-after, .section-shell:not(.photo-break) .steps-list li {
+    background: transparent;
+    border-radius: 0;
+    box-shadow: none;
+  }
+  .section-shell:not(.photo-break) .benefit-card { border: 0; border-top: 4px solid var(--orange); padding-right: 4px; padding-left: 4px; }
+  .section-shell:not(.photo-break) .mechanism-card { border: 0; border-left: 5px solid var(--orange); padding-right: 18px; padding-left: 22px; }
+  .section-shell:not(.photo-break) .science-card { border: 0; border-left: 5px solid #ffbd75; padding-right: 4px; padding-left: 22px; }
+  .section-shell:not(.photo-break) .audio-card { border: 0; border-top: 4px solid var(--green); padding-right: 4px; padding-left: 4px; }
+  .section-shell:not(.photo-break) .review-card { border: 0; border-top: 4px solid #c9a33c; padding-right: 4px; padding-left: 4px; }
+  .section-shell--dark .review-card, .section-shell--dark .science-card { background: transparent; border-color: rgba(255,248,241,.32); }
+  .section-shell:not(.photo-break) .before-after { border: 0; border-top: 1px solid #d0c1b7; padding-right: 0; padding-left: 0; }
+  .section-shell:not(.photo-break) .steps-list li { border: 0; border-left: 5px solid var(--orange); padding-left: 55px; }
+  .section-shell:not(.photo-break) .product-showcase { background: transparent; border: 0; border-radius: 0; }
+  .section-shell:not(.photo-break) .value-box { background: transparent; border: 0; border-left: 5px solid #d76a45; border-radius: 0; }
+  .section-shell:not(.photo-break) .badge { background: transparent; border: 0; border-radius: 0; padding-right: 0; padding-left: 0; }
+  .section-shell--dark .review-card .stars { color: #ffd166; }
+
+  @media (max-width: 700px) {
+    .section-shell:not(.photo-break) .before-after { padding-top: 18px; padding-bottom: 18px; }
+    .section-shell:not(.photo-break) .benefit-card, .section-shell:not(.photo-break) .audio-card { padding-top: 22px; padding-bottom: 22px; }
+  }
+
   @media (prefers-reduced-motion: reduce) { *, *::before, *::after { animation: none !important; transition: none !important; } }
 </style>
 </head>
