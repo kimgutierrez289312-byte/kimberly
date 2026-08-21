@@ -469,6 +469,63 @@
     .photo-break-main { height: 390px; }
   }
 
+  /* SALES FLOW UPDATE */
+  main { display: flex; flex-direction: column; }
+  .hero { order: 1; }
+  .offer-section { order: 2; background: #f6f7fa !important; }
+  .science-section { order: 3; background: #fff !important; }
+  .photo-break { order: 4; background: #f6f7fa !important; }
+  .testimonials-section { order: 5; background: #fff !important; }
+  .mechanism-section { order: 6; background: #f6f7fa !important; }
+  .transform-section { order: 7; background: #fff !important; }
+  .steps-section { order: 8; background: #f6f7fa !important; }
+  .faq-section { order: 9; background: #fff !important; }
+  .final-cta { order: 10; }
+  .hero-buy-button { width: min(100%, 520px); margin: 10px auto 0; }
+  .section-cta { width: min(100%, 520px); margin: 40px auto 0; }
+  .offer-card { display: flex; flex-direction: column; }
+  .offer-header { order: 1; }
+  .product-showcase { order: 2; }
+  .offer-stack { order: 3; }
+  .offer-gallery { order: 4; }
+  .value-box { order: 5; }
+  .offer-card > .primary-button { order: 6; }
+  .offer-card > .security-badges { order: 7; }
+  .offer-stack { padding: 22px 0 10px; border-top: 2px solid #161b2d; border-bottom: 2px solid #161b2d; }
+  .offer-stack::before { content: 'Todo lo que incluye tu acceso'; display: block; margin-bottom: 8px; color: #161b2d; font-size: 24px; font-weight: 800; letter-spacing: -.03em; }
+  .offer-stack .offer-item { padding: 19px 0; }
+  .offer-stack .offer-item-copy { font-size: 17px; }
+  .offer-stack .offer-value { font-size: 14px; font-weight: 800; }
+  .science-list, .mechanism-list { width: 100%; max-width: 780px; margin: 0 auto; }
+  .science-row, .mechanism-step { display: grid; grid-template-columns: 58px minmax(0, 1fr); gap: 18px; align-items: start; padding: 26px 0; border-bottom: 1px solid #e1e5ed; }
+  .science-row:first-child, .mechanism-step:first-child { border-top: 1px solid #e1e5ed; }
+  .science-row > span, .mechanism-step > span { color: #5b7cff; font-size: 15px; font-weight: 800; letter-spacing: .08em; }
+  .science-row strong, .mechanism-step strong { display: block; margin-bottom: 5px; color: #161b2d; font-size: 21px; }
+  .science-row p, .mechanism-step p { color: #667085; font-size: 17px; line-height: 1.5; }
+  .fb-post { padding: 22px 22px 0; background: #fff !important; border: 1px solid #dfe3eb !important; border-radius: 12px !important; box-shadow: 0 10px 26px rgba(20,28,55,.08); }
+  .fb-post:first-child { border-top: 1px solid #dfe3eb !important; }
+  .fb-post-head { display: grid; grid-template-columns: 42px minmax(0, 1fr) auto; gap: 11px; align-items: center; margin-bottom: 18px; }
+  .fb-avatar { display: grid; width: 42px; height: 42px; place-items: center; color: #fff; background: #6b7cff; border-radius: 50%; font-size: 12px; font-weight: 800; }
+  .fb-avatar--blue { background: #3b82f6; }
+  .fb-avatar--orange { background: #ff6a3d; }
+  .fb-avatar--green { background: #3a9b6b; }
+  .fb-post-head b { display: block; color: #161b2d; font-size: 15px; }
+  .fb-post-head span:not(.fb-avatar):not(.fb-more) { display: block; margin-top: 3px; color: #98a2b3; font-size: 12px; }
+  .fb-more { color: #98a2b3; font-weight: 800; letter-spacing: .08em; }
+  .fb-post .review-quote { margin-bottom: 20px; font-size: 18px; line-height: 1.55; }
+  .fb-post-reactions { display: flex; justify-content: space-between; padding: 13px 0; color: #98a2b3; border-bottom: 1px solid #edf0f4; font-size: 12px; }
+  .fb-post-actions { display: grid; grid-template-columns: repeat(3, 1fr); padding: 13px 0; color: #667085; font-size: 13px; font-weight: 700; text-align: center; }
+  .fb-post-actions span + span { border-left: 1px solid #edf0f4; }
+  .mechanism-section .section-heading h2 { max-width: 760px; margin-right: auto; margin-left: auto; }
+
+  @media (max-width: 700px) {
+    .science-row, .mechanism-step { grid-template-columns: 42px minmax(0, 1fr); gap: 12px; }
+    .science-row strong, .mechanism-step strong { font-size: 19px; }
+    .science-row p, .mechanism-step p { font-size: 16px; }
+    .fb-post { padding-right: 16px; padding-left: 16px; }
+    .fb-post-reactions { font-size: 11px; }
+  }
+
   @media (prefers-reduced-motion: reduce) { *, *::before, *::after { animation: none !important; transition: none !important; } }
 </style>
 </head>
@@ -477,15 +534,17 @@
   <main>
     <section class="hero" aria-labelledby="page-title">
       <div class="hero-copy">
-        <div class="eyebrow">Flujo de Dinero</div>
-        <h1 id="page-title">Cómo <span class="highlight">soltar</span> la <span class="red">resistencia</span> al dinero<br>y <span class="highlight">abrirte a recibir más</span></h1>
+        <h1 id="page-title">Cómo Soltar La Resistencia Al Dinero<br>Y Abrirte A Recibir Más</h1>
         <p class="hero-subtitle">Una práctica guiada para reconocer los patrones que te frenan y elegir acciones más claras con tu dinero.</p>
         <a class="hero-video" href="https://youtube.com/shorts/2u5ijcgotic?feature=share" target="_blank" rel="noopener" aria-label="Ver video de Kimberly Ali en YouTube">
           <img src="https://img.youtube.com/vi/2u5ijcgotic/hqdefault.jpg" alt="Video de Kimberly Ali sobre Flujo de Dinero">
           <span>Ver la introducción en YouTube</span>
         </a>
+        <a class="primary-button hero-buy-button" href="https://pay.hotmart.com/N105653151G">🔥 QUIERO ABRIR MI FLUJO 🔥</a>
       </div>
+    </section>
 
+    <section class="section-shell offer-section" aria-labelledby="offer-title">
       <div class="offer-card" id="acceso">
         <div class="offer-header">
           <div class="eyebrow">Acceso inmediato</div>
@@ -506,7 +565,7 @@
             <figure class="offer-product"><div class="offer-guarantee-visual"><div><div class="shield">✓</div><strong>Garantía<br>de 7 días</strong><span>Prueba el material con calma.</span></div></div><figcaption><strong>Tu compra está cubierta</strong><span>Consulta las condiciones de devolución.</span></figcaption></figure>
           </div>
         </div>
-        <div class="offer-list">
+        <div class="offer-list offer-stack">
           <div class="offer-item"><span class="check">✅</span><span class="offer-item-copy"><strong>Sesión de Audio Guiada</strong> (20–25 min) · Reconoce patrones y ensaya respuestas diferentes</span><span class="offer-value">$97</span></div>
           <div class="offer-item"><span class="check">✅</span><span class="offer-item-copy"><strong>Blueprint de Bloqueos Invisibles</strong> · Identifica tu patrón exacto de escasez</span><span class="offer-value">$47</span></div>
           <div class="offer-item"><span class="check">✅</span><span class="offer-item-copy"><strong>Guía de Acción Inmediata</strong> · Define una primera acción concreta para las próximas 24–48 horas</span><span class="offer-value">$37</span></div>
@@ -519,7 +578,18 @@
       </div>
     </section>
 
-    <section class="section-shell" aria-labelledby="transformacion-flujo">
+    <section class="section-shell science-section" aria-labelledby="science-flujo">
+      <div class="section-heading"><div class="eyebrow">La ciencia detrás del cambio</div><h2 id="science-flujo">Tu cerebro aprende lo que repites.</h2><p>Una explicación breve para entender por qué una pausa puede ayudarte a elegir otra respuesta.</p></div>
+      <div class="science-list">
+        <div class="science-row"><span>01</span><div><strong>La escasez ocupa atención.</strong><p>El estrés financiero puede estrechar tu foco.</p></div></div>
+        <div class="science-row"><span>02</span><div><strong>Las creencias influyen.</strong><p>Lo que aprendiste sobre el dinero guía decisiones.</p></div></div>
+        <div class="science-row"><span>03</span><div><strong>La pausa abre elección.</strong><p>Observar la reacción crea margen para responder.</p></div></div>
+        <div class="science-row"><span>04</span><div><strong>Un plan ayuda a actuar.</strong><p>Un «si–entonces» convierte intención en movimiento.</p></div></div>
+      </div>
+      <a class="primary-button section-cta" href="https://pay.hotmart.com/N105653151G">💰 QUIERO EMPEZAR AHORA 💰</a>
+    </section>
+
+    <section class="section-shell transform-section" aria-labelledby="transformacion-flujo">
       <div class="section-heading"><div class="eyebrow">La transformación</div><h2 id="transformacion-flujo">Lo que empieza a cambiar cuando eliges recibir</h2></div>
       <div class="benefit-grid">
         <article class="benefit-card"><span class="card-emoji">✂️</span><h3>Reconoce tu patrón</h3><p>Identifica qué situaciones activan la evitación o la culpa.</p></article>
@@ -538,36 +608,29 @@
       <div class="photo-break-caption">No esperes a sentirte lista. Empieza por observar qué se activa y elige tu próximo paso.</div>
     </section>
 
-    <section class="section-shell" aria-labelledby="resenas-flujo">
-      <div class="section-heading"><div class="eyebrow">Experiencias compartidas</div><h2 id="resenas-flujo">Personas reales. <span class="heading-accent">Cambios reales.</span></h2></div>
+    <section class="section-shell testimonials-section" aria-labelledby="resenas-flujo">
+      <div class="section-heading"><div class="eyebrow">Experiencias compartidas</div><h2 id="resenas-flujo">Personas reales. <span class="heading-accent">Cambios reales.</span></h2><p>Reseñas compartidas por personas que empezaron a mirar distinto sus decisiones con el dinero.</p></div>
       <div class="review-grid">
-        <article class="review-card"><div class="stars">★★★★★</div><p class="review-quote">“En el Día 3 entendí exactamente de dónde venía esa creencia. La semana siguiente tomé una decisión financiera que llevaba 2 años posponiendo.”</p><div class="review-person"><b>María C.</b><span>Colombia 🇨🇴 · Reseña compartida</span></div></article>
-        <article class="review-card"><div class="stars">★★★★★</div><p class="review-quote">“Entré escéptica. Esto es diferente: son ejercicios que se sienten, no conferencias. Al día 5 ya actuaba diferente con el dinero.”</p><div class="review-person"><b>Valentina R.</b><span>Venezuela 🇻🇪 · Reseña compartida</span></div></article>
-        <article class="review-card"><div class="stars">★★★★★</div><p class="review-quote">“Terminé el desafío y negocié un aumento que llevaba meses sin atreverme a pedir. La conexión entre mente y dinero es real.”</p><div class="review-person"><b>Andrea L.</b><span>México 🇲🇽 · Reseña compartida</span></div></article>
-        <article class="review-card"><div class="stars">★★★★★</div><p class="review-quote">“El ejercicio del Día 1 me abrió los ojos. Por fin entendí por qué el dinero siempre se me iba.”</p><div class="review-person"><b>Luciana M.</b><span>Panamá 🇵🇦 · Reseña compartida</span></div></article>
+        <article class="review-card fb-post"><div class="fb-post-head"><span class="fb-avatar">MC</span><div><b>María C.</b><span>Colombia · Reseña compartida</span></div><span class="fb-more">•••</span></div><p class="review-quote">“En el Día 3 entendí exactamente de dónde venía esa creencia. La semana siguiente tomé una decisión financiera que llevaba 2 años posponiendo.”</p><div class="fb-post-reactions"><span>👍 ❤️</span><span>12 Me gusta · 3 comentarios</span></div><div class="fb-post-actions"><span>Me gusta</span><span>Comentar</span><span>Compartir</span></div></article>
+        <article class="review-card fb-post"><div class="fb-post-head"><span class="fb-avatar fb-avatar--blue">VR</span><div><b>Valentina R.</b><span>Venezuela · Reseña compartida</span></div><span class="fb-more">•••</span></div><p class="review-quote">“Entré escéptica. Esto es diferente: son ejercicios que se sienten, no conferencias. Al día 5 ya actuaba diferente con el dinero.”</p><div class="fb-post-reactions"><span>👍 ❤️</span><span>18 Me gusta · 4 comentarios</span></div><div class="fb-post-actions"><span>Me gusta</span><span>Comentar</span><span>Compartir</span></div></article>
+        <article class="review-card fb-post"><div class="fb-post-head"><span class="fb-avatar fb-avatar--orange">AL</span><div><b>Andrea L.</b><span>México · Reseña compartida</span></div><span class="fb-more">•••</span></div><p class="review-quote">“Terminé el desafío y negocié un aumento que llevaba meses sin atreverme a pedir. La conexión entre mente y dinero es real.”</p><div class="fb-post-reactions"><span>👍 ❤️</span><span>24 Me gusta · 5 comentarios</span></div><div class="fb-post-actions"><span>Me gusta</span><span>Comentar</span><span>Compartir</span></div></article>
+        <article class="review-card fb-post"><div class="fb-post-head"><span class="fb-avatar fb-avatar--green">LM</span><div><b>Luciana M.</b><span>Panamá · Reseña compartida</span></div><span class="fb-more">•••</span></div><p class="review-quote">“El ejercicio del Día 1 me abrió los ojos. Por fin entendí por qué el dinero siempre se me iba.”</p><div class="fb-post-reactions"><span>👍 ❤️</span><span>9 Me gusta · 2 comentarios</span></div><div class="fb-post-actions"><span>Me gusta</span><span>Comentar</span><span>Compartir</span></div></article>
       </div>
+      <a class="primary-button section-cta" href="https://pay.hotmart.com/N105653151G">🔥 QUIERO ABRIR MI FLUJO 🔥</a>
     </section>
 
-    <section class="section-shell section-shell--soft" aria-labelledby="realidad-flujo">
-      <div class="section-heading"><div class="eyebrow">Llévalo a tu día a día</div><h2 id="realidad-flujo">✨ Cómo cambia tu realidad financiera ✨</h2><p>Casos reales de personas que reprogramaron su relación con el dinero</p></div>
-      <div class="before-after-list">
-        <article class="before-after"><div class="before-after-side before-after-side--before"><div class="before-after-icon">😰</div><h3>Antes: Miedo a cobrar lo que vales</h3><p>Trabajas el doble, pero cuando toca poner precio, te paralizas o regalas tu trabajo para evitar el rechazo.</p></div><div class="before-after-arrow">➡️</div><div class="before-after-side before-after-side--after"><div class="before-after-icon">💰</div><h3>Después: Precio comunicado con claridad</h3><p>Puedes explicar tu valor y sostener tu precio sin disculparte ni bajar automáticamente.</p></div></article>
-        <article class="before-after"><div class="before-after-side before-after-side--before"><div class="before-after-icon">💸</div><h3>Antes: El dinero siempre se va</h3><p>Cobra hoy, mañana no sabes dónde está. Hueco financiero invisible.</p></div><div class="before-after-arrow">➡️</div><div class="before-after-side before-after-side--after"><div class="before-after-icon">📊</div><h3>Después: Más conciencia financiera</h3><p>Puedes observar lo que entra y sale y tomar decisiones menos reactivas.</p></div></article>
-        <article class="before-after"><div class="before-after-side before-after-side--before"><div class="before-after-icon">🔄</div><h3>Antes: Patrón de escasez heredado</h3><p>"El dinero no alcanza", "eso es para ricos". Frases que operan en piloto automático.</p></div><div class="before-after-arrow">➡️</div><div class="before-after-side before-after-side--after"><div class="before-after-icon">🌊</div><h3>Después: Relación más flexible</h3><p>Puedes cuestionar frases heredadas y elegir acciones alineadas con tus objetivos.</p></div></article>
-        <article class="before-after"><div class="before-after-side before-after-side--before"><div class="before-after-icon">😶</div><h3>Antes: No puedes pedir aumento</h3><p>Llevas años en el mismo sueldo porque negociar te da pánico escénico.</p></div><div class="before-after-arrow">➡️</div><div class="before-after-side before-after-side--after"><div class="before-after-icon">📈</div><h3>Después: Preparas la conversación</h3><p>Llegas a negociar con una respuesta ensayada y más capacidad para sostener tu petición.</p></div></article>
-        <article class="before-after"><div class="before-after-side before-after-side--before"><div class="before-after-icon">🚫</div><h3>Antes: Te saboteas al emprender</h3><p>Creas contenido, pero no publicas. Armás la oferta, pero no la lanzas.</p></div><div class="before-after-arrow">➡️</div><div class="before-after-side before-after-side--after"><div class="before-after-icon">🚀</div><h3>Después: Siguiente acción clara</h3><p>Publicas, envías o lanzas el siguiente paso sin exigir que el miedo desaparezca primero.</p></div></article>
+    <section class="section-shell mechanism-section" aria-labelledby="mecanismo-flujo">
+      <div class="section-heading"><div class="eyebrow">Cómo funciona</div><h2 id="mecanismo-flujo">No es magia. Es una respuesta que puedes practicar.</h2><p>El proceso empieza antes de la decisión: reconoces lo que se activa, haces una pausa y eliges el siguiente paso.</p></div>
+      <div class="mechanism-list">
+        <div class="mechanism-step"><span>01</span><div><strong>Se activa una situación.</strong><p>Alguien pregunta tu precio, llega una oportunidad o necesitas negociar.</p></div></div>
+        <div class="mechanism-step"><span>02</span><div><strong>Aparece la respuesta automática.</strong><p>Surge tensión, culpa o el pensamiento de que es “demasiado”.</p></div></div>
+        <div class="mechanism-step"><span>03</span><div><strong>Creas una pausa.</strong><p>Observas la reacción antes de convertirla automáticamente en una decisión.</p></div></div>
+        <div class="mechanism-step"><span>04</span><div><strong>Ensayas otra acción.</strong><p>Practicas una respuesta más clara: sostener tu precio, enviar la oferta o iniciar la conversación.</p></div></div>
       </div>
+      <a class="primary-button section-cta" href="https://pay.hotmart.com/N105653151G">💰 ACTIVAR MI FLUJO DE DINERO 💰</a>
     </section>
 
-    <section class="section-shell section-shell--dark" aria-labelledby="comunidad-flujo">
-      <div class="section-heading"><div class="eyebrow">Voces de la comunidad</div><h2 id="comunidad-flujo">No es magia. <span class="heading-accent">Es una nueva relación con el dinero.</span></h2></div>
-      <div class="review-grid review-grid--two">
-        <article class="review-card"><div class="stars">★★★★★</div><p class="review-quote">“En el día 4 identifiqué una creencia que tenía desde los 8 años. Los ejercicios atacan la raíz del problema.”</p><div class="review-person"><b>Carlos V.</b><span>Colombia 🇨🇴 · Reseña compartida</span></div></article>
-        <article class="review-card"><div class="stars">★★★★★</div><p class="review-quote">“Cada día abre un nivel más profundo. El audio del Día 6 fue el momento que más me impactó; todavía lo escucho antes de dormir.”</p><div class="review-person"><b>Diana S.</b><span>Ecuador 🇪🇨 · Reseña compartida</span></div></article>
-      </div>
-    </section>
-
-    <section class="section-shell" aria-labelledby="despues-de-comprar">
+    <section class="section-shell steps-section" aria-labelledby="despues-de-comprar">
       <div class="section-heading"><div class="eyebrow">Tu siguiente paso</div><h2 id="despues-de-comprar">Así empiezas</h2></div>
       <ol class="steps-list">
         <li><b>Pago seguro</b>Completa tu compra con el método de pago que prefieras.</li>
@@ -576,7 +639,7 @@
       </ol>
     </section>
 
-    <section class="section-shell" aria-labelledby="preguntas-flujo">
+    <section class="section-shell faq-section" aria-labelledby="preguntas-flujo">
       <div class="section-heading"><div class="eyebrow">Preguntas frecuentes</div><h2 id="preguntas-flujo">❓ Preguntas reales</h2></div>
       <div class="faq-list">
         <div class="faq-item"><div class="faq-question">¿Necesito experiencia en meditación?</div><div class="faq-answer">No. Solo busca un lugar tranquilo, escucha la guía y sigue las instrucciones a tu ritmo. La práctica te acompaña; el cambio se consolida con repetición y acciones concretas.</div></div>
