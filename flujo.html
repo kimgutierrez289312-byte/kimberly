@@ -469,6 +469,17 @@
     .photo-break-main { height: 390px; }
   }
 
+  .template-kicker { margin-bottom: 20px; color: #7a8497; font-size: 12px; font-weight: 800; letter-spacing: .14em; text-transform: uppercase; }
+  .offer-meta-row { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); max-width: 780px; margin: -26px auto 38px; padding: 18px 0; border-top: 1px solid #dfe3eb; border-bottom: 1px solid #dfe3eb; color: #667085; font-size: 14px; font-weight: 700; text-align: center; }
+  .offer-meta-row span + span { border-left: 1px solid #dfe3eb; }
+  .offer-section .offer-header h2 { max-width: 700px; }
+  .offer-section .offer-header p { max-width: 560px; margin-right: auto; margin-left: auto; }
+  .offer-section .offer-gallery-title { margin-top: 12px; }
+  .offer-section .value-box { font-size: 17px; }
+  .offer-section .value-box strong { font-size: 34px; }
+  .transform-section .benefit-grid { max-width: 780px; }
+  .transform-section .benefit-card { padding-top: 30px; padding-bottom: 30px; }
+
   /* SALES FLOW UPDATE */
   main { display: flex; flex-direction: column; }
   .hero { order: 1; }
@@ -519,6 +530,8 @@
   .mechanism-section .section-heading h2 { max-width: 760px; margin-right: auto; margin-left: auto; }
 
   @media (max-width: 700px) {
+    .offer-meta-row { grid-template-columns: 1fr; gap: 10px; margin-top: -16px; font-size: 13px; }
+    .offer-meta-row span + span { padding-top: 10px; border-top: 1px solid #dfe3eb; border-left: 0; }
     .science-row, .mechanism-step { grid-template-columns: 42px minmax(0, 1fr); gap: 12px; }
     .science-row strong, .mechanism-step strong { font-size: 19px; }
     .science-row p, .mechanism-step p { font-size: 16px; }
@@ -539,6 +552,7 @@
   <main>
     <section class="hero" aria-labelledby="page-title">
       <div class="hero-copy">
+        <div class="template-kicker">Una práctica guiada de Kimberly Ali</div>
         <h1 id="page-title">Cómo <span class="headline-highlight">Soltar</span> La <span class="headline-underline">Resistencia</span> Al Dinero<br><span class="headline-highlight">Y Abrirte</span> A Recibir Más</h1>
         <p class="hero-subtitle">Una práctica guiada para reconocer los patrones que te frenan y elegir acciones más claras con tu dinero.</p>
         <a class="hero-video" href="https://youtube.com/shorts/2u5ijcgotic?feature=share" target="_blank" rel="noopener" aria-label="Ver video de Kimberly Ali en YouTube">
@@ -561,6 +575,7 @@
           <span class="product-seal">ACCESO<br>INMEDIATO</span>
           <span class="product-chip">✦ Audio guiado · 20–25 min</span>
         </div>
+        <div class="offer-meta-row"><span>🎧 Audio + materiales incluidos</span><span>♾️ Acceso de por vida</span><span>🔒 Pago único</span></div>
         <div class="offer-gallery" aria-labelledby="offer-gallery-title">
           <h3 class="offer-gallery-title" id="offer-gallery-title">Mira lo que recibes</h3>
           <div class="offer-gallery-grid">
@@ -595,7 +610,7 @@
     </section>
 
     <section class="section-shell transform-section" aria-labelledby="transformacion-flujo">
-      <div class="section-heading"><div class="eyebrow">La transformación</div><h2 id="transformacion-flujo">Lo que empieza a cambiar cuando eliges recibir</h2></div>
+      <div class="section-heading"><div class="eyebrow">Por qué existe</div><h2 id="transformacion-flujo">Lo que empieza a cambiar cuando eliges recibir</h2><p>La práctica no sustituye tus acciones: te ayuda a llegar a ellas con más claridad.</p></div>
       <div class="benefit-grid">
         <article class="benefit-card"><span class="card-emoji">✂️</span><h3>Reconoce tu patrón</h3><p>Identifica qué situaciones activan la evitación o la culpa.</p></article>
         <article class="benefit-card"><span class="card-emoji">💎</span><h3>Recupera margen de elección</h3><p>Observa la reacción sin convertirla automáticamente en una decisión.</p></article>
