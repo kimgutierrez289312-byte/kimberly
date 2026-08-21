@@ -278,6 +278,16 @@
   .faq-question { color: #2b1b14; }
   .final-cta { border: 3px solid #b82b1c; background: #fff0df; }
   .final-cta .eyebrow { background: #b82b1c; }
+  .photo-break { position: relative; overflow: hidden; color: var(--dark-text); background: #21140e; border: 2px solid #21140e; }
+  .photo-break .section-heading { position: relative; z-index: 2; }
+  .photo-break .section-heading h2 { color: var(--dark-text); }
+  .photo-break .section-heading p { color: rgba(255,248,241,.76); }
+  .photo-break .eyebrow { color: #2a1710; background: #ffbd75; }
+  .photo-break-stage { position: relative; width: 100%; max-width: 760px; margin: 0 auto; padding: 0 42px 74px 0; }
+  .photo-break-main { display: block; width: 100%; height: 470px; object-fit: cover; object-position: center 34%; border: 8px solid #fff8f1; border-radius: 6px; filter: saturate(.92) contrast(1.05); }
+  .photo-break-secondary { position: absolute; right: 0; bottom: 0; width: 245px; height: 300px; object-fit: cover; object-position: center 28%; border: 8px solid #fff8f1; border-radius: 6px; box-shadow: 8px 8px 0 #b82b1c; }
+  .photo-break-caption { max-width: 760px; margin: -42px auto 0; padding: 14px 18px; color: #2a1710; background: #ffbd75; border-left: 6px solid #b82b1c; font-size: 16px; font-weight: 800; line-height: 1.35; }
+  @media (max-width: 700px) { .photo-break-stage { padding: 0 24px 92px 0; } .photo-break-main { height: 390px; } .photo-break-secondary { width: 175px; height: 220px; } .photo-break-caption { margin-top: -56px; font-size: 15px; } }
 
   @media (prefers-reduced-motion: reduce) { *, *::before, *::after { animation: none !important; transition: none !important; } }
 </style>
@@ -369,6 +379,15 @@
       </div>
       <div class="example-box"><h3>Ejemplo: cobrar sin bajar tu precio</h3><p><strong>❌ Antes:</strong> «Es demasiado» → tensión → descuento automático.</p><p><strong>✅ Después:</strong> pausa → explicas tu valor → eliges una opción.</p></div>
       <p class="science-footnote">Inspirado en principios de psicología del comportamiento, estrés financiero y planes de acción «si–entonces».</p>
+    </section>
+
+    <section class="section-shell photo-break" aria-labelledby="foto-kimberly-flujo">
+      <div class="section-heading"><div class="eyebrow">Míralo de frente</div><h2 id="foto-kimberly-flujo">Lo que no miras, se repite.</h2><p>La decisión empieza cuando dejas de pasar por alto lo que ocurre con tu dinero.</p></div>
+      <div class="photo-break-stage">
+        <img class="photo-break-main" src="assets/kimberly-mirror-portrait.webp" alt="Kimberly Ali frente al espejo">
+        <img class="photo-break-secondary" src="assets/kimberly-denim-portrait.webp" alt="Kimberly Ali sentada en casa">
+      </div>
+      <div class="photo-break-caption">No esperes a sentirte lista. Empieza por observar qué se activa y elige tu próximo paso.</div>
     </section>
 
     <section class="section-shell" aria-labelledby="resenas-flujo">
