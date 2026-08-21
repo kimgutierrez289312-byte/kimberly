@@ -477,6 +477,17 @@
   .offer-section .offer-gallery-title { margin-top: 12px; }
   .offer-section .value-box { font-size: 17px; }
   .offer-section .value-box strong { font-size: 34px; }
+  .collection-gallery { width: 100%; max-width: 780px; margin: 58px auto 44px; }
+  .collection-gallery-title { margin: 0; color: #161b2d; font-family: 'DM Sans', sans-serif; font-size: clamp(30px, 4vw, 46px); font-weight: 800; letter-spacing: -.05em; }
+  .collection-gallery-intro { margin: 10px 0 28px; color: #667085; font-size: 17px; }
+  .collection-gallery-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 26px 18px; }
+  .collection-product { margin: 0; }
+  .collection-product img { display: block; width: 100%; aspect-ratio: 4 / 5; object-fit: cover; border-radius: 14px; box-shadow: 0 12px 28px rgba(20,28,55,.10); }
+  .collection-product figcaption { padding-top: 13px; text-align: left; }
+  .collection-product figcaption strong { display: block; color: #161b2d; font-size: 16px; line-height: 1.25; }
+  .collection-product figcaption span { display: block; margin-top: 5px; color: #667085; font-size: 13px; line-height: 1.4; }
+  .product-showcase .product-img img { object-fit: contain; }
+  @media (max-width: 700px) { .collection-gallery-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px 14px; } .collection-product figcaption strong { font-size: 14px; } .collection-product figcaption span { font-size: 12px; } }
   .final-cta .security-badges { justify-content: center; align-items: center; text-align: center; }
   .final-cta .badge { text-align: center; }
   .transform-section .benefit-grid { max-width: 780px; }
@@ -578,7 +589,7 @@
           <p>Una práctica guiada, simple y directa para comenzar hoy.</p>
         </div>
         <div class="product-showcase" aria-label="Sesión de audio Flujo de Dinero">
-          <div class="product-img"><img src="assets/flujo-de-dinero-audio-guiado-kimberly-ali.png" alt="Flujo de Dinero: audio guiado de Kimberly Ali para liberar resistencia y abrir el canal de recibir"></div>
+          <div class="product-img"><img src="assets/coleccion-flujo-de-dinero.png" alt="Colección Flujo de Dinero de Kimberly Ali con todos los productos incluidos"></div>
           <span class="product-seal">ACCESO<br>INMEDIATO</span>
           <span class="product-chip">✦ Audio guiado · 20–25 min</span>
         </div>
@@ -590,6 +601,18 @@
             <figure class="offer-product"><img src="assets/offer-guia-accion-inmediata.png" alt="Guía de Acción Inmediata de Kimberly Ali"><figcaption><strong>Guía de Acción Inmediata</strong><span>Una primera acción concreta en 24–48 horas.</span></figcaption></figure>
             <figure class="offer-product"><img src="assets/offer-acceso-por-vida.png" alt="Acceso de por vida y actualizaciones gratuitas"><figcaption><strong>Acceso de por vida</strong><span>Actualizaciones gratuitas incluidas.</span></figcaption></figure>
             <figure class="offer-product"><div class="offer-guarantee-visual"><div><div class="shield">✓</div><strong>Garantía<br>de 7 días</strong><span>Prueba el material con calma.</span></div></div><figcaption><strong>Tu compra está cubierta</strong><span>Consulta las condiciones de devolución.</span></figcaption></figure>
+          </div>
+        </div>
+        <div class="collection-gallery" aria-labelledby="collection-gallery-title">
+          <h3 class="collection-gallery-title" id="collection-gallery-title">Cada pieza de la colección</h3>
+          <p class="collection-gallery-intro">Mira por separado todo lo que recibes dentro de Flujo de Dinero.</p>
+          <div class="collection-gallery-grid">
+            <figure class="collection-product"><img src="assets/flujo-de-dinero-audio-guiado-kimberly-ali.png" alt="Audio guiado Flujo de Dinero"><figcaption><strong>Audio guiado</strong><span>Sesiones guiadas para activar tu flujo.</span></figcaption></figure>
+            <figure class="collection-product"><img src="assets/flujo-item-01-activar-el-flujo.png" alt="Activar el Flujo de Dinero"><figcaption><strong>Activar el Flujo</strong><span>El primer paso para empezar.</span></figcaption></figure>
+            <figure class="collection-product"><img src="assets/flujo-item-02-liberacion-del-bloqueo.png" alt="La Liberación del Bloqueo"><figcaption><strong>Liberación del Bloqueo</strong><span>Curso en vídeo de transformación profunda.</span></figcaption></figure>
+            <figure class="collection-product"><img src="assets/flujo-item-03-recepcion-de-abundancia.png" alt="Recibimiento de Abundancia"><figcaption><strong>Recibimiento de Abundancia</strong><span>Ritual guiado para practicar recepción.</span></figcaption></figure>
+            <figure class="collection-product"><img src="assets/flujo-item-04-programa-completo.png" alt="Programa completo Flujo de Dinero"><figcaption><strong>Flujo de Dinero</strong><span>El programa completo: limpia, activa y reabre.</span></figcaption></figure>
+            <figure class="collection-product"><img src="assets/flujo-item-05-mapa-de-bloqueos.png" alt="E-book Mapa de Bloqueos"><figcaption><strong>Mapa de Bloqueos</strong><span>Guía digital para identificar y liberar.</span></figcaption></figure>
           </div>
         </div>
         <div class="offer-list offer-stack">
