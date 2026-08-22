@@ -78,11 +78,11 @@
   .offer-header p { font-size: 18px; line-height: 1.45; }
   .product-showcase { position: relative; display: grid; place-items: center; min-height: 420px; margin: 0 auto 30px; padding: 24px; overflow: hidden; background: linear-gradient(135deg, #fff5eb, #ffe1ca); border: 1px solid #f3c8ac; border-radius: 20px; }
   .product-showcase::before { content: ''; position: absolute; width: 74%; aspect-ratio: 1; border-radius: 50%; background: radial-gradient(circle, rgba(255,110,38,.22), transparent 68%); filter: blur(7px); }
-  .product-img { position: relative; z-index: 1; width: min(100%, 410px); overflow: visible; border: 9px solid #fff; border-radius: 22px; box-shadow: 0 26px 42px rgba(59,35,21,.22); transform: rotate(-2deg); }
-  .product-img::before { content: ''; position: absolute; inset: -16px; z-index: -1; border-radius: 28px; background: linear-gradient(135deg, #ff4f20, #ffd3a3 46%, #ff8d38); transform: rotate(4deg); }
+  .product-img { position: relative; z-index: 1; width: min(100%, 410px); overflow: visible; border: 9px solid #fff; border-radius: 22px; box-shadow: 0 26px 42px rgba(59,35,21,.22); transform: rotate(0deg); }
+  .product-img::before { content: ''; position: absolute; inset: -16px; z-index: -1; border-radius: 28px; background: linear-gradient(135deg, #ff4f20, #ffd3a3 46%, #ff8d38); transform: rotate(0deg); }
   .product-img img { display: block; width: 100%; border-radius: 12px; }
-  .product-seal { position: absolute; top: 32px; right: 10%; z-index: 2; display: grid; width: 106px; height: 106px; place-items: center; padding: 14px; color: #fff; background: var(--orange); border: 4px solid #fff; border-radius: 50%; box-shadow: 0 10px 22px rgba(59,35,21,.16); font-size: 13px; font-weight: 800; line-height: 1.08; text-align: center; transform: rotate(8deg); }
-  .product-chip { position: absolute; bottom: 26px; left: 8%; z-index: 2; padding: 11px 15px; color: var(--ink); background: #ffe8d5; border: 2px solid #fff; border-radius: 999px; box-shadow: 0 8px 18px rgba(59,35,21,.12); font-size: 12px; font-weight: 800; transform: rotate(-4deg); }
+  .product-seal { position: absolute; top: 32px; right: 10%; z-index: 2; display: grid; width: 106px; height: 106px; place-items: center; padding: 14px; color: #fff; background: var(--orange); border: 4px solid #fff; border-radius: 50%; box-shadow: 0 10px 22px rgba(59,35,21,.16); font-size: 13px; font-weight: 800; line-height: 1.08; text-align: center; transform: rotate(0deg); }
+  .product-chip { position: absolute; bottom: 26px; left: 8%; z-index: 2; padding: 11px 15px; color: var(--ink); background: #ffe8d5; border: 2px solid #fff; border-radius: 999px; box-shadow: 0 8px 18px rgba(59,35,21,.12); font-size: 12px; font-weight: 800; transform: rotate(0deg); }
   .offer-list { display: grid; gap: 0; margin-bottom: 26px; }
   .offer-item { display: grid; grid-template-columns: auto minmax(0, 1fr) auto; gap: 13px; align-items: center; padding: 17px 0; border-bottom: 1px solid var(--line); }
   .offer-item:last-child { border-bottom: 0; }
@@ -594,15 +594,6 @@
           <span class="product-chip">✦ Audio guiado · 20–25 min</span>
         </div>
         <div class="offer-meta-row"><span>🎧 Audio + materiales incluidos</span><span>♾️ Acceso de por vida</span><span>🔒 Pago único</span></div>
-        <div class="offer-gallery" aria-labelledby="offer-gallery-title">
-          <h3 class="offer-gallery-title" id="offer-gallery-title">Mira lo que recibes</h3>
-          <div class="offer-gallery-grid">
-            <figure class="offer-product"><img src="assets/offer-blueprint-bloqueos-invisibles.png" alt="Blueprint de Bloqueos Invisibles de Kimberly Ali"><figcaption><strong>Blueprint de Bloqueos Invisibles</strong><span>Tu mapa para identificar el patrón de escasez.</span></figcaption></figure>
-            <figure class="offer-product"><img src="assets/offer-guia-accion-inmediata.png" alt="Guía de Acción Inmediata de Kimberly Ali"><figcaption><strong>Guía de Acción Inmediata</strong><span>Una primera acción concreta en 24–48 horas.</span></figcaption></figure>
-            <figure class="offer-product"><img src="assets/offer-acceso-por-vida.png" alt="Acceso de por vida y actualizaciones gratuitas"><figcaption><strong>Acceso de por vida</strong><span>Actualizaciones gratuitas incluidas.</span></figcaption></figure>
-            <figure class="offer-product"><div class="offer-guarantee-visual"><div><div class="shield">✓</div><strong>Garantía<br>de 7 días</strong><span>Prueba el material con calma.</span></div></div><figcaption><strong>Tu compra está cubierta</strong><span>Consulta las condiciones de devolución.</span></figcaption></figure>
-          </div>
-        </div>
         <div class="collection-gallery" aria-labelledby="collection-gallery-title">
           <h3 class="collection-gallery-title" id="collection-gallery-title">Cada pieza de la colección</h3>
           <p class="collection-gallery-intro">Mira por separado todo lo que recibes dentro de Flujo de Dinero.</p>
@@ -616,11 +607,12 @@
           </div>
         </div>
         <div class="offer-list offer-stack">
-          <div class="offer-item"><span class="check">✅</span><span class="offer-item-copy"><strong>Sesión de Audio Guiada</strong> (20–25 min) · Reconoce patrones y ensaya respuestas diferentes</span><span class="offer-value">$97</span></div>
-          <div class="offer-item"><span class="check">✅</span><span class="offer-item-copy"><strong>Blueprint de Bloqueos Invisibles</strong> · Identifica tu patrón exacto de escasez</span><span class="offer-value">$47</span></div>
-          <div class="offer-item"><span class="check">✅</span><span class="offer-item-copy"><strong>Guía de Acción Inmediata</strong> · Define una primera acción concreta para las próximas 24–48 horas</span><span class="offer-value">$37</span></div>
-          <div class="offer-item"><span class="check">✅</span><span class="offer-item-copy"><strong>Acceso de por vida + actualizaciones gratuitas</strong> · Paga una vez, tuyo para siempre</span><span class="offer-value">$97</span></div>
-          <div class="offer-item"><span class="check">✅</span><span class="offer-item-copy"><strong>Garantía de 7 días</strong> · Pruébalo y consulta las condiciones de devolución</span><span class="offer-value">$27</span></div>
+          <div class="offer-item"><span class="check">✅</span><span class="offer-item-copy"><strong>Activar el Flujo de Dinero</strong> · Audio guiado para comenzar el proceso</span><span class="offer-value">Incluido</span></div>
+          <div class="offer-item"><span class="check">✅</span><span class="offer-item-copy"><strong>La Liberación del Bloqueo</strong> · Curso en vídeo de transformación profunda</span><span class="offer-value">Incluido</span></div>
+          <div class="offer-item"><span class="check">✅</span><span class="offer-item-copy"><strong>Recibimiento de Abundancia</strong> · Ritual guiado para practicar recepción</span><span class="offer-value">Incluido</span></div>
+          <div class="offer-item"><span class="check">✅</span><span class="offer-item-copy"><strong>Flujo de Dinero — Programa Completo</strong> · Limpia, activa y reabre tu flujo</span><span class="offer-value">Incluido</span></div>
+          <div class="offer-item"><span class="check">✅</span><span class="offer-item-copy"><strong>E-book completo: Mapa de Bloqueos</strong> · Identifica y libera tus bloqueos</span><span class="offer-value">Incluido</span></div>
+          <div class="offer-item"><span class="check">✅</span><span class="offer-item-copy"><strong>Acceso de por vida + actualizaciones gratuitas</strong> · Paga una vez, tuyo para siempre</span><span class="offer-value">Incluido</span></div>
         </div>
         <div class="value-box"><span>Pago único · Acceso de por vida</span><strong>$27</strong></div>
         <a class="primary-button" href="https://pay.hotmart.com/N105653151G">🔥 ABRIR MI FLUJO DE DINERO 🔥</a>
