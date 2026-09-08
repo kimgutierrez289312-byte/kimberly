@@ -12,6 +12,19 @@ Cada bloque debe responder una pregunta concreta del visitante. Una página no i
 
 ## Sistema común del sitio
 
+### Referencia visual única — Flujo de Dinero (septiembre de 2026)
+
+La identidad visual canónica es la página de Flujo: fondo crema `#fff9f3`, tinta oscura `#20120b`, tarjetas blancas, bordes `#eaded3`, botones con degradado naranja `#ff4f20 → #ff913a`, énfasis rojo `#c83224` y marcador amarillo `#ffe16a`.
+
+- `assets/site-theme.css` contiene los estilos comunes. Usar Playfair Display en títulos y DM Sans en el cuerpo; no añadir fuentes ni temas alternativos por página.
+- Los archivos `*-layout.css` contienen únicamente distribución y comportamiento. `flow-components.css` conserva la composición específica del producto Flujo.
+- Heroes centrados de una columna: títulos de 34–58 px, ancho máximo de 650 px, cuerpo de 18–24 px. Conservar las palabras y ofertas aprobadas al aplicar énfasis visual.
+- `assets/site-nav.js` genera la navegación y un único footer con iconos sociales, copyright y CTA. No inyecta estilos. Los enlaces funcionan tanto con archivos locales como desde el dominio.
+- Flujo y Abundancia usan `data-no-nav`; no tienen menú superior. Las demás páginas mantienen menú en escritorio, oculto en móvil.
+- Las presentaciones conservan avance, retroceso, teclado y gestos. Sus controles son un grupo independiente, no un segundo footer. El footer global queda accesible al desplazarse.
+- No restaurar fondos oscuros de página, degradados arcoíris, texto claro sobre tarjetas claras ni hojas de overrides acumulativas. Los cambios futuros al sistema visual deben hacerse en la hoja común.
+- Revisar todas las rutas a 390 y 1440 px; comprobar enlaces existentes, un solo footer y ausencia de contenido recortado. Comprobar el dominio después de publicar, no solo GitHub.
+
 - Mantener una navegación y un footer únicos, legibles y sin duplicados.
 - Mantener una sola acción principal por tramo de página. El CTA debe ser coherente y llevar al destino correcto.
 - Conservar el idioma español, la voz de Kimberly y la identidad visual propia.
