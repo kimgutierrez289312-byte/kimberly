@@ -12,7 +12,7 @@ body.ka-flujo{--ka-cream:#fbf7ef;--ka-ink:#18131d;--ka-muted:#5d5362;--ka-line:#
 .ka-flujo .hero{order:0;padding:36px 24px 48px;background:linear-gradient(120deg,#15101e,#271c36);color:#fff5df;text-align:center}
 .ka-flujo .hero-copy{width:min(100%,920px);margin:auto}
 .ka-flujo .template-kicker{margin-bottom:16px;color:#e2c681;font-size:13px;font-weight:800;letter-spacing:.13em;text-transform:uppercase}
-.ka-flujo .hero h1{max-width:860px;margin:0 auto 20px;color:#fff5df;font-size:clamp(34px,4.5vw,54px);line-height:1.05}
+.ka-flujo .hero h1{max-width:760px;margin:0 auto 20px;color:#fff5df;font-size:clamp(34px,3.2vw,42px);line-height:1.12}
 .ka-flujo .hero-subtitle{max-width:680px;margin:0 auto 28px;color:#d5cadd;font-size:19px}
 .ka-flujo .hero-video{display:block;position:relative;width:min(100%,760px);margin:28px auto;border:1px solid #695878;border-radius:20px;overflow:hidden;box-shadow:0 24px 70px #08050d66;line-height:0}
 .ka-flujo .hero-video img{display:block;width:100%;aspect-ratio:16/9;object-fit:cover}
