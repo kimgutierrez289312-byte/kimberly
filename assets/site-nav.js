@@ -31,5 +31,10 @@
   const footer = document.createElement('footer');
   footer.className = 'ka-site-footer';
   footer.innerHTML = `<strong>Kimberly Ali</strong><p>Herramientas para transformar tu relación con el dinero y sostener tu expansión.</p><a class="ka-footer-cta" href="${local('flujo.html')}">Activar mi flujo de dinero <span aria-hidden="true">→</span></a><nav class="ka-footer-links" aria-label="Navegación del footer">${navigation()}</nav><div class="ka-footer-social">${social.map(([name,url]) => `<a href="${url}"><svg viewBox="0 0 24 24" aria-hidden="true">${icons[name]}</svg>${name}</a>`).join('')}</div><p class="ka-copyright">© ${new Date().getFullYear()} Kimberly Ali. Todos los derechos reservados.</p>`;
+  // Flujo already ends with its purchase CTA; don't repeat a self-link promo.
+  if (document.body.matches('.ka-flujo') && document.querySelector('.final-cta')) {
+    footer.querySelector('.ka-footer-cta')?.remove();
+    footer.querySelector('p:not(.ka-copyright)')?.remove();
+  }
   document.body.append(footer);
 })();
