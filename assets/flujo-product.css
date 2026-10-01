@@ -8,6 +8,12 @@ body.ka-flujo{--ka-cream:#fbf7ef;--ka-ink:#18131d;--ka-muted:#5d5362;--ka-line:#
 .ka-flujo h3{font-size:clamp(23px,2.4vw,30px)}
 .ka-flujo p{margin:0 0 20px}
 .ka-flujo .page{width:100%;padding:0;margin:0}
+.ka-flujo .limited-offer-banner{display:flex;align-items:center;justify-content:center;flex-wrap:wrap;gap:8px 28px;padding:16px 20px;background:linear-gradient(100deg,#f4d886,#dfb456);color:#201605;text-align:center;font-size:18px}
+.ka-flujo .limited-offer-banner>strong{font-size:14px;letter-spacing:.1em}
+.ka-flujo .limited-offer-banner b{font-size:28px;font-weight:800}
+.ka-flujo .hero-offer-price{margin:28px auto 12px;color:#f3d788;font-size:14px;font-weight:800;letter-spacing:.08em;text-align:center}
+.ka-flujo .hero-offer-price strong{display:block;margin:8px 0;font:800 clamp(48px,6vw,76px)/1.08 'DM Sans',sans-serif;letter-spacing:-.04em;color:#ffe5a1}
+.ka-flujo .hero-offer-price span{display:block;font-size:15px;font-weight:400;letter-spacing:0;color:#e3dbe8}
 .ka-flujo main{display:flex;flex-direction:column}
 .ka-flujo .hero{order:0;padding:36px 24px 48px;background:linear-gradient(120deg,#15101e,#271c36);color:#fff5df;text-align:center}
 .ka-flujo .hero-copy{width:min(100%,920px);margin:auto}
@@ -43,7 +49,7 @@ body.ka-flujo{--ka-cream:#fbf7ef;--ka-ink:#18131d;--ka-muted:#5d5362;--ka-line:#
 .ka-flujo .product-chip{position:absolute;bottom:22px;left:0;right:0;color:#e9d8b3;text-align:center;font-size:14px}
 .ka-flujo .value-box{grid-area:price;display:flex;justify-content:space-between;align-items:center;gap:20px;padding:18px 20px;border:2px solid #478367;border-radius:17px;background:#f3fcf6;color:#315d44}
 .ka-flujo .value-box span{font-size:15px;font-weight:600}
-.ka-flujo .value-box strong{font-size:36px;line-height:1}
+.ka-flujo .value-box strong{font-size:clamp(40px,4.5vw,60px);line-height:1;white-space:nowrap}
 .ka-flujo .offer-card>.primary-button{grid-area:cta;max-width:none;margin-top:18px}
 .ka-flujo .security-badges{display:flex;justify-content:center;flex-wrap:wrap;gap:8px 14px;margin-top:16px}
 .ka-flujo .offer-card>.security-badges{grid-area:security;margin-bottom:22px}
