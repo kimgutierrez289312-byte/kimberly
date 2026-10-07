@@ -23,7 +23,7 @@
   ctaStyles.textContent = `${ctaSelector}{background:linear-gradient(110deg,#c51629,#a90920)!important;color:#fff!important;font-weight:900!important;border-color:#b81025!important;box-shadow:0 10px 26px #bd102b35!important}${ctaSelector.split(',').map(s=>s+' span').join(',')}{color:#fff!important}${ctaSelector.split(',').map(s=>s+':focus-visible').join(',')}{outline:3px solid #c51629!important;outline-offset:5px}`;
   document.head.append(ctaStyles);
   const navStyles = document.createElement('style');
-  navStyles.textContent = '.ka-site-nav{background:linear-gradient(110deg,#c51629,#a90920)!important;border-color:#b81025!important}.ka-site-nav a,.ka-site-nav .ka-brand{color:#fff!important;font-weight:900!important}.ka-site-nav a:focus-visible{outline:2px solid #fff;outline-offset:4px}';
+  navStyles.textContent = '.ka-site-nav{background:#fff!important;border-color:#e8ddbd!important}.ka-site-nav .ka-brand{color:#b69a4c!important}.ka-site-nav a{font-weight:900!important}.ka-site-nav a:last-child{background:transparent!important;color:#211a16!important;box-shadow:none!important}.ka-site-nav a:nth-child(3){padding:13px 26px;border-radius:999px;background:linear-gradient(110deg,#c51629,#a90920)!important;color:#fff!important}.ka-site-nav a:focus-visible{outline:2px solid #b69a4c;outline-offset:4px}';
   document.head.append(navStyles);
   const orderBlock = () => {
     const block = document.createElement('section');
