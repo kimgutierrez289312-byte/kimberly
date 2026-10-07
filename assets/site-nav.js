@@ -14,6 +14,24 @@
     ['YouTube', 'https://www.youtube.com/watch?v=-lOrt4ffTnk']
   ];
   const navigation = () => links.map(([label,path]) => `<a href="${local(path)}">${label}</a>`).join('');
+  const checkout = 'https://pay.hotmart.com/N105653151G?checkoutMode=10';
+  const orderStyles = document.createElement('style');
+  orderStyles.textContent = '.ka-order-block{text-align:center;padding:32px 20px;margin:0 auto;max-width:900px}.ka-order-button{display:inline-flex;align-items:center;justify-content:center;gap:12px;min-height:64px;padding:20px 34px;border-radius:999px;background:linear-gradient(100deg,#ae8c35,#dfcb7e);color:#211a16!important;font:900 clamp(19px,2vw,25px)/1.2 "DM Sans",sans-serif;text-decoration:none;box-shadow:0 8px 24px #ae8c3526}.ka-order-button:hover{filter:brightness(1.08)}.ka-order-button:focus-visible{outline:3px solid #ae8c35;outline-offset:5px}.ka-order-block p{font:500 14px/1.5 "DM Sans",sans-serif;margin:12px 0 0;color:inherit}@media(max-width:600px){.ka-order-button{width:100%;box-sizing:border-box;padding:20px}.ka-order-block{padding:26px 20px}}';
+  document.head.append(orderStyles);
+  const orderBlock = () => {
+    const block = document.createElement('section');
+    block.className = 'ka-order-block';
+    block.setAttribute('aria-label', 'Comprar Flujo de Dinero');
+    block.innerHTML = `<a class="ka-order-button" href="${checkout}">¡Ordena Ahora! <span aria-hidden="true">»</span></a><p>Flujo de Dinero · Todo el paquete por US$7</p>`;
+    return block;
+  };
+  // Flujo already contains repeated checkout buttons and a timed reveal.
+  // Preserve presentation controls by placing their purchase CTA after the content.
+  if (!document.body.matches('.ka-flujo')) {
+    const hero = document.querySelector('main .hero, main .home-hero, .hero');
+    if (hero && !document.body.matches('.ka-presentation')) hero.after(orderBlock());
+    document.body.append(orderBlock());
+  }
   if (!document.body.hasAttribute('data-no-nav') && !document.querySelector('.ka-site-nav')) {
     const nav = document.createElement('nav');
     nav.className = 'ka-site-nav';
