@@ -39,7 +39,7 @@
   // Preserve presentation controls by placing their purchase CTA after the content.
   if (!document.body.matches('.ka-flujo')) {
     const hero = document.querySelector('main .hero, main .home-hero, .hero');
-    if (hero && !document.body.matches('.ka-presentation')) hero.after(orderBlock());
+    if (hero && !document.body.matches('.ka-presentation') && !document.querySelector('.home-offer')) hero.after(orderBlock());
     if (!document.body.matches('.ka-index')) document.body.append(orderBlock());
   }
   if (!document.body.hasAttribute('data-no-nav') && !document.querySelector('.ka-site-nav')) {
