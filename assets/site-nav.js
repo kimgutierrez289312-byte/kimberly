@@ -20,10 +20,20 @@
   document.head.append(orderStyles);
   const ctaStyles = document.createElement('style');
   const ctaSelector = '.button,.primary-button,.btn-primary,.btn-gold,.hero-action,.nav-cta,.btn,.ka-order-button,.ka-editorial-cta a';
-  ctaStyles.textContent = `${ctaSelector}{background:linear-gradient(110deg,#d94b08,#d96b0b)!important;color:#fff!important;font-weight:900!important;border-color:#b81025!important;box-shadow:0 10px 26px #bd102b35!important}${ctaSelector.split(',').map(s=>s+' span').join(',')}{color:#fff!important}${ctaSelector.split(',').map(s=>s+':focus-visible').join(',')}{outline:3px solid #c51629!important;outline-offset:5px}`;
+  const effectsSelector = `${ctaSelector},.ka-site-nav a:nth-child(3)`;
+  const states = (selector, suffix) => selector.split(',').map(s => s + suffix).join(',');
+  ctaStyles.textContent = `
+    ${effectsSelector}{position:relative;isolation:isolate;overflow:hidden;background:linear-gradient(110deg,#e95108,#ff8518)!important;color:#fff!important;font-weight:900!important;text-transform:uppercase;letter-spacing:.025em;border-color:#ef6b10!important;animation:ka-cta-glow 2.8s ease-in-out infinite!important}
+    ${states(effectsSelector,'::before')}{content:'';position:absolute;inset:0;z-index:-1;pointer-events:none;background:linear-gradient(110deg,transparent 30%,#ffffff66 48%,transparent 65%),radial-gradient(circle at 15% 25%,#fff 0 1px,transparent 3px),radial-gradient(circle at 67% 70%,#fff 0 1px,transparent 3px),radial-gradient(circle at 85% 20%,#fff 0 1px,transparent 3px);background-size:200% 100%,100% 100%,100% 100%,100% 100%;animation:ka-cta-glitter 3.6s ease-in-out infinite!important}
+    ${states(ctaSelector,' span')}{color:#fff!important}
+    ${states(effectsSelector,':focus-visible')}{outline:3px solid #a84308!important;outline-offset:5px}
+    @keyframes ka-cta-glow{0%,100%{box-shadow:0 8px 24px #ef6b1038,0 0 0 0 #ff9c3840}50%{box-shadow:0 12px 32px #ef6b1060,0 0 0 7px #ff9c3800}}
+    @keyframes ka-cta-glitter{0%,15%{background-position:180% 0,0 0,0 0,0 0;opacity:.3}55%{opacity:.8}85%,100%{background-position:-80% 0,0 0,0 0,0 0;opacity:.3}}
+    @media(prefers-reduced-motion:reduce){${effectsSelector},${states(effectsSelector,'::before')}{animation:none!important} ${states(effectsSelector,'::before')}{content:none} ${effectsSelector}{box-shadow:0 8px 24px #ef6b1038!important}}
+  `;
   document.head.append(ctaStyles);
   const navStyles = document.createElement('style');
-  navStyles.textContent = '.ka-site-nav{background:#fff!important;border-color:#e8ddbd!important}.ka-site-nav .ka-brand{color:#b69a4c!important}.ka-site-nav a{font-weight:900!important}.ka-site-nav a:last-child{background:transparent!important;color:#211a16!important;box-shadow:none!important}.ka-site-nav a:nth-child(3){padding:13px 26px;border-radius:999px;background:linear-gradient(110deg,#d94b08,#d96b0b)!important;color:#fff!important}.ka-site-nav a:focus-visible{outline:2px solid #b69a4c;outline-offset:4px}';
+  navStyles.textContent = '.ka-site-nav{background:#fff!important;border-color:#e8ddbd!important}.ka-site-nav .ka-brand{color:#b69a4c!important}.ka-site-nav a{font-weight:900!important}.ka-site-nav a:last-child{background:transparent!important;color:#211a16!important;box-shadow:none!important}.ka-site-nav a:nth-child(3){padding:13px 26px;border-radius:999px;color:#fff!important}.ka-site-nav a:focus-visible{outline:2px solid #b69a4c;outline-offset:4px}';
   document.head.append(navStyles);
   const flareStyles = document.createElement('style');
   flareStyles.textContent = 'body.ka-page{--ka-cream:#fff8ee;--ka-line:#eed4b4;--ka-gradient:linear-gradient(110deg,#d94b08,#d96b0b);background:#fff8ee!important}.ka-page main>section:not(.hero):not(.final-cta){background:linear-gradient(135deg,#fffaf3,#ffecd5)!important;color:#2b1c12}.ka-page .band,.ka-page .science-section,.ka-page .transform-section,.ka-page .steps-section{background:linear-gradient(135deg,#fffaf3,#ffecd5)!important}.ka-flujo .hero,.ka-flujo .final-cta{background:radial-gradient(ellipse at top,#793707,#2b180e 75%)!important}.ka-flujo .product-showcase{background:radial-gradient(ellipse at 50% 40%,#a97523,#35200f 70%)!important;border-color:#c38339!important}.ka-flujo .offer-meta-row{background:#48260f!important}.ka-page .eyebrow{color:#a34c0c}.ka-flujo .value-box{background:#fff1d9!important;border-color:#c47713!important;color:#713b0b!important}';

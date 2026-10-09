@@ -5,9 +5,9 @@
 .ka-index .ka-site-nav{display:flex;justify-content:flex-start;width:100%;max-width:none;min-height:90px;margin:0;padding:20px max(32px,calc((100% - 1440px)/2));gap:36px;background:#fff;border:0;border-bottom:1px solid #eee;border-radius:0;box-shadow:none;font-size:16px}
 .ka-index .ka-site-nav .ka-brand{width:180px;margin-right:auto;color:#b69a4c;font-size:27px;line-height:1;font-weight:900;text-transform:uppercase;letter-spacing:-.04em}
 .ka-index .ka-site-nav a:last-child{padding:13px 26px;border-radius:999px;background:var(--ka-gradient);color:#fff}
-.ka-index .hero.shell{position:relative;isolation:isolate;display:grid;grid-template-columns:1fr 1fr;align-items:center;width:100%;max-width:none;min-height:610px;margin:0;padding:64px max(32px,calc((100% - 1500px)/2));overflow:hidden;text-align:right;background:#605a59}
+.ka-index .hero.shell{position:relative;isolation:isolate;display:grid;grid-template-columns:1fr 1fr;align-items:center;width:100%;max-width:none;min-height:610px;margin:0;padding:64px max(32px,calc((100% - 1500px)/2));overflow:hidden;text-align:right;background:#642c0d}
 .ka-index .hero-photo{position:absolute;z-index:-2;inset:0 auto 0 0;width:53%;height:100%;object-fit:cover;object-position:50% 0%;border:0;border-radius:0}
-.ka-index .hero::before{content:'';position:absolute;z-index:-1;inset:0;background:linear-gradient(90deg,#19151821 0%,#312b2c0f 27%,#49414199 46%,#605a59 62%)}
+.ka-index .hero::before{content:'';position:absolute;z-index:-1;inset:0;background:linear-gradient(90deg,#7d390010 0%,#7d390008 27%,#642c0d99 46%,#642c0d 62%)}
 .ka-index .hero-content{grid-column:2;width:100%;max-width:730px;margin-left:auto;padding-left:22px}
 .ka-index .hero .eyebrow{display:block;margin:0 0 30px;padding:0;border:0;background:none;color:#ead181;font-size:18px;letter-spacing:0;text-align:right}
 .ka-index .hero h1{max-width:none;margin:0 0 34px;color:#fff;font-size:clamp(34px,3.3vw,54px);line-height:1.16;text-align:right}
@@ -18,7 +18,7 @@
 .ka-index .button:hover,.ka-index .ka-footer-cta:hover{filter:brightness(1.06);transform:translateY(-2px);box-shadow:none}
 .ka-index .hero .micro{margin:16px 0 0;color:#eee8e3;font-size:14px;text-align:center}
 .ka-index .band{padding:88px 0;border:0;background:#fff}
-.ka-index .band:nth-child(even){background:linear-gradient(120deg,#f4e7dd,#faf9f7 58%,#f1ece7)}
+.ka-index .band:nth-child(even){background:linear-gradient(120deg,#ffe5c4,#fff9ef 58%,#ffecd5)}
 .ka-index .band .eyebrow{display:block;width:auto;margin:0 0 16px;padding:0;background:none;border-radius:0;color:#927637;font-size:14px;letter-spacing:.08em;font-weight:800}
 .ka-index .section-title{margin:0 auto;font-size:clamp(30px,3.1vw,46px);line-height:1.15;text-align:center}
 .ka-index .grid-two{display:grid;grid-template-columns:1fr 1fr;align-items:center;gap:70px}
@@ -35,7 +35,7 @@
 .ka-index .library-card strong{margin:14px 0;font-size:27px}
 .ka-index .final{text-align:center}
 .ka-index .final .copy{max-width:650px;margin:24px auto 30px}
-.ka-index .ka-site-footer{width:100%;max-width:none;margin:0;border:0;border-radius:0;background:#272520;padding:60px 24px 28px}
+.ka-index .ka-site-footer{width:100%;max-width:none;margin:0;border:0;border-radius:0;background:linear-gradient(135deg,#572508,#321706);padding:60px 24px 28px}
 .ka-index .ka-site-footer strong{font-family:'DM Sans',Arial,sans-serif;color:#d9c681}
 .ka-index :focus-visible{outline:3px solid #886b2a;outline-offset:5px}
 .ka-index .hero :focus-visible{outline-color:#fff}
@@ -45,9 +45,9 @@
  .ka-index .ka-site-nav{min-height:72px;padding:16px 20px;gap:18px;flex-wrap:wrap;font-size:14px}
  .ka-index .ka-site-nav .ka-brand{width:auto;font-size:23px}
  .ka-index .ka-site-nav a:last-child{padding:9px 13px}
- .ka-index .hero.shell{display:flex;min-height:0;flex-direction:column;padding:0;background:#514b49}
+ .ka-index .hero.shell{display:flex;min-height:0;flex-direction:column;padding:0;background:#642c0d}
  .ka-index .hero-photo{position:relative;inset:auto;width:100%;height:360px;object-position:50% 0%}
- .ka-index .hero::before{background:linear-gradient(180deg,transparent 240px,#514b49 360px)}
+ .ka-index .hero::before{background:linear-gradient(180deg,transparent 240px,#642c0d 360px)}
  .ka-index .hero-content{padding:24px 22px 38px;margin:0;text-align:center}
  .ka-index .hero .eyebrow,.ka-index .hero h1,.ka-index .hero .lead{text-align:center}
  .ka-index .hero .eyebrow{font-size:15px;margin-bottom:20px}
@@ -58,5 +58,5 @@
  .ka-index .grid-two,.ka-index .pillars,.ka-index .proof-grid,.ka-index .library-grid{grid-template-columns:1fr;gap:24px}
  .ka-index .section-title{font-size:31px}
 }
-@media(max-width:420px){.ka-index .ka-site-nav{gap:12px}.ka-index .ka-site-nav .ka-brand{flex-basis:100%}.ka-index .hero-photo{height:310px}.ka-index .hero::before{background:linear-gradient(180deg,transparent 210px,#514b49 310px)}}
+@media(max-width:420px){.ka-index .ka-site-nav{gap:12px}.ka-index .ka-site-nav .ka-brand{flex-basis:100%}.ka-index .hero-photo{height:310px}.ka-index .hero::before{background:linear-gradient(180deg,transparent 210px,#642c0d 310px)}}
 @media(prefers-reduced-motion:reduce){.ka-index *{animation:none!important;transition:none!important}}
