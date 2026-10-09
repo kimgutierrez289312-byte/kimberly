@@ -11,16 +11,17 @@ body.ka-flujo{--ka-cream:#fbf7ef;--ka-ink:#18131d;--ka-muted:#5d5362;--ka-line:#
 .ka-flujo .limited-offer-banner{display:flex;align-items:center;justify-content:center;flex-wrap:wrap;gap:8px 28px;padding:16px 20px;background:linear-gradient(100deg,#f4d886,#dfb456);color:#201605;text-align:center;font-size:18px}
 .ka-flujo .limited-offer-banner>strong{font-size:14px;letter-spacing:.1em}
 .ka-flujo .limited-offer-banner b{font-size:28px;font-weight:800}
-.ka-flujo .hero-offer-price{margin:28px auto 12px;color:#f3d788;font-size:14px;font-weight:800;letter-spacing:.08em;text-align:center}
-.ka-flujo .hero-offer-price strong{display:block;margin:8px 0;font:800 clamp(48px,6vw,76px)/1.08 'DM Sans',sans-serif;letter-spacing:-.04em;color:#ffe5a1}
-.ka-flujo .hero-offer-price span{display:block;font-size:15px;font-weight:400;letter-spacing:0;color:#e3dbe8}
+.ka-flujo .hero-offer-price{margin:28px auto 12px;color:#111;font-size:14px;font-weight:800;letter-spacing:.08em;text-align:center}
+.ka-flujo .hero-offer-price strong{display:block;margin:8px 0;font:900 clamp(48px,6vw,76px)/1.08 'DM Sans',sans-serif;letter-spacing:-.04em;color:#c92121}
+.ka-flujo .hero-offer-price span{display:block;font-size:15px;font-weight:400;letter-spacing:0;color:#292929}
 .ka-flujo main{display:flex;flex-direction:column}
-.ka-flujo .hero{order:0;padding:36px 24px 48px;background:linear-gradient(120deg,#15101e,#271c36);color:#fff5df;text-align:center}
+.ka-flujo main>.hero{order:0;padding:36px 24px 48px;background:#fff!important;color:#111;text-align:center}
 .ka-flujo .hero-copy{width:min(100%,920px);margin:auto}
 .ka-flujo .template-kicker{margin-bottom:16px;color:#e2c681;font-size:13px;font-weight:800;letter-spacing:.13em;text-transform:uppercase}
-.ka-flujo .hero h1{max-width:100%;margin:0 auto 18px;color:#fff5df;font-size:clamp(25px,2.6vw,34px);line-height:1.15;white-space:nowrap;letter-spacing:-.025em}
-.ka-flujo .hero-subtitle{max-width:680px;margin:0 auto 28px;color:#d5cadd;font-size:19px}
-.ka-flujo .hero-video{display:block;position:relative;width:min(100%,760px);margin:28px auto;border:1px solid #695878;border-radius:20px;overflow:hidden;box-shadow:0 24px 70px #08050d66;line-height:0}
+.ka-flujo .hero h1{max-width:850px;margin:0 auto 22px;color:#111;font:900 clamp(34px,4.2vw,56px)/1.08 'DM Sans',Arial,sans-serif;white-space:normal;letter-spacing:-.035em;text-wrap:balance}
+.ka-flujo .hero h1 .hero-emphasis{color:#c92121}
+.ka-flujo .hero-subtitle{max-width:740px;margin:0 auto 28px;color:#111;font-size:20px;font-weight:700;line-height:1.4}
+.ka-flujo .hero-video{display:block;position:relative;width:min(100%,760px);margin:28px auto;border:1px solid #eaded3;border-radius:20px;overflow:hidden;box-shadow:0 18px 48px #6c340f20;line-height:0}
 .ka-flujo .hero-video img{display:block;width:100%;aspect-ratio:16/9;object-fit:cover}
 .ka-flujo .hero-video--embedded iframe{display:block;width:100%;height:auto;aspect-ratio:16/9;border:0}
 .ka-flujo .hero-video.hero-video--embedded::after{content:none}
@@ -30,7 +31,7 @@ body.ka-flujo{--ka-cream:#fbf7ef;--ka-ink:#18131d;--ka-muted:#5d5362;--ka-line:#
 .ka-flujo .primary-button::after,.ka-flujo .ka-footer-cta::after{content:'»';font-size:24px;line-height:1}
 .ka-flujo .primary-button:hover,.ka-flujo .ka-footer-cta:hover{transform:translateY(-2px);box-shadow:0 16px 32px #c59a3945}
 .ka-flujo :focus-visible{outline:3px solid #795594;outline-offset:5px}
-.ka-flujo .hero :focus-visible{outline-color:#f6d57b}
+.ka-flujo .hero :focus-visible{outline-color:#a84308}
 .ka-flujo .section-shell{margin:0;padding:80px max(24px,calc((100% - 1180px)/2));border:0;border-radius:0;background:#fbf7ef}
 .ka-flujo .section-heading{max-width:760px;margin:0 auto 38px;text-align:center}
 .ka-flujo .section-heading h2{margin:0 0 20px}
@@ -130,7 +131,7 @@ body.ka-flujo{--ka-cream:#fbf7ef;--ka-ink:#18131d;--ka-muted:#5d5362;--ka-line:#
 }
 @media(max-width:700px){
  .ka-flujo .hero{padding:28px 18px 40px}
- .ka-flujo .hero h1{font-size:clamp(26px,6vw,32px);white-space:normal}
+ .ka-flujo .hero h1{font-size:clamp(32px,8vw,40px);white-space:normal}
  .ka-flujo .hero-subtitle{font-size:16px;line-height:1.3;letter-spacing:-.015em;margin-bottom:18px}
  .ka-flujo .section-shell{padding:48px 18px}
  .ka-flujo .offer-card{grid-template-columns:minmax(0,1fr);grid-template-areas:'product' 'header' 'price' 'cta' 'security' 'stack' 'meta' 'gallery'}
