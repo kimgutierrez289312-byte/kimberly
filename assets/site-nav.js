@@ -1,4 +1,12 @@
 (() => {
+  // Keep action tracking independent from navigation/footer rendering.
+  if (!document.querySelector('script[data-ka-pixel-events]')) {
+    const analytics = document.createElement('script');
+    analytics.src = new URL('pixel-events.js?v=20261012', document.currentScript.src).href;
+    analytics.dataset.kaPixelEvents = 'true';
+    analytics.async = true;
+    document.head.append(analytics);
+  }
   if (document.querySelector('.ka-site-footer')) return;
   const root = new URL('../', document.currentScript.src);
   const local = (path) => new URL(path, root).href;
